@@ -49,20 +49,42 @@ const parse = async (element: ElementHandle<Element> | null) => {
   }
   const data = await Promise.all(
     tables.map(async (table, i) => {
-      const rows = await table.$$(".card");
-      const cols = await Promise.all(
-        rows.map((row) =>
-          row.$$eval("p", (cols) =>
-            cols.map((dataRow) => dataRow.textContent?.replace(/\n/g, ""))
-          )
-        )
+      const legend = await table.$(".card__legend");
+      const dataRows = await table.$$(".card:not(.card__legend)");
+      const legendCols = await parseLegend(legend);
+      if (legendCols == undefined) return;
+      const dataCols = await Promise.all(
+        dataRows.map((dataRow) => parseDataRow(dataRow, legendCols))
       );
       return {
         division: divisions[Math.floor(i / 3)],
         lift: lifts[i],
-        data: cols,
+        data: dataCols,
       };
     })
   );
   return data;
+};
+const parseLegend = (legend: ElementHandle<Element> | null) =>
+  legend?.$$eval("p", (cols) =>
+    cols.map((col) => col.textContent?.replace(/[:\s\n]/g, ""))
+  );
+const parseDataRow = async (
+  dataRow: ElementHandle<Element>,
+  legend: (string | undefined)[]
+) => {
+  const data = await dataRow.$$eval("p", (cols) =>
+    // check if the element has a <strike> child
+    // clean mobile-only elements from the result
+    {
+      return cols.map((col) => ({
+        value: col.textContent?.replace(/\n/g, ""),
+      }));
+    }
+  );
+  const dataWithKey = data.map((d, i) => ({
+    key: legend && legend[i],
+    value: legend[i] !== undefined && d.value?.replace(`${legend[i]!}: `, ""),
+  }));
+  return dataWithKey;
 };
