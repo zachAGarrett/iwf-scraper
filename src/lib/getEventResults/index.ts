@@ -1,12 +1,11 @@
-// https://iwf.sport/results/results-by-events/?event_id=574
-
 import puppeteer from "puppeteer";
-import parseDivisionResults from "./parseDivisionResults";
+import parseResults from "./parseResults";
+import { EventGender } from "../../types";
 
-export interface GetEventDataDataProps {
+export interface getEventResultsProps {
   event_id: number;
 }
-const getEventData = async ({ event_id }: GetEventDataDataProps) => {
+const getEventResults = async ({ event_id }: getEventResultsProps) => {
   const compositeUri = `https://iwf.sport/results/results-by-events/?event_id=${event_id}`;
 
   // Launch the browser and open a new blank page
@@ -21,11 +20,17 @@ const getEventData = async ({ event_id }: GetEventDataDataProps) => {
   //// Get the data from known selectors
   console.log(`Getting data for event ${event_id}`);
   /** Set up the known selectors from the results page.
-   * The page uses a tab structure to show and hide content,
+   * The event results page uses a tab structure to show and hide content,
    * but all data is present on the page at load time.
    * A future optimization would store and validate these selectors
-   * and this scraper would ingest them. */
-  const divisionSelectors = ["#men_snatchjerk", "#women_snatchjerk"];
+   * and this scraper would ingest them.
+   *
+   * Note:
+   * If there is some event results page that doesn't adhere to this structure, this scraper will throw an error */
+  const eventGenderSelectors = [
+    { eventGender: EventGender.MEN, selector: "#men_snatchjerk" },
+    { eventGender: EventGender.WOMEN, selector: "#women_snatchjerk" },
+  ];
 
   /** Await the results from parsing all selectors.
    * This process is a little slow, since parseResultSection() contains several nested awaits.
@@ -33,18 +38,24 @@ const getEventData = async ({ event_id }: GetEventDataDataProps) => {
    * Therefore, a more robust solution would use await Promise.allSettled()
    * and handle resolved and rejected responses. */
   const results = await Promise.all(
-    divisionSelectors.map(async (selector) => {
+    eventGenderSelectors.map(async ({ eventGender, selector }) => {
       const resultSection = await page.$(selector);
-      const divisionResults = await parseDivisionResults(
-        selector,
-        resultSection
-      );
-      return divisionResults;
+
+      if (resultSection === null) {
+        throw new Error(
+          `Could not find the targeted section: ${selector} at url: ${compositeUri}`
+        );
+      }
+      const eventGenderResults = await parseResults({
+        eventGender,
+        element: resultSection,
+      });
+      return eventGenderResults;
     })
   );
 
   await browser.close();
-  return results;
+  return results.flat();
 };
 
-export default getEventData;
+export default getEventResults;

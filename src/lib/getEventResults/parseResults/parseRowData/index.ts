@@ -1,7 +1,7 @@
 import { ElementHandle } from "puppeteer";
 /**
  *
- * @param dataRow This is the element containing the the event results for an athlete in some division at some competition. (Competition > Division > Class  > Event > Results)
+ * @param dataRow This is the element containing the the event results for an athlete in some event gender at some competition. (Competition > EventGender > Class > Event > Results)
  * @param legend This is the map of column keys for the Event. This setup allows for flexibility if not all events have the same number of columns.
  * @returns
  */
@@ -59,14 +59,35 @@ const parseDataRow = async (
   }
   const formattedData = rawData.map(({ failedAttempt, value }, i) => ({
     key: legend[i],
-    /** The value from the rawData will include some fragments from the span.only__mobile element which is also a child of the data cell
-     * The fragment is the key of the column, and is used for mobile display purposes.
-     * We can clean it by searching and replacing the column key in the raw value.
-     *
-     * The raw value will also contain a bunch of newlines that should be removed. */
-    value: value?.replace(/\n/g, "").replace(`${legend[i]!}: `, ""),
+    value: cleanValue(value, legend[i]!),
     failedAttempt,
   }));
   return formattedData;
 };
 export default parseDataRow;
+
+const cleanValue = (value: string | null, key: string) => {
+  let partiallyCleanedValue: string;
+  if (value === null) return null;
+  /** The value from the rawData will include some artifacts from the span.only__mobile element which is also a child of the data cell
+   * The artifact is the key of the column, followed by a colon, and is used for mobile display purposes.
+   * We can clean it by searching and replacing the column key in the raw value.
+   *
+   * The raw value will also contain a bunch of newlines that should be removed. */
+  partiallyCleanedValue = value?.replace(/\n/g, "").replace(`${key}: `, "");
+
+  /**
+   * Next up, we need to coerce the value to the proper types.
+   */
+
+  const maybeNumber = Number(partiallyCleanedValue);
+
+  if (!isNaN(maybeNumber)) {
+    return maybeNumber;
+  } else if (partiallyCleanedValue === "---") {
+    return null;
+  } else {
+    // This may be a string or a date string
+    return partiallyCleanedValue;
+  }
+};

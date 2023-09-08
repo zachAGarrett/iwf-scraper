@@ -1,9 +1,27 @@
-import eventData from "./lib/getEventData";
+import getEventResults from "./lib/getEventResults";
+import getEventsDetails from "./lib/getEventsDetails";
 
 const interestingEventId = 574;
 
 (async () => {
-  const data = await eventData({ event_id: interestingEventId });
-  console.log(data);
-  // data[0] && data[0][1]?.eventResults[1].forEach((el) => console.log(el));
+  try {
+    const [allMatchedEvents, matchedEventResults] = await Promise.all([
+      getEventsDetails(),
+      getEventResults({ event_id: interestingEventId }),
+    ]);
+    const matchedEventDetails = allMatchedEvents.find((event) =>
+      event.resultsLink.includes(`event_id=${interestingEventId}`)
+    );
+
+    const eventProfile = {
+      ...matchedEventDetails,
+      results: matchedEventResults,
+    };
+
+    /// insert the data somewhere
+    console.log(eventProfile);
+  } catch (error) {
+    console.error(error);
+  }
+  return;
 })();
