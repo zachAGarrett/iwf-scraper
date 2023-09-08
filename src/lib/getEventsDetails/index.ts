@@ -41,6 +41,23 @@ const getEventsDetails = async (queryStringOptions?: QueryStringOptions) => {
           Country: null,
           City: null,
         };
+
+        const parseCityAndCountry = (inputString: string) => {
+          const parts = inputString.split(",");
+
+          if (parts.length === 2) {
+            const city = parts[0].trim();
+            const country = parts[1].trim();
+            return {
+              city,
+              country,
+            };
+          } else {
+            // Handle invalid input
+            return null;
+          }
+        };
+
         nodes.forEach((node, i) => {
           switch (i) {
             case 0:
@@ -71,19 +88,3 @@ const getEventsDetails = async (queryStringOptions?: QueryStringOptions) => {
   return eventsDetails;
 };
 export default getEventsDetails;
-
-const parseCityAndCountry = (inputString: string) => {
-  const parts = inputString.split(",");
-
-  if (parts.length === 2) {
-    const city = parts[0].trim();
-    const country = parts[1].trim();
-    return {
-      city,
-      country,
-    };
-  } else {
-    // Handle invalid input
-    return null;
-  }
-};
