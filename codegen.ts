@@ -2,7 +2,7 @@ import { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
   schema: `http://very.coffee:4000/graphql`,
-  documents: "src/db/**/*.ts",
+  documents: "src/lib/**/*.ts",
   generates: {
     "./src/__generated__/": {
       preset: "client",
@@ -13,7 +13,7 @@ const config: CodegenConfig = {
     },
   },
   emitLegacyCommonJSImports: false,
-  ignoreNoDocuments: true,
+  ignoreNoDocuments: false,
 };
 
 export default config;
