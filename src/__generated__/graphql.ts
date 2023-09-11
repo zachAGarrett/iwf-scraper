@@ -20,33 +20,45 @@ export type Scalars = {
   DateTime: { input: any; output: any; }
 };
 
+/** Represents an athlete in the sports competition. */
 export type Athlete = {
   __typename?: 'Athlete';
+  /** The list of attempts made by the athlete in various events. */
   attempts: Array<Attempt>;
   attemptsAggregate?: Maybe<AthleteAttemptAttemptsAggregationSelection>;
   attemptsConnection: AthleteAttemptsConnection;
+  /** The birthday of the athlete. */
   birthday: Scalars['Date']['output'];
+  /** The list of competitions in which the athlete participated. */
   competitions: Array<Competition>;
   competitionsAggregate?: Maybe<AthleteCompetitionCompetitionsAggregationSelection>;
   competitionsConnection: AthleteCompetitionsConnection;
+  /** The timestamp when the athlete's profile was created. */
   createdAt: Scalars['DateTime']['output'];
+  /** The list of data sources associated with the athlete. */
   dataSources: Array<DataSource>;
   dataSourcesAggregate?: Maybe<AthleteDataSourceDataSourcesAggregationSelection>;
   dataSourcesConnection: AthleteDataSourcesConnection;
+  /** The list of events in which the athlete participated. */
   events: Array<Event>;
   eventsAggregate?: Maybe<AthleteEventEventsAggregationSelection>;
   eventsConnection: AthleteEventsConnection;
-  familyName: Scalars['String']['output'];
-  givenName: Scalars['String']['output'];
+  /** The unique identifier of the athlete. */
   id: Scalars['ID']['output'];
+  /** The full name of the athlete. Recorded as parsed. */
+  name: Scalars['String']['output'];
+  /** The list of nations represented by the athlete. */
   nations: Array<Nation>;
   nationsAggregate?: Maybe<AthleteNationNationsAggregationSelection>;
   nationsConnection: AthleteNationsConnection;
-  updatedAt: Scalars['DateTime']['output'];
+  /** The timestamp when the athlete's profile was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  /** Indicates whether the athlete's profile is verified. */
   verified: Scalars['Boolean']['output'];
 };
 
 
+/** Represents an athlete in the sports competition. */
 export type AthleteAttemptsArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<AttemptOptions>;
@@ -54,12 +66,14 @@ export type AthleteAttemptsArgs = {
 };
 
 
+/** Represents an athlete in the sports competition. */
 export type AthleteAttemptsAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<AttemptWhere>;
 };
 
 
+/** Represents an athlete in the sports competition. */
 export type AthleteAttemptsConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -69,6 +83,7 @@ export type AthleteAttemptsConnectionArgs = {
 };
 
 
+/** Represents an athlete in the sports competition. */
 export type AthleteCompetitionsArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<CompetitionOptions>;
@@ -76,12 +91,14 @@ export type AthleteCompetitionsArgs = {
 };
 
 
+/** Represents an athlete in the sports competition. */
 export type AthleteCompetitionsAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<CompetitionWhere>;
 };
 
 
+/** Represents an athlete in the sports competition. */
 export type AthleteCompetitionsConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -91,6 +108,7 @@ export type AthleteCompetitionsConnectionArgs = {
 };
 
 
+/** Represents an athlete in the sports competition. */
 export type AthleteDataSourcesArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<DataSourceOptions>;
@@ -98,12 +116,14 @@ export type AthleteDataSourcesArgs = {
 };
 
 
+/** Represents an athlete in the sports competition. */
 export type AthleteDataSourcesAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<DataSourceWhere>;
 };
 
 
+/** Represents an athlete in the sports competition. */
 export type AthleteDataSourcesConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -113,6 +133,7 @@ export type AthleteDataSourcesConnectionArgs = {
 };
 
 
+/** Represents an athlete in the sports competition. */
 export type AthleteEventsArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<EventOptions>;
@@ -120,12 +141,14 @@ export type AthleteEventsArgs = {
 };
 
 
+/** Represents an athlete in the sports competition. */
 export type AthleteEventsAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<EventWhere>;
 };
 
 
+/** Represents an athlete in the sports competition. */
 export type AthleteEventsConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -135,6 +158,7 @@ export type AthleteEventsConnectionArgs = {
 };
 
 
+/** Represents an athlete in the sports competition. */
 export type AthleteNationsArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<NationOptions>;
@@ -142,12 +166,14 @@ export type AthleteNationsArgs = {
 };
 
 
+/** Represents an athlete in the sports competition. */
 export type AthleteNationsAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<NationWhere>;
 };
 
 
+/** Represents an athlete in the sports competition. */
 export type AthleteNationsConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -160,10 +186,9 @@ export type AthleteAggregateSelection = {
   __typename?: 'AthleteAggregateSelection';
   count: Scalars['Int']['output'];
   createdAt: DateTimeAggregateSelectionNonNullable;
-  familyName: StringAggregateSelectionNonNullable;
-  givenName: StringAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  name: StringAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AthleteAttemptAttemptsAggregationSelection = {
@@ -175,8 +200,10 @@ export type AthleteAttemptAttemptsAggregationSelection = {
 export type AthleteAttemptAttemptsNodeAggregateSelection = {
   __typename?: 'AthleteAttemptAttemptsNodeAggregateSelection';
   createdAt: DateTimeAggregateSelectionNonNullable;
+  dateTime: DateTimeAggregateSelectionNullable;
   id: IdAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  number: IntAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
   weight: FloatAggregateSelectionNonNullable;
 };
 
@@ -260,6 +287,36 @@ export type AthleteAttemptsNodeAggregationWhereInput = {
   createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  number_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  number_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
+  number_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
+  number_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
+  number_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
+  number_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  number_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
+  number_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
+  number_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
+  number_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
+  number_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  number_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
+  number_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
+  number_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
+  number_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
+  number_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  number_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
+  number_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
+  number_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
+  number_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
   updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
@@ -315,7 +372,17 @@ export type AthleteAttemptsUpdateFieldInput = {
 export type AthleteCompetitionCompetitionsAggregationSelection = {
   __typename?: 'AthleteCompetitionCompetitionsAggregationSelection';
   count: Scalars['Int']['output'];
+  edge?: Maybe<AthleteCompetitionCompetitionsEdgeAggregateSelection>;
   node?: Maybe<AthleteCompetitionCompetitionsNodeAggregateSelection>;
+};
+
+export type AthleteCompetitionCompetitionsEdgeAggregateSelection = {
+  __typename?: 'AthleteCompetitionCompetitionsEdgeAggregateSelection';
+  bodyweight: FloatAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNonNullable;
+  group: StringAggregateSelectionNonNullable;
+  rank: IntAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AthleteCompetitionCompetitionsNodeAggregateSelection = {
@@ -323,7 +390,7 @@ export type AthleteCompetitionCompetitionsNodeAggregateSelection = {
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AthleteCompetitionsAggregateInput = {
@@ -335,11 +402,13 @@ export type AthleteCompetitionsAggregateInput = {
   count_GTE?: InputMaybe<Scalars['Int']['input']>;
   count_LT?: InputMaybe<Scalars['Int']['input']>;
   count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  edge?: InputMaybe<AthleteCompetitionsEdgeAggregationWhereInput>;
   node?: InputMaybe<AthleteCompetitionsNodeAggregationWhereInput>;
 };
 
 export type AthleteCompetitionsConnectFieldInput = {
   connect?: InputMaybe<Array<CompetitionConnectInput>>;
+  edge: AthleteDidCreateInput;
   /** Whether or not to overwrite any matching relationship with the new properties. Will default to `false` in 4.0.0. */
   overwrite?: Scalars['Boolean']['input'];
   where?: InputMaybe<CompetitionConnectWhere>;
@@ -351,6 +420,7 @@ export type AthleteCompetitionsConnectOrCreateFieldInput = {
 };
 
 export type AthleteCompetitionsConnectOrCreateFieldInputOnCreate = {
+  edge: AthleteDidCreateInput;
   node: CompetitionOnCreateInput;
 };
 
@@ -362,6 +432,7 @@ export type AthleteCompetitionsConnection = {
 };
 
 export type AthleteCompetitionsConnectionSort = {
+  edge?: InputMaybe<AthleteDidSort>;
   node?: InputMaybe<CompetitionSort>;
 };
 
@@ -369,10 +440,12 @@ export type AthleteCompetitionsConnectionWhere = {
   AND?: InputMaybe<Array<AthleteCompetitionsConnectionWhere>>;
   NOT?: InputMaybe<AthleteCompetitionsConnectionWhere>;
   OR?: InputMaybe<Array<AthleteCompetitionsConnectionWhere>>;
+  edge?: InputMaybe<AthleteDidWhere>;
   node?: InputMaybe<CompetitionWhere>;
 };
 
 export type AthleteCompetitionsCreateFieldInput = {
+  edge: AthleteDidCreateInput;
   node: CompetitionCreateInput;
 };
 
@@ -384,6 +457,87 @@ export type AthleteCompetitionsDeleteFieldInput = {
 export type AthleteCompetitionsDisconnectFieldInput = {
   disconnect?: InputMaybe<CompetitionDisconnectInput>;
   where?: InputMaybe<AthleteCompetitionsConnectionWhere>;
+};
+
+export type AthleteCompetitionsEdgeAggregationWhereInput = {
+  AND?: InputMaybe<Array<AthleteCompetitionsEdgeAggregationWhereInput>>;
+  NOT?: InputMaybe<AthleteCompetitionsEdgeAggregationWhereInput>;
+  OR?: InputMaybe<Array<AthleteCompetitionsEdgeAggregationWhereInput>>;
+  bodyweight_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
+  createdAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  group_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  group_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  group_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  group_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  group_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  group_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  group_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  group_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  group_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  group_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  group_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  group_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  group_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  group_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  group_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  rank_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
+  rank_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
+  rank_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
+  rank_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
+  rank_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  rank_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
+  rank_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
+  rank_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  rank_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
+  rank_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
+  rank_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  rank_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
+  rank_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
+  rank_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type AthleteCompetitionsFieldInput = {
@@ -433,13 +587,24 @@ export type AthleteCompetitionsNodeAggregationWhereInput = {
   updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
-export type AthleteCompetitionsRelationship = {
+export type AthleteCompetitionsRelationship = AthleteDid & {
   __typename?: 'AthleteCompetitionsRelationship';
+  /** The bodyweight of the athlete when participating in the event. */
+  bodyweight: Scalars['Float']['output'];
+  /** The timestamp when this relationship was created. */
+  createdAt: Scalars['DateTime']['output'];
   cursor: Scalars['String']['output'];
+  /** The group the athlete was placed in for the event. */
+  group: Scalars['String']['output'];
   node: Competition;
+  /** The ranking of the athlete at the conclusion of the event. */
+  rank?: Maybe<Scalars['Int']['output']>;
+  /** The timestamp when this relationship was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
 export type AthleteCompetitionsUpdateConnectionInput = {
+  edge?: InputMaybe<AthleteDidUpdateInput>;
   node?: InputMaybe<CompetitionUpdateInput>;
 };
 
@@ -483,8 +648,7 @@ export type AthleteCreateInput = {
   competitions?: InputMaybe<AthleteCompetitionsFieldInput>;
   dataSources?: InputMaybe<AthleteDataSourcesFieldInput>;
   events?: InputMaybe<AthleteEventsFieldInput>;
-  familyName: Scalars['String']['input'];
-  givenName: Scalars['String']['input'];
+  name: Scalars['String']['input'];
   nations?: InputMaybe<AthleteNationsFieldInput>;
   verified?: Scalars['Boolean']['input'];
 };
@@ -492,7 +656,15 @@ export type AthleteCreateInput = {
 export type AthleteDataSourceDataSourcesAggregationSelection = {
   __typename?: 'AthleteDataSourceDataSourcesAggregationSelection';
   count: Scalars['Int']['output'];
+  edge?: Maybe<AthleteDataSourceDataSourcesEdgeAggregateSelection>;
   node?: Maybe<AthleteDataSourceDataSourcesNodeAggregateSelection>;
+};
+
+export type AthleteDataSourceDataSourcesEdgeAggregateSelection = {
+  __typename?: 'AthleteDataSourceDataSourcesEdgeAggregateSelection';
+  createdAt: DateTimeAggregateSelectionNonNullable;
+  entityId: StringAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AthleteDataSourceDataSourcesNodeAggregateSelection = {
@@ -500,7 +672,7 @@ export type AthleteDataSourceDataSourcesNodeAggregateSelection = {
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AthleteDataSourcesAggregateInput = {
@@ -512,11 +684,13 @@ export type AthleteDataSourcesAggregateInput = {
   count_GTE?: InputMaybe<Scalars['Int']['input']>;
   count_LT?: InputMaybe<Scalars['Int']['input']>;
   count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  edge?: InputMaybe<AthleteDataSourcesEdgeAggregationWhereInput>;
   node?: InputMaybe<AthleteDataSourcesNodeAggregationWhereInput>;
 };
 
 export type AthleteDataSourcesConnectFieldInput = {
   connect?: InputMaybe<Array<DataSourceConnectInput>>;
+  edge: DataSourceEdgeCreateInput;
   /** Whether or not to overwrite any matching relationship with the new properties. Will default to `false` in 4.0.0. */
   overwrite?: Scalars['Boolean']['input'];
   where?: InputMaybe<DataSourceConnectWhere>;
@@ -528,6 +702,7 @@ export type AthleteDataSourcesConnectOrCreateFieldInput = {
 };
 
 export type AthleteDataSourcesConnectOrCreateFieldInputOnCreate = {
+  edge: DataSourceEdgeCreateInput;
   node: DataSourceOnCreateInput;
 };
 
@@ -539,6 +714,7 @@ export type AthleteDataSourcesConnection = {
 };
 
 export type AthleteDataSourcesConnectionSort = {
+  edge?: InputMaybe<DataSourceEdgeSort>;
   node?: InputMaybe<DataSourceSort>;
 };
 
@@ -546,10 +722,12 @@ export type AthleteDataSourcesConnectionWhere = {
   AND?: InputMaybe<Array<AthleteDataSourcesConnectionWhere>>;
   NOT?: InputMaybe<AthleteDataSourcesConnectionWhere>;
   OR?: InputMaybe<Array<AthleteDataSourcesConnectionWhere>>;
+  edge?: InputMaybe<DataSourceEdgeWhere>;
   node?: InputMaybe<DataSourceWhere>;
 };
 
 export type AthleteDataSourcesCreateFieldInput = {
+  edge: DataSourceEdgeCreateInput;
   node: DataSourceCreateInput;
 };
 
@@ -561,6 +739,47 @@ export type AthleteDataSourcesDeleteFieldInput = {
 export type AthleteDataSourcesDisconnectFieldInput = {
   disconnect?: InputMaybe<DataSourceDisconnectInput>;
   where?: InputMaybe<AthleteDataSourcesConnectionWhere>;
+};
+
+export type AthleteDataSourcesEdgeAggregationWhereInput = {
+  AND?: InputMaybe<Array<AthleteDataSourcesEdgeAggregationWhereInput>>;
+  NOT?: InputMaybe<AthleteDataSourcesEdgeAggregationWhereInput>;
+  OR?: InputMaybe<Array<AthleteDataSourcesEdgeAggregationWhereInput>>;
+  createdAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  entityId_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  entityId_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  entityId_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  entityId_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  entityId_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  entityId_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  entityId_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  entityId_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  entityId_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  entityId_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type AthleteDataSourcesFieldInput = {
@@ -610,13 +829,20 @@ export type AthleteDataSourcesNodeAggregationWhereInput = {
   updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
-export type AthleteDataSourcesRelationship = {
+export type AthleteDataSourcesRelationship = DataSourceEdge & {
   __typename?: 'AthleteDataSourcesRelationship';
+  /** The timestamp when this relationship was created. */
+  createdAt: Scalars['DateTime']['output'];
   cursor: Scalars['String']['output'];
+  /** The unique identifier of the entity associated with the data source. */
+  entityId: Scalars['String']['output'];
   node: DataSource;
+  /** The timestamp when this relationship was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
 export type AthleteDataSourcesUpdateConnectionInput = {
+  edge?: InputMaybe<DataSourceEdgeUpdateInput>;
   node?: InputMaybe<DataSourceUpdateInput>;
 };
 
@@ -638,6 +864,80 @@ export type AthleteDeleteInput = {
   nations?: InputMaybe<Array<AthleteNationsDeleteFieldInput>>;
 };
 
+export type AthleteDid = {
+  /** The bodyweight of the athlete when participating in the event. */
+  bodyweight: Scalars['Float']['output'];
+  /** The timestamp when this relationship was created. */
+  createdAt: Scalars['DateTime']['output'];
+  /** The group the athlete was placed in for the event. */
+  group: Scalars['String']['output'];
+  /** The ranking of the athlete at the conclusion of the event. */
+  rank?: Maybe<Scalars['Int']['output']>;
+  /** The timestamp when this relationship was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type AthleteDidCreateInput = {
+  bodyweight: Scalars['Float']['input'];
+  group: Scalars['String']['input'];
+  rank?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type AthleteDidSort = {
+  bodyweight?: InputMaybe<SortDirection>;
+  createdAt?: InputMaybe<SortDirection>;
+  group?: InputMaybe<SortDirection>;
+  rank?: InputMaybe<SortDirection>;
+  updatedAt?: InputMaybe<SortDirection>;
+};
+
+export type AthleteDidUpdateInput = {
+  bodyweight?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_ADD?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_DIVIDE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MULTIPLY?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_SUBTRACT?: InputMaybe<Scalars['Float']['input']>;
+  group?: InputMaybe<Scalars['String']['input']>;
+  rank?: InputMaybe<Scalars['Int']['input']>;
+  rank_DECREMENT?: InputMaybe<Scalars['Int']['input']>;
+  rank_INCREMENT?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type AthleteDidWhere = {
+  AND?: InputMaybe<Array<AthleteDidWhere>>;
+  NOT?: InputMaybe<AthleteDidWhere>;
+  OR?: InputMaybe<Array<AthleteDidWhere>>;
+  bodyweight?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_GT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_GTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_IN?: InputMaybe<Array<Scalars['Float']['input']>>;
+  bodyweight_LT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_LTE?: InputMaybe<Scalars['Float']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_IN?: InputMaybe<Array<Scalars['DateTime']['input']>>;
+  createdAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  group?: InputMaybe<Scalars['String']['input']>;
+  group_CONTAINS?: InputMaybe<Scalars['String']['input']>;
+  group_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
+  group_IN?: InputMaybe<Array<Scalars['String']['input']>>;
+  group_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  rank?: InputMaybe<Scalars['Int']['input']>;
+  rank_GT?: InputMaybe<Scalars['Int']['input']>;
+  rank_GTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_IN?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  rank_LT?: InputMaybe<Scalars['Int']['input']>;
+  rank_LTE?: InputMaybe<Scalars['Int']['input']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_IN?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  updatedAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
 export type AthleteDisconnectInput = {
   attempts?: InputMaybe<Array<AthleteAttemptsDisconnectFieldInput>>;
   competitions?: InputMaybe<Array<AthleteCompetitionsDisconnectFieldInput>>;
@@ -655,14 +955,24 @@ export type AthleteEdge = {
 export type AthleteEventEventsAggregationSelection = {
   __typename?: 'AthleteEventEventsAggregationSelection';
   count: Scalars['Int']['output'];
+  edge?: Maybe<AthleteEventEventsEdgeAggregateSelection>;
   node?: Maybe<AthleteEventEventsNodeAggregateSelection>;
+};
+
+export type AthleteEventEventsEdgeAggregateSelection = {
+  __typename?: 'AthleteEventEventsEdgeAggregateSelection';
+  bodyweight: FloatAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNonNullable;
+  group: StringAggregateSelectionNonNullable;
+  rank: IntAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AthleteEventEventsNodeAggregateSelection = {
   __typename?: 'AthleteEventEventsNodeAggregateSelection';
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AthleteEventsAggregateInput = {
@@ -674,11 +984,13 @@ export type AthleteEventsAggregateInput = {
   count_GTE?: InputMaybe<Scalars['Int']['input']>;
   count_LT?: InputMaybe<Scalars['Int']['input']>;
   count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  edge?: InputMaybe<AthleteEventsEdgeAggregationWhereInput>;
   node?: InputMaybe<AthleteEventsNodeAggregationWhereInput>;
 };
 
 export type AthleteEventsConnectFieldInput = {
   connect?: InputMaybe<Array<EventConnectInput>>;
+  edge: AthleteDidCreateInput;
   /** Whether or not to overwrite any matching relationship with the new properties. Will default to `false` in 4.0.0. */
   overwrite?: Scalars['Boolean']['input'];
   where?: InputMaybe<EventConnectWhere>;
@@ -690,6 +1002,7 @@ export type AthleteEventsConnectOrCreateFieldInput = {
 };
 
 export type AthleteEventsConnectOrCreateFieldInputOnCreate = {
+  edge: AthleteDidCreateInput;
   node: EventOnCreateInput;
 };
 
@@ -701,6 +1014,7 @@ export type AthleteEventsConnection = {
 };
 
 export type AthleteEventsConnectionSort = {
+  edge?: InputMaybe<AthleteDidSort>;
   node?: InputMaybe<EventSort>;
 };
 
@@ -708,10 +1022,12 @@ export type AthleteEventsConnectionWhere = {
   AND?: InputMaybe<Array<AthleteEventsConnectionWhere>>;
   NOT?: InputMaybe<AthleteEventsConnectionWhere>;
   OR?: InputMaybe<Array<AthleteEventsConnectionWhere>>;
+  edge?: InputMaybe<AthleteDidWhere>;
   node?: InputMaybe<EventWhere>;
 };
 
 export type AthleteEventsCreateFieldInput = {
+  edge: AthleteDidCreateInput;
   node: EventCreateInput;
 };
 
@@ -723,6 +1039,87 @@ export type AthleteEventsDeleteFieldInput = {
 export type AthleteEventsDisconnectFieldInput = {
   disconnect?: InputMaybe<EventDisconnectInput>;
   where?: InputMaybe<AthleteEventsConnectionWhere>;
+};
+
+export type AthleteEventsEdgeAggregationWhereInput = {
+  AND?: InputMaybe<Array<AthleteEventsEdgeAggregationWhereInput>>;
+  NOT?: InputMaybe<AthleteEventsEdgeAggregationWhereInput>;
+  OR?: InputMaybe<Array<AthleteEventsEdgeAggregationWhereInput>>;
+  bodyweight_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
+  createdAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  group_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  group_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  group_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  group_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  group_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  group_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  group_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  group_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  group_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  group_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  group_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  group_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  group_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  group_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  group_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  rank_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
+  rank_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
+  rank_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
+  rank_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
+  rank_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  rank_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
+  rank_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
+  rank_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  rank_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
+  rank_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
+  rank_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  rank_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
+  rank_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
+  rank_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type AthleteEventsFieldInput = {
@@ -757,13 +1154,24 @@ export type AthleteEventsNodeAggregationWhereInput = {
   updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
-export type AthleteEventsRelationship = {
+export type AthleteEventsRelationship = AthleteDid & {
   __typename?: 'AthleteEventsRelationship';
+  /** The bodyweight of the athlete when participating in the event. */
+  bodyweight: Scalars['Float']['output'];
+  /** The timestamp when this relationship was created. */
+  createdAt: Scalars['DateTime']['output'];
   cursor: Scalars['String']['output'];
+  /** The group the athlete was placed in for the event. */
+  group: Scalars['String']['output'];
   node: Event;
+  /** The ranking of the athlete at the conclusion of the event. */
+  rank?: Maybe<Scalars['Int']['output']>;
+  /** The timestamp when this relationship was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
 export type AthleteEventsUpdateConnectionInput = {
+  edge?: InputMaybe<AthleteDidUpdateInput>;
   node?: InputMaybe<EventUpdateInput>;
 };
 
@@ -789,7 +1197,7 @@ export type AthleteNationNationsNodeAggregateSelection = {
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AthleteNationsAggregateInput = {
@@ -936,8 +1344,7 @@ export type AthleteNationsUpdateFieldInput = {
 
 export type AthleteOnCreateInput = {
   birthday: Scalars['Date']['input'];
-  familyName: Scalars['String']['input'];
-  givenName: Scalars['String']['input'];
+  name: Scalars['String']['input'];
   verified?: Scalars['Boolean']['input'];
 };
 
@@ -960,9 +1367,8 @@ export type AthleteRelationInput = {
 export type AthleteSort = {
   birthday?: InputMaybe<SortDirection>;
   createdAt?: InputMaybe<SortDirection>;
-  familyName?: InputMaybe<SortDirection>;
-  givenName?: InputMaybe<SortDirection>;
   id?: InputMaybe<SortDirection>;
+  name?: InputMaybe<SortDirection>;
   updatedAt?: InputMaybe<SortDirection>;
   verified?: InputMaybe<SortDirection>;
 };
@@ -977,8 +1383,7 @@ export type AthleteUpdateInput = {
   competitions?: InputMaybe<Array<AthleteCompetitionsUpdateFieldInput>>;
   dataSources?: InputMaybe<Array<AthleteDataSourcesUpdateFieldInput>>;
   events?: InputMaybe<Array<AthleteEventsUpdateFieldInput>>;
-  familyName?: InputMaybe<Scalars['String']['input']>;
-  givenName?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   nations?: InputMaybe<Array<AthleteNationsUpdateFieldInput>>;
   verified?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -1067,21 +1472,16 @@ export type AthleteWhere = {
   events_SINGLE?: InputMaybe<EventWhere>;
   /** Return Athletes where some of the related Events match this filter */
   events_SOME?: InputMaybe<EventWhere>;
-  familyName?: InputMaybe<Scalars['String']['input']>;
-  familyName_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  familyName_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  familyName_IN?: InputMaybe<Array<Scalars['String']['input']>>;
-  familyName_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
-  givenName?: InputMaybe<Scalars['String']['input']>;
-  givenName_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  givenName_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  givenName_IN?: InputMaybe<Array<Scalars['String']['input']>>;
-  givenName_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
   id_CONTAINS?: InputMaybe<Scalars['ID']['input']>;
   id_ENDS_WITH?: InputMaybe<Scalars['ID']['input']>;
   id_IN?: InputMaybe<Array<Scalars['ID']['input']>>;
   id_STARTS_WITH?: InputMaybe<Scalars['ID']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  name_CONTAINS?: InputMaybe<Scalars['String']['input']>;
+  name_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
+  name_IN?: InputMaybe<Array<Scalars['String']['input']>>;
+  name_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
   nationsAggregate?: InputMaybe<AthleteNationsAggregateInput>;
   /** Return Athletes where all of the related AthleteNationsConnections match this filter */
   nationsConnection_ALL?: InputMaybe<AthleteNationsConnectionWhere>;
@@ -1102,7 +1502,7 @@ export type AthleteWhere = {
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_IN?: InputMaybe<Array<Scalars['DateTime']['input']>>;
+  updatedAt_IN?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   updatedAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
   verified?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1115,26 +1515,41 @@ export type AthletesConnection = {
   totalCount: Scalars['Int']['output'];
 };
 
+/** Represents an attempt made by an athlete in an event. */
 export type Attempt = {
   __typename?: 'Attempt';
+  /** The athlete who made the attempt. */
   athlete: Athlete;
   athleteAggregate?: Maybe<AttemptAthleteAthleteAggregationSelection>;
   athleteConnection: AttemptAthleteConnection;
+  /** The timestamp when the attempt was created. */
   createdAt: Scalars['DateTime']['output'];
+  /** The date and time of the attempt. */
+  dateTime?: Maybe<Scalars['DateTime']['output']>;
+  /** The event in which the attempt was made. */
   event: Event;
   eventAggregate?: Maybe<AttemptEventEventAggregationSelection>;
   eventConnection: AttemptEventConnection;
+  /** The unique identifier of the attempt. */
   id: Scalars['ID']['output'];
+  /** The nation associated with the attempt. */
   nation: Nation;
   nationAggregate?: Maybe<AttemptNationNationAggregationSelection>;
   nationConnection: AttemptNationConnection;
+  /** The number of the attempt by the athlete in the event. */
+  number: Scalars['Int']['output'];
+  /** Indicates whether the attempt was successful. */
   successful: Scalars['Boolean']['output'];
-  updatedAt: Scalars['DateTime']['output'];
+  /** The timestamp when the attempt was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  /** Indicates whether the attempt is verified. */
   verified: Scalars['Boolean']['output'];
+  /** The weight lifted or achieved in the attempt. */
   weight: Scalars['Float']['output'];
 };
 
 
+/** Represents an attempt made by an athlete in an event. */
 export type AttemptAthleteArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<AthleteOptions>;
@@ -1142,12 +1557,14 @@ export type AttemptAthleteArgs = {
 };
 
 
+/** Represents an attempt made by an athlete in an event. */
 export type AttemptAthleteAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<AthleteWhere>;
 };
 
 
+/** Represents an attempt made by an athlete in an event. */
 export type AttemptAthleteConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1157,6 +1574,7 @@ export type AttemptAthleteConnectionArgs = {
 };
 
 
+/** Represents an attempt made by an athlete in an event. */
 export type AttemptEventArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<EventOptions>;
@@ -1164,12 +1582,14 @@ export type AttemptEventArgs = {
 };
 
 
+/** Represents an attempt made by an athlete in an event. */
 export type AttemptEventAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<EventWhere>;
 };
 
 
+/** Represents an attempt made by an athlete in an event. */
 export type AttemptEventConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1179,6 +1599,7 @@ export type AttemptEventConnectionArgs = {
 };
 
 
+/** Represents an attempt made by an athlete in an event. */
 export type AttemptNationArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<NationOptions>;
@@ -1186,12 +1607,14 @@ export type AttemptNationArgs = {
 };
 
 
+/** Represents an attempt made by an athlete in an event. */
 export type AttemptNationAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<NationWhere>;
 };
 
 
+/** Represents an attempt made by an athlete in an event. */
 export type AttemptNationConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1204,8 +1627,10 @@ export type AttemptAggregateSelection = {
   __typename?: 'AttemptAggregateSelection';
   count: Scalars['Int']['output'];
   createdAt: DateTimeAggregateSelectionNonNullable;
+  dateTime: DateTimeAggregateSelectionNullable;
   id: IdAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  number: IntAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
   weight: FloatAggregateSelectionNonNullable;
 };
 
@@ -1230,10 +1655,9 @@ export type AttemptAthleteAthleteAggregationSelection = {
 export type AttemptAthleteAthleteNodeAggregateSelection = {
   __typename?: 'AttemptAthleteAthleteNodeAggregateSelection';
   createdAt: DateTimeAggregateSelectionNonNullable;
-  familyName: StringAggregateSelectionNonNullable;
-  givenName: StringAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  name: StringAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AttemptAthleteConnectFieldInput = {
@@ -1304,36 +1728,21 @@ export type AttemptAthleteNodeAggregationWhereInput = {
   createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  familyName_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  familyName_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  givenName_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
   updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1388,8 +1797,10 @@ export type AttemptConnectWhere = {
 
 export type AttemptCreateInput = {
   athlete?: InputMaybe<AttemptAthleteFieldInput>;
+  dateTime?: InputMaybe<Scalars['DateTime']['input']>;
   event?: InputMaybe<AttemptEventFieldInput>;
   nation?: InputMaybe<AttemptNationFieldInput>;
+  number: Scalars['Int']['input'];
   successful: Scalars['Boolean']['input'];
   verified?: Scalars['Boolean']['input'];
   weight: Scalars['Float']['input'];
@@ -1483,7 +1894,7 @@ export type AttemptEventEventNodeAggregateSelection = {
   __typename?: 'AttemptEventEventNodeAggregateSelection';
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AttemptEventFieldInput = {
@@ -1616,7 +2027,7 @@ export type AttemptNationNationNodeAggregateSelection = {
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type AttemptNationNodeAggregationWhereInput = {
@@ -1696,6 +2107,8 @@ export type AttemptNationUpdateFieldInput = {
 };
 
 export type AttemptOnCreateInput = {
+  dateTime?: InputMaybe<Scalars['DateTime']['input']>;
+  number: Scalars['Int']['input'];
   successful: Scalars['Boolean']['input'];
   verified?: Scalars['Boolean']['input'];
   weight: Scalars['Float']['input'];
@@ -1717,7 +2130,9 @@ export type AttemptRelationInput = {
 /** Fields to sort Attempts by. The order in which sorts are applied is not guaranteed when specifying many fields in one AttemptSort object. */
 export type AttemptSort = {
   createdAt?: InputMaybe<SortDirection>;
+  dateTime?: InputMaybe<SortDirection>;
   id?: InputMaybe<SortDirection>;
+  number?: InputMaybe<SortDirection>;
   successful?: InputMaybe<SortDirection>;
   updatedAt?: InputMaybe<SortDirection>;
   verified?: InputMaybe<SortDirection>;
@@ -1730,8 +2145,12 @@ export type AttemptUniqueWhere = {
 
 export type AttemptUpdateInput = {
   athlete?: InputMaybe<AttemptAthleteUpdateFieldInput>;
+  dateTime?: InputMaybe<Scalars['DateTime']['input']>;
   event?: InputMaybe<AttemptEventUpdateFieldInput>;
   nation?: InputMaybe<AttemptNationUpdateFieldInput>;
+  number?: InputMaybe<Scalars['Int']['input']>;
+  number_DECREMENT?: InputMaybe<Scalars['Int']['input']>;
+  number_INCREMENT?: InputMaybe<Scalars['Int']['input']>;
   successful?: InputMaybe<Scalars['Boolean']['input']>;
   verified?: InputMaybe<Scalars['Boolean']['input']>;
   weight?: InputMaybe<Scalars['Float']['input']>;
@@ -1756,6 +2175,12 @@ export type AttemptWhere = {
   createdAt_IN?: InputMaybe<Array<Scalars['DateTime']['input']>>;
   createdAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_IN?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  dateTime_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_LTE?: InputMaybe<Scalars['DateTime']['input']>;
   event?: InputMaybe<EventWhere>;
   eventAggregate?: InputMaybe<AttemptEventAggregateInput>;
   eventConnection?: InputMaybe<AttemptEventConnectionWhere>;
@@ -1771,11 +2196,17 @@ export type AttemptWhere = {
   nationConnection?: InputMaybe<AttemptNationConnectionWhere>;
   nationConnection_NOT?: InputMaybe<AttemptNationConnectionWhere>;
   nation_NOT?: InputMaybe<NationWhere>;
+  number?: InputMaybe<Scalars['Int']['input']>;
+  number_GT?: InputMaybe<Scalars['Int']['input']>;
+  number_GTE?: InputMaybe<Scalars['Int']['input']>;
+  number_IN?: InputMaybe<Array<Scalars['Int']['input']>>;
+  number_LT?: InputMaybe<Scalars['Int']['input']>;
+  number_LTE?: InputMaybe<Scalars['Int']['input']>;
   successful?: InputMaybe<Scalars['Boolean']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_IN?: InputMaybe<Array<Scalars['DateTime']['input']>>;
+  updatedAt_IN?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   updatedAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
   verified?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1794,545 +2225,47 @@ export type AttemptsConnection = {
   totalCount: Scalars['Int']['output'];
 };
 
-export type CitiesConnection = {
-  __typename?: 'CitiesConnection';
-  edges: Array<CityEdge>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
-};
-
-export type City = {
-  __typename?: 'City';
-  city: City;
-  cityAggregate?: Maybe<CityCityCityAggregationSelection>;
-  cityConnection: CityCityConnection;
-  createdAt: Scalars['DateTime']['output'];
-  id: Scalars['ID']['output'];
-  name: Scalars['String']['output'];
-  nation: Nation;
-  nationAggregate?: Maybe<CityNationNationAggregationSelection>;
-  nationConnection: CityNationConnection;
-  updatedAt: Scalars['DateTime']['output'];
-  verified: Scalars['Boolean']['output'];
-};
-
-
-export type CityCityArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  options?: InputMaybe<CityOptions>;
-  where?: InputMaybe<CityWhere>;
-};
-
-
-export type CityCityAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  where?: InputMaybe<CityWhere>;
-};
-
-
-export type CityCityConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  sort?: InputMaybe<Array<CityCityConnectionSort>>;
-  where?: InputMaybe<CityCityConnectionWhere>;
-};
-
-
-export type CityNationArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  options?: InputMaybe<NationOptions>;
-  where?: InputMaybe<NationWhere>;
-};
-
-
-export type CityNationAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  where?: InputMaybe<NationWhere>;
-};
-
-
-export type CityNationConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  sort?: InputMaybe<Array<CityNationConnectionSort>>;
-  where?: InputMaybe<CityNationConnectionWhere>;
-};
-
-export type CityAggregateSelection = {
-  __typename?: 'CityAggregateSelection';
-  count: Scalars['Int']['output'];
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  id: IdAggregateSelectionNonNullable;
-  name: StringAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
-};
-
-export type CityCityAggregateInput = {
-  AND?: InputMaybe<Array<CityCityAggregateInput>>;
-  NOT?: InputMaybe<CityCityAggregateInput>;
-  OR?: InputMaybe<Array<CityCityAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
-  node?: InputMaybe<CityCityNodeAggregationWhereInput>;
-};
-
-export type CityCityCityAggregationSelection = {
-  __typename?: 'CityCityCityAggregationSelection';
-  count: Scalars['Int']['output'];
-  node?: Maybe<CityCityCityNodeAggregateSelection>;
-};
-
-export type CityCityCityNodeAggregateSelection = {
-  __typename?: 'CityCityCityNodeAggregateSelection';
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  id: IdAggregateSelectionNonNullable;
-  name: StringAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
-};
-
-export type CityCityConnectFieldInput = {
-  connect?: InputMaybe<CityConnectInput>;
-  /** Whether or not to overwrite any matching relationship with the new properties. Will default to `false` in 4.0.0. */
-  overwrite?: Scalars['Boolean']['input'];
-  where?: InputMaybe<CityConnectWhere>;
-};
-
-export type CityCityConnectOrCreateFieldInput = {
-  onCreate: CityCityConnectOrCreateFieldInputOnCreate;
-  where: CityConnectOrCreateWhere;
-};
-
-export type CityCityConnectOrCreateFieldInputOnCreate = {
-  node: CityOnCreateInput;
-};
-
-export type CityCityConnection = {
-  __typename?: 'CityCityConnection';
-  edges: Array<CityCityRelationship>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
-};
-
-export type CityCityConnectionSort = {
-  node?: InputMaybe<CitySort>;
-};
-
-export type CityCityConnectionWhere = {
-  AND?: InputMaybe<Array<CityCityConnectionWhere>>;
-  NOT?: InputMaybe<CityCityConnectionWhere>;
-  OR?: InputMaybe<Array<CityCityConnectionWhere>>;
-  node?: InputMaybe<CityWhere>;
-};
-
-export type CityCityCreateFieldInput = {
-  node: CityCreateInput;
-};
-
-export type CityCityDeleteFieldInput = {
-  delete?: InputMaybe<CityDeleteInput>;
-  where?: InputMaybe<CityCityConnectionWhere>;
-};
-
-export type CityCityDisconnectFieldInput = {
-  disconnect?: InputMaybe<CityDisconnectInput>;
-  where?: InputMaybe<CityCityConnectionWhere>;
-};
-
-export type CityCityFieldInput = {
-  connect?: InputMaybe<CityCityConnectFieldInput>;
-  connectOrCreate?: InputMaybe<CityCityConnectOrCreateFieldInput>;
-  create?: InputMaybe<CityCityCreateFieldInput>;
-};
-
-export type CityCityNodeAggregationWhereInput = {
-  AND?: InputMaybe<Array<CityCityNodeAggregationWhereInput>>;
-  NOT?: InputMaybe<CityCityNodeAggregationWhereInput>;
-  OR?: InputMaybe<Array<CityCityNodeAggregationWhereInput>>;
-  createdAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-};
-
-export type CityCityRelationship = {
-  __typename?: 'CityCityRelationship';
-  cursor: Scalars['String']['output'];
-  node: City;
-};
-
-export type CityCityUpdateConnectionInput = {
-  node?: InputMaybe<CityUpdateInput>;
-};
-
-export type CityCityUpdateFieldInput = {
-  connect?: InputMaybe<CityCityConnectFieldInput>;
-  connectOrCreate?: InputMaybe<CityCityConnectOrCreateFieldInput>;
-  create?: InputMaybe<CityCityCreateFieldInput>;
-  delete?: InputMaybe<CityCityDeleteFieldInput>;
-  disconnect?: InputMaybe<CityCityDisconnectFieldInput>;
-  update?: InputMaybe<CityCityUpdateConnectionInput>;
-  where?: InputMaybe<CityCityConnectionWhere>;
-};
-
-export type CityConnectInput = {
-  city?: InputMaybe<CityCityConnectFieldInput>;
-  nation?: InputMaybe<CityNationConnectFieldInput>;
-};
-
-export type CityConnectOrCreateInput = {
-  city?: InputMaybe<CityCityConnectOrCreateFieldInput>;
-  nation?: InputMaybe<CityNationConnectOrCreateFieldInput>;
-};
-
-export type CityConnectOrCreateWhere = {
-  node: CityUniqueWhere;
-};
-
-export type CityConnectWhere = {
-  node: CityWhere;
-};
-
-export type CityCreateInput = {
-  city?: InputMaybe<CityCityFieldInput>;
-  name: Scalars['String']['input'];
-  nation?: InputMaybe<CityNationFieldInput>;
-  verified?: Scalars['Boolean']['input'];
-};
-
-export type CityDeleteInput = {
-  city?: InputMaybe<CityCityDeleteFieldInput>;
-  nation?: InputMaybe<CityNationDeleteFieldInput>;
-};
-
-export type CityDisconnectInput = {
-  city?: InputMaybe<CityCityDisconnectFieldInput>;
-  nation?: InputMaybe<CityNationDisconnectFieldInput>;
-};
-
-export type CityEdge = {
-  __typename?: 'CityEdge';
-  cursor: Scalars['String']['output'];
-  node: City;
-};
-
-export type CityNationAggregateInput = {
-  AND?: InputMaybe<Array<CityNationAggregateInput>>;
-  NOT?: InputMaybe<CityNationAggregateInput>;
-  OR?: InputMaybe<Array<CityNationAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
-  node?: InputMaybe<CityNationNodeAggregationWhereInput>;
-};
-
-export type CityNationConnectFieldInput = {
-  connect?: InputMaybe<NationConnectInput>;
-  /** Whether or not to overwrite any matching relationship with the new properties. Will default to `false` in 4.0.0. */
-  overwrite?: Scalars['Boolean']['input'];
-  where?: InputMaybe<NationConnectWhere>;
-};
-
-export type CityNationConnectOrCreateFieldInput = {
-  onCreate: CityNationConnectOrCreateFieldInputOnCreate;
-  where: NationConnectOrCreateWhere;
-};
-
-export type CityNationConnectOrCreateFieldInputOnCreate = {
-  node: NationOnCreateInput;
-};
-
-export type CityNationConnection = {
-  __typename?: 'CityNationConnection';
-  edges: Array<CityNationRelationship>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
-};
-
-export type CityNationConnectionSort = {
-  node?: InputMaybe<NationSort>;
-};
-
-export type CityNationConnectionWhere = {
-  AND?: InputMaybe<Array<CityNationConnectionWhere>>;
-  NOT?: InputMaybe<CityNationConnectionWhere>;
-  OR?: InputMaybe<Array<CityNationConnectionWhere>>;
-  node?: InputMaybe<NationWhere>;
-};
-
-export type CityNationCreateFieldInput = {
-  node: NationCreateInput;
-};
-
-export type CityNationDeleteFieldInput = {
-  delete?: InputMaybe<NationDeleteInput>;
-  where?: InputMaybe<CityNationConnectionWhere>;
-};
-
-export type CityNationDisconnectFieldInput = {
-  disconnect?: InputMaybe<NationDisconnectInput>;
-  where?: InputMaybe<CityNationConnectionWhere>;
-};
-
-export type CityNationFieldInput = {
-  connect?: InputMaybe<CityNationConnectFieldInput>;
-  connectOrCreate?: InputMaybe<CityNationConnectOrCreateFieldInput>;
-  create?: InputMaybe<CityNationCreateFieldInput>;
-};
-
-export type CityNationNationAggregationSelection = {
-  __typename?: 'CityNationNationAggregationSelection';
-  count: Scalars['Int']['output'];
-  node?: Maybe<CityNationNationNodeAggregateSelection>;
-};
-
-export type CityNationNationNodeAggregateSelection = {
-  __typename?: 'CityNationNationNodeAggregateSelection';
-  code: StringAggregateSelectionNonNullable;
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  id: IdAggregateSelectionNonNullable;
-  name: StringAggregateSelectionNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
-};
-
-export type CityNationNodeAggregationWhereInput = {
-  AND?: InputMaybe<Array<CityNationNodeAggregationWhereInput>>;
-  NOT?: InputMaybe<CityNationNodeAggregationWhereInput>;
-  OR?: InputMaybe<Array<CityNationNodeAggregationWhereInput>>;
-  code_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  code_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  code_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  code_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  code_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  code_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  code_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  code_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  code_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  code_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  code_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  code_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  code_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  code_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  code_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  createdAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-};
-
-export type CityNationRelationship = {
-  __typename?: 'CityNationRelationship';
-  cursor: Scalars['String']['output'];
-  node: Nation;
-};
-
-export type CityNationUpdateConnectionInput = {
-  node?: InputMaybe<NationUpdateInput>;
-};
-
-export type CityNationUpdateFieldInput = {
-  connect?: InputMaybe<CityNationConnectFieldInput>;
-  connectOrCreate?: InputMaybe<CityNationConnectOrCreateFieldInput>;
-  create?: InputMaybe<CityNationCreateFieldInput>;
-  delete?: InputMaybe<CityNationDeleteFieldInput>;
-  disconnect?: InputMaybe<CityNationDisconnectFieldInput>;
-  update?: InputMaybe<CityNationUpdateConnectionInput>;
-  where?: InputMaybe<CityNationConnectionWhere>;
-};
-
-export type CityOnCreateInput = {
-  name: Scalars['String']['input'];
-  verified?: Scalars['Boolean']['input'];
-};
-
-export type CityOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  /** Specify one or more CitySort objects to sort Cities by. The sorts will be applied in the order in which they are arranged in the array. */
-  sort?: InputMaybe<Array<CitySort>>;
-};
-
-export type CityRelationInput = {
-  city?: InputMaybe<CityCityCreateFieldInput>;
-  nation?: InputMaybe<CityNationCreateFieldInput>;
-};
-
-/** Fields to sort Cities by. The order in which sorts are applied is not guaranteed when specifying many fields in one CitySort object. */
-export type CitySort = {
-  createdAt?: InputMaybe<SortDirection>;
-  id?: InputMaybe<SortDirection>;
-  name?: InputMaybe<SortDirection>;
-  updatedAt?: InputMaybe<SortDirection>;
-  verified?: InputMaybe<SortDirection>;
-};
-
-export type CityUniqueWhere = {
-  id?: InputMaybe<Scalars['ID']['input']>;
-};
-
-export type CityUpdateInput = {
-  city?: InputMaybe<CityCityUpdateFieldInput>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  nation?: InputMaybe<CityNationUpdateFieldInput>;
-  verified?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-export type CityWhere = {
-  AND?: InputMaybe<Array<CityWhere>>;
-  NOT?: InputMaybe<CityWhere>;
-  OR?: InputMaybe<Array<CityWhere>>;
-  city?: InputMaybe<CityWhere>;
-  cityAggregate?: InputMaybe<CityCityAggregateInput>;
-  cityConnection?: InputMaybe<CityCityConnectionWhere>;
-  cityConnection_NOT?: InputMaybe<CityCityConnectionWhere>;
-  city_NOT?: InputMaybe<CityWhere>;
-  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_IN?: InputMaybe<Array<Scalars['DateTime']['input']>>;
-  createdAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  id_CONTAINS?: InputMaybe<Scalars['ID']['input']>;
-  id_ENDS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  id_IN?: InputMaybe<Array<Scalars['ID']['input']>>;
-  id_STARTS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  name_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  name_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  name_IN?: InputMaybe<Array<Scalars['String']['input']>>;
-  name_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
-  nation?: InputMaybe<NationWhere>;
-  nationAggregate?: InputMaybe<CityNationAggregateInput>;
-  nationConnection?: InputMaybe<CityNationConnectionWhere>;
-  nationConnection_NOT?: InputMaybe<CityNationConnectionWhere>;
-  nation_NOT?: InputMaybe<NationWhere>;
-  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_IN?: InputMaybe<Array<Scalars['DateTime']['input']>>;
-  updatedAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  verified?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-export enum Class {
-  M55 = 'M55',
-  M61 = 'M61',
-  M67 = 'M67',
-  M73 = 'M73',
-  M81 = 'M81',
-  M89 = 'M89',
-  M96 = 'M96',
-  M102 = 'M102',
-  M109 = 'M109',
-  Mp109 = 'MP109',
-  W45 = 'W45',
-  W49 = 'W49',
-  W55 = 'W55',
-  W59 = 'W59',
-  W64 = 'W64',
-  W71 = 'W71',
-  W76 = 'W76',
-  W81 = 'W81',
-  W87 = 'W87',
-  Wp87 = 'WP87'
-}
-
+/** Represents a sports competition. */
 export type Competition = {
   __typename?: 'Competition';
+  /** The list of athletes who participated in this competition. */
   athletes: Array<Athlete>;
   athletesAggregate?: Maybe<CompetitionAthleteAthletesAggregationSelection>;
   athletesConnection: CompetitionAthletesConnection;
-  city: City;
-  cityAggregate?: Maybe<CompetitionCityCityAggregationSelection>;
-  cityConnection: CompetitionCityConnection;
+  /** The timestamp when the competition was created. */
   createdAt: Scalars['DateTime']['output'];
+  /** The list of data sources associated with this competition. */
   dataSources: Array<DataSource>;
   dataSourcesAggregate?: Maybe<CompetitionDataSourceDataSourcesAggregationSelection>;
   dataSourcesConnection: CompetitionDataSourcesConnection;
+  /** The date of the competition. */
   date: Scalars['Date']['output'];
+  /** The list of events in this competition. */
   events: Array<Event>;
   eventsAggregate?: Maybe<CompetitionEventEventsAggregationSelection>;
   eventsConnection: CompetitionEventsConnection;
+  /** The unique identifier of the competition. */
   id: Scalars['ID']['output'];
+  /** The name of the competition. */
   name: Scalars['String']['output'];
+  /** The nation hosting the competition. */
+  nation: Nation;
+  nationAggregate?: Maybe<CompetitionNationNationAggregationSelection>;
+  nationConnection: CompetitionNationConnection;
+  /** Indicates whether data for this competition has been scraped. */
+  scraped: Scalars['Boolean']['output'];
+  /** The list of sports associated with this competition. */
   sports: Array<Sport>;
   sportsAggregate?: Maybe<CompetitionSportSportsAggregationSelection>;
   sportsConnection: CompetitionSportsConnection;
-  updatedAt: Scalars['DateTime']['output'];
+  /** The timestamp when the competition was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  /** Indicates whether the competition is verified. */
   verified: Scalars['Boolean']['output'];
 };
 
 
+/** Represents a sports competition. */
 export type CompetitionAthletesArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<AthleteOptions>;
@@ -2340,12 +2273,14 @@ export type CompetitionAthletesArgs = {
 };
 
 
+/** Represents a sports competition. */
 export type CompetitionAthletesAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<AthleteWhere>;
 };
 
 
+/** Represents a sports competition. */
 export type CompetitionAthletesConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2355,28 +2290,7 @@ export type CompetitionAthletesConnectionArgs = {
 };
 
 
-export type CompetitionCityArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  options?: InputMaybe<CityOptions>;
-  where?: InputMaybe<CityWhere>;
-};
-
-
-export type CompetitionCityAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  where?: InputMaybe<CityWhere>;
-};
-
-
-export type CompetitionCityConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  sort?: InputMaybe<Array<CompetitionCityConnectionSort>>;
-  where?: InputMaybe<CompetitionCityConnectionWhere>;
-};
-
-
+/** Represents a sports competition. */
 export type CompetitionDataSourcesArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<DataSourceOptions>;
@@ -2384,12 +2298,14 @@ export type CompetitionDataSourcesArgs = {
 };
 
 
+/** Represents a sports competition. */
 export type CompetitionDataSourcesAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<DataSourceWhere>;
 };
 
 
+/** Represents a sports competition. */
 export type CompetitionDataSourcesConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2399,6 +2315,7 @@ export type CompetitionDataSourcesConnectionArgs = {
 };
 
 
+/** Represents a sports competition. */
 export type CompetitionEventsArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<EventOptions>;
@@ -2406,12 +2323,14 @@ export type CompetitionEventsArgs = {
 };
 
 
+/** Represents a sports competition. */
 export type CompetitionEventsAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<EventWhere>;
 };
 
 
+/** Represents a sports competition. */
 export type CompetitionEventsConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2421,6 +2340,32 @@ export type CompetitionEventsConnectionArgs = {
 };
 
 
+/** Represents a sports competition. */
+export type CompetitionNationArgs = {
+  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  options?: InputMaybe<NationOptions>;
+  where?: InputMaybe<NationWhere>;
+};
+
+
+/** Represents a sports competition. */
+export type CompetitionNationAggregateArgs = {
+  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  where?: InputMaybe<NationWhere>;
+};
+
+
+/** Represents a sports competition. */
+export type CompetitionNationConnectionArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  sort?: InputMaybe<Array<CompetitionNationConnectionSort>>;
+  where?: InputMaybe<CompetitionNationConnectionWhere>;
+};
+
+
+/** Represents a sports competition. */
 export type CompetitionSportsArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<SportOptions>;
@@ -2428,12 +2373,14 @@ export type CompetitionSportsArgs = {
 };
 
 
+/** Represents a sports competition. */
 export type CompetitionSportsAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<SportWhere>;
 };
 
 
+/** Represents a sports competition. */
 export type CompetitionSportsConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2448,7 +2395,7 @@ export type CompetitionAggregateSelection = {
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type CompetitionAthleteAthletesAggregationSelection = {
@@ -2460,10 +2407,9 @@ export type CompetitionAthleteAthletesAggregationSelection = {
 export type CompetitionAthleteAthletesNodeAggregateSelection = {
   __typename?: 'CompetitionAthleteAthletesNodeAggregateSelection';
   createdAt: DateTimeAggregateSelectionNonNullable;
-  familyName: StringAggregateSelectionNonNullable;
-  givenName: StringAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  name: StringAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type CompetitionAthletesAggregateInput = {
@@ -2546,36 +2492,21 @@ export type CompetitionAthletesNodeAggregationWhereInput = {
   createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  familyName_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  familyName_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  givenName_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
   updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
@@ -2608,160 +2539,19 @@ export type CompetitionAthletesUpdateFieldInput = {
   where?: InputMaybe<CompetitionAthletesConnectionWhere>;
 };
 
-export type CompetitionCityAggregateInput = {
-  AND?: InputMaybe<Array<CompetitionCityAggregateInput>>;
-  NOT?: InputMaybe<CompetitionCityAggregateInput>;
-  OR?: InputMaybe<Array<CompetitionCityAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
-  node?: InputMaybe<CompetitionCityNodeAggregationWhereInput>;
-};
-
-export type CompetitionCityCityAggregationSelection = {
-  __typename?: 'CompetitionCityCityAggregationSelection';
-  count: Scalars['Int']['output'];
-  node?: Maybe<CompetitionCityCityNodeAggregateSelection>;
-};
-
-export type CompetitionCityCityNodeAggregateSelection = {
-  __typename?: 'CompetitionCityCityNodeAggregateSelection';
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  id: IdAggregateSelectionNonNullable;
-  name: StringAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
-};
-
-export type CompetitionCityConnectFieldInput = {
-  connect?: InputMaybe<CityConnectInput>;
-  /** Whether or not to overwrite any matching relationship with the new properties. Will default to `false` in 4.0.0. */
-  overwrite?: Scalars['Boolean']['input'];
-  where?: InputMaybe<CityConnectWhere>;
-};
-
-export type CompetitionCityConnectOrCreateFieldInput = {
-  onCreate: CompetitionCityConnectOrCreateFieldInputOnCreate;
-  where: CityConnectOrCreateWhere;
-};
-
-export type CompetitionCityConnectOrCreateFieldInputOnCreate = {
-  node: CityOnCreateInput;
-};
-
-export type CompetitionCityConnection = {
-  __typename?: 'CompetitionCityConnection';
-  edges: Array<CompetitionCityRelationship>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
-};
-
-export type CompetitionCityConnectionSort = {
-  node?: InputMaybe<CitySort>;
-};
-
-export type CompetitionCityConnectionWhere = {
-  AND?: InputMaybe<Array<CompetitionCityConnectionWhere>>;
-  NOT?: InputMaybe<CompetitionCityConnectionWhere>;
-  OR?: InputMaybe<Array<CompetitionCityConnectionWhere>>;
-  node?: InputMaybe<CityWhere>;
-};
-
-export type CompetitionCityCreateFieldInput = {
-  node: CityCreateInput;
-};
-
-export type CompetitionCityDeleteFieldInput = {
-  delete?: InputMaybe<CityDeleteInput>;
-  where?: InputMaybe<CompetitionCityConnectionWhere>;
-};
-
-export type CompetitionCityDisconnectFieldInput = {
-  disconnect?: InputMaybe<CityDisconnectInput>;
-  where?: InputMaybe<CompetitionCityConnectionWhere>;
-};
-
-export type CompetitionCityFieldInput = {
-  connect?: InputMaybe<CompetitionCityConnectFieldInput>;
-  connectOrCreate?: InputMaybe<CompetitionCityConnectOrCreateFieldInput>;
-  create?: InputMaybe<CompetitionCityCreateFieldInput>;
-};
-
-export type CompetitionCityNodeAggregationWhereInput = {
-  AND?: InputMaybe<Array<CompetitionCityNodeAggregationWhereInput>>;
-  NOT?: InputMaybe<CompetitionCityNodeAggregationWhereInput>;
-  OR?: InputMaybe<Array<CompetitionCityNodeAggregationWhereInput>>;
-  createdAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
-  createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-};
-
-export type CompetitionCityRelationship = {
-  __typename?: 'CompetitionCityRelationship';
-  cursor: Scalars['String']['output'];
-  node: City;
-};
-
-export type CompetitionCityUpdateConnectionInput = {
-  node?: InputMaybe<CityUpdateInput>;
-};
-
-export type CompetitionCityUpdateFieldInput = {
-  connect?: InputMaybe<CompetitionCityConnectFieldInput>;
-  connectOrCreate?: InputMaybe<CompetitionCityConnectOrCreateFieldInput>;
-  create?: InputMaybe<CompetitionCityCreateFieldInput>;
-  delete?: InputMaybe<CompetitionCityDeleteFieldInput>;
-  disconnect?: InputMaybe<CompetitionCityDisconnectFieldInput>;
-  update?: InputMaybe<CompetitionCityUpdateConnectionInput>;
-  where?: InputMaybe<CompetitionCityConnectionWhere>;
-};
-
 export type CompetitionConnectInput = {
   athletes?: InputMaybe<Array<CompetitionAthletesConnectFieldInput>>;
-  city?: InputMaybe<CompetitionCityConnectFieldInput>;
   dataSources?: InputMaybe<Array<CompetitionDataSourcesConnectFieldInput>>;
   events?: InputMaybe<Array<CompetitionEventsConnectFieldInput>>;
+  nation?: InputMaybe<CompetitionNationConnectFieldInput>;
   sports?: InputMaybe<Array<CompetitionSportsConnectFieldInput>>;
 };
 
 export type CompetitionConnectOrCreateInput = {
   athletes?: InputMaybe<Array<CompetitionAthletesConnectOrCreateFieldInput>>;
-  city?: InputMaybe<CompetitionCityConnectOrCreateFieldInput>;
   dataSources?: InputMaybe<Array<CompetitionDataSourcesConnectOrCreateFieldInput>>;
   events?: InputMaybe<Array<CompetitionEventsConnectOrCreateFieldInput>>;
+  nation?: InputMaybe<CompetitionNationConnectOrCreateFieldInput>;
   sports?: InputMaybe<Array<CompetitionSportsConnectOrCreateFieldInput>>;
 };
 
@@ -2775,11 +2565,12 @@ export type CompetitionConnectWhere = {
 
 export type CompetitionCreateInput = {
   athletes?: InputMaybe<CompetitionAthletesFieldInput>;
-  city?: InputMaybe<CompetitionCityFieldInput>;
   dataSources?: InputMaybe<CompetitionDataSourcesFieldInput>;
   date: Scalars['Date']['input'];
   events?: InputMaybe<CompetitionEventsFieldInput>;
   name: Scalars['String']['input'];
+  nation?: InputMaybe<CompetitionNationFieldInput>;
+  scraped?: Scalars['Boolean']['input'];
   sports?: InputMaybe<CompetitionSportsFieldInput>;
   verified?: Scalars['Boolean']['input'];
 };
@@ -2787,7 +2578,15 @@ export type CompetitionCreateInput = {
 export type CompetitionDataSourceDataSourcesAggregationSelection = {
   __typename?: 'CompetitionDataSourceDataSourcesAggregationSelection';
   count: Scalars['Int']['output'];
+  edge?: Maybe<CompetitionDataSourceDataSourcesEdgeAggregateSelection>;
   node?: Maybe<CompetitionDataSourceDataSourcesNodeAggregateSelection>;
+};
+
+export type CompetitionDataSourceDataSourcesEdgeAggregateSelection = {
+  __typename?: 'CompetitionDataSourceDataSourcesEdgeAggregateSelection';
+  createdAt: DateTimeAggregateSelectionNonNullable;
+  entityId: StringAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type CompetitionDataSourceDataSourcesNodeAggregateSelection = {
@@ -2795,7 +2594,7 @@ export type CompetitionDataSourceDataSourcesNodeAggregateSelection = {
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type CompetitionDataSourcesAggregateInput = {
@@ -2807,11 +2606,13 @@ export type CompetitionDataSourcesAggregateInput = {
   count_GTE?: InputMaybe<Scalars['Int']['input']>;
   count_LT?: InputMaybe<Scalars['Int']['input']>;
   count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  edge?: InputMaybe<CompetitionDataSourcesEdgeAggregationWhereInput>;
   node?: InputMaybe<CompetitionDataSourcesNodeAggregationWhereInput>;
 };
 
 export type CompetitionDataSourcesConnectFieldInput = {
   connect?: InputMaybe<Array<DataSourceConnectInput>>;
+  edge: DataSourceEdgeCreateInput;
   /** Whether or not to overwrite any matching relationship with the new properties. Will default to `false` in 4.0.0. */
   overwrite?: Scalars['Boolean']['input'];
   where?: InputMaybe<DataSourceConnectWhere>;
@@ -2823,6 +2624,7 @@ export type CompetitionDataSourcesConnectOrCreateFieldInput = {
 };
 
 export type CompetitionDataSourcesConnectOrCreateFieldInputOnCreate = {
+  edge: DataSourceEdgeCreateInput;
   node: DataSourceOnCreateInput;
 };
 
@@ -2834,6 +2636,7 @@ export type CompetitionDataSourcesConnection = {
 };
 
 export type CompetitionDataSourcesConnectionSort = {
+  edge?: InputMaybe<DataSourceEdgeSort>;
   node?: InputMaybe<DataSourceSort>;
 };
 
@@ -2841,10 +2644,12 @@ export type CompetitionDataSourcesConnectionWhere = {
   AND?: InputMaybe<Array<CompetitionDataSourcesConnectionWhere>>;
   NOT?: InputMaybe<CompetitionDataSourcesConnectionWhere>;
   OR?: InputMaybe<Array<CompetitionDataSourcesConnectionWhere>>;
+  edge?: InputMaybe<DataSourceEdgeWhere>;
   node?: InputMaybe<DataSourceWhere>;
 };
 
 export type CompetitionDataSourcesCreateFieldInput = {
+  edge: DataSourceEdgeCreateInput;
   node: DataSourceCreateInput;
 };
 
@@ -2856,6 +2661,47 @@ export type CompetitionDataSourcesDeleteFieldInput = {
 export type CompetitionDataSourcesDisconnectFieldInput = {
   disconnect?: InputMaybe<DataSourceDisconnectInput>;
   where?: InputMaybe<CompetitionDataSourcesConnectionWhere>;
+};
+
+export type CompetitionDataSourcesEdgeAggregationWhereInput = {
+  AND?: InputMaybe<Array<CompetitionDataSourcesEdgeAggregationWhereInput>>;
+  NOT?: InputMaybe<CompetitionDataSourcesEdgeAggregationWhereInput>;
+  OR?: InputMaybe<Array<CompetitionDataSourcesEdgeAggregationWhereInput>>;
+  createdAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  entityId_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  entityId_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  entityId_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  entityId_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  entityId_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  entityId_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  entityId_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  entityId_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  entityId_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  entityId_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type CompetitionDataSourcesFieldInput = {
@@ -2905,13 +2751,20 @@ export type CompetitionDataSourcesNodeAggregationWhereInput = {
   updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
-export type CompetitionDataSourcesRelationship = {
+export type CompetitionDataSourcesRelationship = DataSourceEdge & {
   __typename?: 'CompetitionDataSourcesRelationship';
+  /** The timestamp when this relationship was created. */
+  createdAt: Scalars['DateTime']['output'];
   cursor: Scalars['String']['output'];
+  /** The unique identifier of the entity associated with the data source. */
+  entityId: Scalars['String']['output'];
   node: DataSource;
+  /** The timestamp when this relationship was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
 export type CompetitionDataSourcesUpdateConnectionInput = {
+  edge?: InputMaybe<DataSourceEdgeUpdateInput>;
   node?: InputMaybe<DataSourceUpdateInput>;
 };
 
@@ -2927,17 +2780,17 @@ export type CompetitionDataSourcesUpdateFieldInput = {
 
 export type CompetitionDeleteInput = {
   athletes?: InputMaybe<Array<CompetitionAthletesDeleteFieldInput>>;
-  city?: InputMaybe<CompetitionCityDeleteFieldInput>;
   dataSources?: InputMaybe<Array<CompetitionDataSourcesDeleteFieldInput>>;
   events?: InputMaybe<Array<CompetitionEventsDeleteFieldInput>>;
+  nation?: InputMaybe<CompetitionNationDeleteFieldInput>;
   sports?: InputMaybe<Array<CompetitionSportsDeleteFieldInput>>;
 };
 
 export type CompetitionDisconnectInput = {
   athletes?: InputMaybe<Array<CompetitionAthletesDisconnectFieldInput>>;
-  city?: InputMaybe<CompetitionCityDisconnectFieldInput>;
   dataSources?: InputMaybe<Array<CompetitionDataSourcesDisconnectFieldInput>>;
   events?: InputMaybe<Array<CompetitionEventsDisconnectFieldInput>>;
+  nation?: InputMaybe<CompetitionNationDisconnectFieldInput>;
   sports?: InputMaybe<Array<CompetitionSportsDisconnectFieldInput>>;
 };
 
@@ -2957,7 +2810,7 @@ export type CompetitionEventEventsNodeAggregateSelection = {
   __typename?: 'CompetitionEventEventsNodeAggregateSelection';
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type CompetitionEventsAggregateInput = {
@@ -3072,9 +2925,275 @@ export type CompetitionEventsUpdateFieldInput = {
   where?: InputMaybe<CompetitionEventsConnectionWhere>;
 };
 
+export type CompetitionInNation = {
+  /** The city where the competition took place. */
+  city?: Maybe<Scalars['String']['output']>;
+  /** The timestamp when this relationship was created. */
+  createdAt: Scalars['DateTime']['output'];
+  /** The timestamp when this relationship was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type CompetitionInNationCreateInput = {
+  city?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type CompetitionInNationSort = {
+  city?: InputMaybe<SortDirection>;
+  createdAt?: InputMaybe<SortDirection>;
+  updatedAt?: InputMaybe<SortDirection>;
+};
+
+export type CompetitionInNationUpdateInput = {
+  city?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type CompetitionInNationWhere = {
+  AND?: InputMaybe<Array<CompetitionInNationWhere>>;
+  NOT?: InputMaybe<CompetitionInNationWhere>;
+  OR?: InputMaybe<Array<CompetitionInNationWhere>>;
+  city?: InputMaybe<Scalars['String']['input']>;
+  city_CONTAINS?: InputMaybe<Scalars['String']['input']>;
+  city_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
+  city_IN?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  city_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_IN?: InputMaybe<Array<Scalars['DateTime']['input']>>;
+  createdAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_IN?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  updatedAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type CompetitionNationAggregateInput = {
+  AND?: InputMaybe<Array<CompetitionNationAggregateInput>>;
+  NOT?: InputMaybe<CompetitionNationAggregateInput>;
+  OR?: InputMaybe<Array<CompetitionNationAggregateInput>>;
+  count?: InputMaybe<Scalars['Int']['input']>;
+  count_GT?: InputMaybe<Scalars['Int']['input']>;
+  count_GTE?: InputMaybe<Scalars['Int']['input']>;
+  count_LT?: InputMaybe<Scalars['Int']['input']>;
+  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  edge?: InputMaybe<CompetitionNationEdgeAggregationWhereInput>;
+  node?: InputMaybe<CompetitionNationNodeAggregationWhereInput>;
+};
+
+export type CompetitionNationConnectFieldInput = {
+  connect?: InputMaybe<NationConnectInput>;
+  edge?: InputMaybe<CompetitionInNationCreateInput>;
+  /** Whether or not to overwrite any matching relationship with the new properties. Will default to `false` in 4.0.0. */
+  overwrite?: Scalars['Boolean']['input'];
+  where?: InputMaybe<NationConnectWhere>;
+};
+
+export type CompetitionNationConnectOrCreateFieldInput = {
+  onCreate: CompetitionNationConnectOrCreateFieldInputOnCreate;
+  where: NationConnectOrCreateWhere;
+};
+
+export type CompetitionNationConnectOrCreateFieldInputOnCreate = {
+  edge?: InputMaybe<CompetitionInNationCreateInput>;
+  node: NationOnCreateInput;
+};
+
+export type CompetitionNationConnection = {
+  __typename?: 'CompetitionNationConnection';
+  edges: Array<CompetitionNationRelationship>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int']['output'];
+};
+
+export type CompetitionNationConnectionSort = {
+  edge?: InputMaybe<CompetitionInNationSort>;
+  node?: InputMaybe<NationSort>;
+};
+
+export type CompetitionNationConnectionWhere = {
+  AND?: InputMaybe<Array<CompetitionNationConnectionWhere>>;
+  NOT?: InputMaybe<CompetitionNationConnectionWhere>;
+  OR?: InputMaybe<Array<CompetitionNationConnectionWhere>>;
+  edge?: InputMaybe<CompetitionInNationWhere>;
+  node?: InputMaybe<NationWhere>;
+};
+
+export type CompetitionNationCreateFieldInput = {
+  edge?: InputMaybe<CompetitionInNationCreateInput>;
+  node: NationCreateInput;
+};
+
+export type CompetitionNationDeleteFieldInput = {
+  delete?: InputMaybe<NationDeleteInput>;
+  where?: InputMaybe<CompetitionNationConnectionWhere>;
+};
+
+export type CompetitionNationDisconnectFieldInput = {
+  disconnect?: InputMaybe<NationDisconnectInput>;
+  where?: InputMaybe<CompetitionNationConnectionWhere>;
+};
+
+export type CompetitionNationEdgeAggregationWhereInput = {
+  AND?: InputMaybe<Array<CompetitionNationEdgeAggregationWhereInput>>;
+  NOT?: InputMaybe<CompetitionNationEdgeAggregationWhereInput>;
+  OR?: InputMaybe<Array<CompetitionNationEdgeAggregationWhereInput>>;
+  city_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  city_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  city_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  city_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  city_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  city_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  city_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  city_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  city_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  city_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  city_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  city_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  city_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  city_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  city_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  createdAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type CompetitionNationFieldInput = {
+  connect?: InputMaybe<CompetitionNationConnectFieldInput>;
+  connectOrCreate?: InputMaybe<CompetitionNationConnectOrCreateFieldInput>;
+  create?: InputMaybe<CompetitionNationCreateFieldInput>;
+};
+
+export type CompetitionNationNationAggregationSelection = {
+  __typename?: 'CompetitionNationNationAggregationSelection';
+  count: Scalars['Int']['output'];
+  edge?: Maybe<CompetitionNationNationEdgeAggregateSelection>;
+  node?: Maybe<CompetitionNationNationNodeAggregateSelection>;
+};
+
+export type CompetitionNationNationEdgeAggregateSelection = {
+  __typename?: 'CompetitionNationNationEdgeAggregateSelection';
+  city: StringAggregateSelectionNullable;
+  createdAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
+};
+
+export type CompetitionNationNationNodeAggregateSelection = {
+  __typename?: 'CompetitionNationNationNodeAggregateSelection';
+  code: StringAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNonNullable;
+  id: IdAggregateSelectionNonNullable;
+  name: StringAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
+};
+
+export type CompetitionNationNodeAggregationWhereInput = {
+  AND?: InputMaybe<Array<CompetitionNationNodeAggregationWhereInput>>;
+  NOT?: InputMaybe<CompetitionNationNodeAggregationWhereInput>;
+  OR?: InputMaybe<Array<CompetitionNationNodeAggregationWhereInput>>;
+  code_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  code_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  code_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  code_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  code_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  code_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  code_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  code_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  code_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  code_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  code_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  code_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  code_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  code_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  code_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  createdAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type CompetitionNationRelationship = CompetitionInNation & {
+  __typename?: 'CompetitionNationRelationship';
+  /** The city where the competition took place. */
+  city?: Maybe<Scalars['String']['output']>;
+  /** The timestamp when this relationship was created. */
+  createdAt: Scalars['DateTime']['output'];
+  cursor: Scalars['String']['output'];
+  node: Nation;
+  /** The timestamp when this relationship was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type CompetitionNationUpdateConnectionInput = {
+  edge?: InputMaybe<CompetitionInNationUpdateInput>;
+  node?: InputMaybe<NationUpdateInput>;
+};
+
+export type CompetitionNationUpdateFieldInput = {
+  connect?: InputMaybe<CompetitionNationConnectFieldInput>;
+  connectOrCreate?: InputMaybe<CompetitionNationConnectOrCreateFieldInput>;
+  create?: InputMaybe<CompetitionNationCreateFieldInput>;
+  delete?: InputMaybe<CompetitionNationDeleteFieldInput>;
+  disconnect?: InputMaybe<CompetitionNationDisconnectFieldInput>;
+  update?: InputMaybe<CompetitionNationUpdateConnectionInput>;
+  where?: InputMaybe<CompetitionNationConnectionWhere>;
+};
+
 export type CompetitionOnCreateInput = {
   date: Scalars['Date']['input'];
   name: Scalars['String']['input'];
+  scraped?: Scalars['Boolean']['input'];
   verified?: Scalars['Boolean']['input'];
 };
 
@@ -3087,9 +3206,9 @@ export type CompetitionOptions = {
 
 export type CompetitionRelationInput = {
   athletes?: InputMaybe<Array<CompetitionAthletesCreateFieldInput>>;
-  city?: InputMaybe<CompetitionCityCreateFieldInput>;
   dataSources?: InputMaybe<Array<CompetitionDataSourcesCreateFieldInput>>;
   events?: InputMaybe<Array<CompetitionEventsCreateFieldInput>>;
+  nation?: InputMaybe<CompetitionNationCreateFieldInput>;
   sports?: InputMaybe<Array<CompetitionSportsCreateFieldInput>>;
 };
 
@@ -3099,6 +3218,7 @@ export type CompetitionSort = {
   date?: InputMaybe<SortDirection>;
   id?: InputMaybe<SortDirection>;
   name?: InputMaybe<SortDirection>;
+  scraped?: InputMaybe<SortDirection>;
   updatedAt?: InputMaybe<SortDirection>;
   verified?: InputMaybe<SortDirection>;
 };
@@ -3114,7 +3234,7 @@ export type CompetitionSportSportsNodeAggregateSelection = {
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type CompetitionSportsAggregateInput = {
@@ -3250,11 +3370,12 @@ export type CompetitionUniqueWhere = {
 
 export type CompetitionUpdateInput = {
   athletes?: InputMaybe<Array<CompetitionAthletesUpdateFieldInput>>;
-  city?: InputMaybe<CompetitionCityUpdateFieldInput>;
   dataSources?: InputMaybe<Array<CompetitionDataSourcesUpdateFieldInput>>;
   date?: InputMaybe<Scalars['Date']['input']>;
   events?: InputMaybe<Array<CompetitionEventsUpdateFieldInput>>;
   name?: InputMaybe<Scalars['String']['input']>;
+  nation?: InputMaybe<CompetitionNationUpdateFieldInput>;
+  scraped?: InputMaybe<Scalars['Boolean']['input']>;
   sports?: InputMaybe<Array<CompetitionSportsUpdateFieldInput>>;
   verified?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -3280,11 +3401,6 @@ export type CompetitionWhere = {
   athletes_SINGLE?: InputMaybe<AthleteWhere>;
   /** Return Competitions where some of the related Athletes match this filter */
   athletes_SOME?: InputMaybe<AthleteWhere>;
-  city?: InputMaybe<CityWhere>;
-  cityAggregate?: InputMaybe<CompetitionCityAggregateInput>;
-  cityConnection?: InputMaybe<CompetitionCityConnectionWhere>;
-  cityConnection_NOT?: InputMaybe<CompetitionCityConnectionWhere>;
-  city_NOT?: InputMaybe<CityWhere>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
@@ -3341,6 +3457,12 @@ export type CompetitionWhere = {
   name_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
   name_IN?: InputMaybe<Array<Scalars['String']['input']>>;
   name_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  nation?: InputMaybe<NationWhere>;
+  nationAggregate?: InputMaybe<CompetitionNationAggregateInput>;
+  nationConnection?: InputMaybe<CompetitionNationConnectionWhere>;
+  nationConnection_NOT?: InputMaybe<CompetitionNationConnectionWhere>;
+  nation_NOT?: InputMaybe<NationWhere>;
+  scraped?: InputMaybe<Scalars['Boolean']['input']>;
   sportsAggregate?: InputMaybe<CompetitionSportsAggregateInput>;
   /** Return Competitions where all of the related CompetitionSportsConnections match this filter */
   sportsConnection_ALL?: InputMaybe<CompetitionSportsConnectionWhere>;
@@ -3361,7 +3483,7 @@ export type CompetitionWhere = {
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_IN?: InputMaybe<Array<Scalars['DateTime']['input']>>;
+  updatedAt_IN?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   updatedAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
   verified?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3383,12 +3505,6 @@ export type CreateAthletesMutationResponse = {
 export type CreateAttemptsMutationResponse = {
   __typename?: 'CreateAttemptsMutationResponse';
   attempts: Array<Attempt>;
-  info: CreateInfo;
-};
-
-export type CreateCitiesMutationResponse = {
-  __typename?: 'CreateCitiesMutationResponse';
-  cities: Array<City>;
   info: CreateInfo;
 };
 
@@ -3429,22 +3545,31 @@ export type CreateSportsMutationResponse = {
   sports: Array<Sport>;
 };
 
+/** Represents a data source for sports-related information. */
 export type DataSource = {
   __typename?: 'DataSource';
+  /** The list of athletes associated with this data source. */
   athletes: Array<Athlete>;
   athletesAggregate?: Maybe<DataSourceAthleteAthletesAggregationSelection>;
   athletesConnection: DataSourceAthletesConnection;
+  /** The list of competitions associated with this data source. */
   competitions: Array<Competition>;
   competitionsAggregate?: Maybe<DataSourceCompetitionCompetitionsAggregationSelection>;
   competitionsConnection: DataSourceCompetitionsConnection;
+  /** The timestamp when the data source's profile was created. */
   createdAt: Scalars['DateTime']['output'];
+  /** The unique identifier of the data source. */
   id: Scalars['ID']['output'];
+  /** The name of the data source. */
   name: Scalars['String']['output'];
-  updatedAt: Scalars['DateTime']['output'];
+  /** The timestamp when the data source's profile was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  /** Indicates whether the data source's profile is verified. */
   verified: Scalars['Boolean']['output'];
 };
 
 
+/** Represents a data source for sports-related information. */
 export type DataSourceAthletesArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<AthleteOptions>;
@@ -3452,12 +3577,14 @@ export type DataSourceAthletesArgs = {
 };
 
 
+/** Represents a data source for sports-related information. */
 export type DataSourceAthletesAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<AthleteWhere>;
 };
 
 
+/** Represents a data source for sports-related information. */
 export type DataSourceAthletesConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3467,6 +3594,7 @@ export type DataSourceAthletesConnectionArgs = {
 };
 
 
+/** Represents a data source for sports-related information. */
 export type DataSourceCompetitionsArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<CompetitionOptions>;
@@ -3474,12 +3602,14 @@ export type DataSourceCompetitionsArgs = {
 };
 
 
+/** Represents a data source for sports-related information. */
 export type DataSourceCompetitionsAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<CompetitionWhere>;
 };
 
 
+/** Represents a data source for sports-related information. */
 export type DataSourceCompetitionsConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3494,22 +3624,29 @@ export type DataSourceAggregateSelection = {
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type DataSourceAthleteAthletesAggregationSelection = {
   __typename?: 'DataSourceAthleteAthletesAggregationSelection';
   count: Scalars['Int']['output'];
+  edge?: Maybe<DataSourceAthleteAthletesEdgeAggregateSelection>;
   node?: Maybe<DataSourceAthleteAthletesNodeAggregateSelection>;
+};
+
+export type DataSourceAthleteAthletesEdgeAggregateSelection = {
+  __typename?: 'DataSourceAthleteAthletesEdgeAggregateSelection';
+  createdAt: DateTimeAggregateSelectionNonNullable;
+  entityId: StringAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type DataSourceAthleteAthletesNodeAggregateSelection = {
   __typename?: 'DataSourceAthleteAthletesNodeAggregateSelection';
   createdAt: DateTimeAggregateSelectionNonNullable;
-  familyName: StringAggregateSelectionNonNullable;
-  givenName: StringAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  name: StringAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type DataSourceAthletesAggregateInput = {
@@ -3521,11 +3658,13 @@ export type DataSourceAthletesAggregateInput = {
   count_GTE?: InputMaybe<Scalars['Int']['input']>;
   count_LT?: InputMaybe<Scalars['Int']['input']>;
   count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  edge?: InputMaybe<DataSourceAthletesEdgeAggregationWhereInput>;
   node?: InputMaybe<DataSourceAthletesNodeAggregationWhereInput>;
 };
 
 export type DataSourceAthletesConnectFieldInput = {
   connect?: InputMaybe<Array<AthleteConnectInput>>;
+  edge: DataSourceEdgeCreateInput;
   /** Whether or not to overwrite any matching relationship with the new properties. Will default to `false` in 4.0.0. */
   overwrite?: Scalars['Boolean']['input'];
   where?: InputMaybe<AthleteConnectWhere>;
@@ -3537,6 +3676,7 @@ export type DataSourceAthletesConnectOrCreateFieldInput = {
 };
 
 export type DataSourceAthletesConnectOrCreateFieldInputOnCreate = {
+  edge: DataSourceEdgeCreateInput;
   node: AthleteOnCreateInput;
 };
 
@@ -3548,6 +3688,7 @@ export type DataSourceAthletesConnection = {
 };
 
 export type DataSourceAthletesConnectionSort = {
+  edge?: InputMaybe<DataSourceEdgeSort>;
   node?: InputMaybe<AthleteSort>;
 };
 
@@ -3555,10 +3696,12 @@ export type DataSourceAthletesConnectionWhere = {
   AND?: InputMaybe<Array<DataSourceAthletesConnectionWhere>>;
   NOT?: InputMaybe<DataSourceAthletesConnectionWhere>;
   OR?: InputMaybe<Array<DataSourceAthletesConnectionWhere>>;
+  edge?: InputMaybe<DataSourceEdgeWhere>;
   node?: InputMaybe<AthleteWhere>;
 };
 
 export type DataSourceAthletesCreateFieldInput = {
+  edge: DataSourceEdgeCreateInput;
   node: AthleteCreateInput;
 };
 
@@ -3570,6 +3713,47 @@ export type DataSourceAthletesDeleteFieldInput = {
 export type DataSourceAthletesDisconnectFieldInput = {
   disconnect?: InputMaybe<AthleteDisconnectInput>;
   where?: InputMaybe<DataSourceAthletesConnectionWhere>;
+};
+
+export type DataSourceAthletesEdgeAggregationWhereInput = {
+  AND?: InputMaybe<Array<DataSourceAthletesEdgeAggregationWhereInput>>;
+  NOT?: InputMaybe<DataSourceAthletesEdgeAggregationWhereInput>;
+  OR?: InputMaybe<Array<DataSourceAthletesEdgeAggregationWhereInput>>;
+  createdAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  entityId_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  entityId_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  entityId_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  entityId_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  entityId_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  entityId_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  entityId_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  entityId_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  entityId_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  entityId_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type DataSourceAthletesFieldInput = {
@@ -3592,36 +3776,21 @@ export type DataSourceAthletesNodeAggregationWhereInput = {
   createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  familyName_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  familyName_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  givenName_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
   updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
@@ -3634,13 +3803,20 @@ export type DataSourceAthletesNodeAggregationWhereInput = {
   updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
-export type DataSourceAthletesRelationship = {
+export type DataSourceAthletesRelationship = DataSourceEdge & {
   __typename?: 'DataSourceAthletesRelationship';
+  /** The timestamp when this relationship was created. */
+  createdAt: Scalars['DateTime']['output'];
   cursor: Scalars['String']['output'];
+  /** The unique identifier of the entity associated with the data source. */
+  entityId: Scalars['String']['output'];
   node: Athlete;
+  /** The timestamp when this relationship was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
 export type DataSourceAthletesUpdateConnectionInput = {
+  edge?: InputMaybe<DataSourceEdgeUpdateInput>;
   node?: InputMaybe<AthleteUpdateInput>;
 };
 
@@ -3657,7 +3833,15 @@ export type DataSourceAthletesUpdateFieldInput = {
 export type DataSourceCompetitionCompetitionsAggregationSelection = {
   __typename?: 'DataSourceCompetitionCompetitionsAggregationSelection';
   count: Scalars['Int']['output'];
+  edge?: Maybe<DataSourceCompetitionCompetitionsEdgeAggregateSelection>;
   node?: Maybe<DataSourceCompetitionCompetitionsNodeAggregateSelection>;
+};
+
+export type DataSourceCompetitionCompetitionsEdgeAggregateSelection = {
+  __typename?: 'DataSourceCompetitionCompetitionsEdgeAggregateSelection';
+  createdAt: DateTimeAggregateSelectionNonNullable;
+  entityId: StringAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type DataSourceCompetitionCompetitionsNodeAggregateSelection = {
@@ -3665,7 +3849,7 @@ export type DataSourceCompetitionCompetitionsNodeAggregateSelection = {
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type DataSourceCompetitionsAggregateInput = {
@@ -3677,11 +3861,13 @@ export type DataSourceCompetitionsAggregateInput = {
   count_GTE?: InputMaybe<Scalars['Int']['input']>;
   count_LT?: InputMaybe<Scalars['Int']['input']>;
   count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  edge?: InputMaybe<DataSourceCompetitionsEdgeAggregationWhereInput>;
   node?: InputMaybe<DataSourceCompetitionsNodeAggregationWhereInput>;
 };
 
 export type DataSourceCompetitionsConnectFieldInput = {
   connect?: InputMaybe<Array<CompetitionConnectInput>>;
+  edge: DataSourceEdgeCreateInput;
   /** Whether or not to overwrite any matching relationship with the new properties. Will default to `false` in 4.0.0. */
   overwrite?: Scalars['Boolean']['input'];
   where?: InputMaybe<CompetitionConnectWhere>;
@@ -3693,6 +3879,7 @@ export type DataSourceCompetitionsConnectOrCreateFieldInput = {
 };
 
 export type DataSourceCompetitionsConnectOrCreateFieldInputOnCreate = {
+  edge: DataSourceEdgeCreateInput;
   node: CompetitionOnCreateInput;
 };
 
@@ -3704,6 +3891,7 @@ export type DataSourceCompetitionsConnection = {
 };
 
 export type DataSourceCompetitionsConnectionSort = {
+  edge?: InputMaybe<DataSourceEdgeSort>;
   node?: InputMaybe<CompetitionSort>;
 };
 
@@ -3711,10 +3899,12 @@ export type DataSourceCompetitionsConnectionWhere = {
   AND?: InputMaybe<Array<DataSourceCompetitionsConnectionWhere>>;
   NOT?: InputMaybe<DataSourceCompetitionsConnectionWhere>;
   OR?: InputMaybe<Array<DataSourceCompetitionsConnectionWhere>>;
+  edge?: InputMaybe<DataSourceEdgeWhere>;
   node?: InputMaybe<CompetitionWhere>;
 };
 
 export type DataSourceCompetitionsCreateFieldInput = {
+  edge: DataSourceEdgeCreateInput;
   node: CompetitionCreateInput;
 };
 
@@ -3726,6 +3916,47 @@ export type DataSourceCompetitionsDeleteFieldInput = {
 export type DataSourceCompetitionsDisconnectFieldInput = {
   disconnect?: InputMaybe<CompetitionDisconnectInput>;
   where?: InputMaybe<DataSourceCompetitionsConnectionWhere>;
+};
+
+export type DataSourceCompetitionsEdgeAggregationWhereInput = {
+  AND?: InputMaybe<Array<DataSourceCompetitionsEdgeAggregationWhereInput>>;
+  NOT?: InputMaybe<DataSourceCompetitionsEdgeAggregationWhereInput>;
+  OR?: InputMaybe<Array<DataSourceCompetitionsEdgeAggregationWhereInput>>;
+  createdAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  entityId_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  entityId_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  entityId_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  entityId_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  entityId_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  entityId_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  entityId_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  entityId_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  entityId_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  entityId_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  entityId_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type DataSourceCompetitionsFieldInput = {
@@ -3775,13 +4006,20 @@ export type DataSourceCompetitionsNodeAggregationWhereInput = {
   updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
-export type DataSourceCompetitionsRelationship = {
+export type DataSourceCompetitionsRelationship = DataSourceEdge & {
   __typename?: 'DataSourceCompetitionsRelationship';
+  /** The timestamp when this relationship was created. */
+  createdAt: Scalars['DateTime']['output'];
   cursor: Scalars['String']['output'];
+  /** The unique identifier of the entity associated with the data source. */
+  entityId: Scalars['String']['output'];
   node: Competition;
+  /** The timestamp when this relationship was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
 export type DataSourceCompetitionsUpdateConnectionInput = {
+  edge?: InputMaybe<DataSourceEdgeUpdateInput>;
   node?: InputMaybe<CompetitionUpdateInput>;
 };
 
@@ -3831,9 +4069,49 @@ export type DataSourceDisconnectInput = {
 };
 
 export type DataSourceEdge = {
-  __typename?: 'DataSourceEdge';
-  cursor: Scalars['String']['output'];
-  node: DataSource;
+  /** The timestamp when this relationship was created. */
+  createdAt: Scalars['DateTime']['output'];
+  /** The unique identifier of the entity associated with the data source. */
+  entityId: Scalars['String']['output'];
+  /** The timestamp when this relationship was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type DataSourceEdgeCreateInput = {
+  entityId: Scalars['String']['input'];
+};
+
+export type DataSourceEdgeSort = {
+  createdAt?: InputMaybe<SortDirection>;
+  entityId?: InputMaybe<SortDirection>;
+  updatedAt?: InputMaybe<SortDirection>;
+};
+
+export type DataSourceEdgeUpdateInput = {
+  entityId?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DataSourceEdgeWhere = {
+  AND?: InputMaybe<Array<DataSourceEdgeWhere>>;
+  NOT?: InputMaybe<DataSourceEdgeWhere>;
+  OR?: InputMaybe<Array<DataSourceEdgeWhere>>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_IN?: InputMaybe<Array<Scalars['DateTime']['input']>>;
+  createdAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  entityId?: InputMaybe<Scalars['String']['input']>;
+  entityId_CONTAINS?: InputMaybe<Scalars['String']['input']>;
+  entityId_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
+  entityId_IN?: InputMaybe<Array<Scalars['String']['input']>>;
+  entityId_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_IN?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  updatedAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type DataSourceOnCreateInput = {
@@ -3931,7 +4209,7 @@ export type DataSourceWhere = {
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_IN?: InputMaybe<Array<Scalars['DateTime']['input']>>;
+  updatedAt_IN?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   updatedAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
   verified?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3950,6 +4228,12 @@ export type DateTimeAggregateSelectionNonNullable = {
   min: Scalars['DateTime']['output'];
 };
 
+export type DateTimeAggregateSelectionNullable = {
+  __typename?: 'DateTimeAggregateSelectionNullable';
+  max?: Maybe<Scalars['DateTime']['output']>;
+  min?: Maybe<Scalars['DateTime']['output']>;
+};
+
 export type DeleteInfo = {
   __typename?: 'DeleteInfo';
   bookmark?: Maybe<Scalars['String']['output']>;
@@ -3957,25 +4241,39 @@ export type DeleteInfo = {
   relationshipsDeleted: Scalars['Int']['output'];
 };
 
+/** Represents a sports event in the competition. */
 export type Event = {
   __typename?: 'Event';
+  /** The list of athletes who participated in this event. */
   athletes: Array<Athlete>;
   athletesAggregate?: Maybe<EventAthleteAthletesAggregationSelection>;
   athletesConnection: EventAthletesConnection;
+  /** The list of attempts made in this event. */
   attempts: Array<Attempt>;
   attemptsAggregate?: Maybe<EventAttemptAttemptsAggregationSelection>;
   attemptsConnection: EventAttemptsConnection;
-  class: Class;
+  /** The class of the event. */
+  class: EventClass_Iwf;
+  /** The competition to which this event belongs. */
   competition: Competition;
   competitionAggregate?: Maybe<EventCompetitionCompetitionAggregationSelection>;
   competitionConnection: EventCompetitionConnection;
+  /** The timestamp when the event was created. */
   createdAt: Scalars['DateTime']['output'];
+  /** The date of the event. */
+  date?: Maybe<Scalars['Date']['output']>;
+  /** The unique identifier of the event. */
   id: Scalars['ID']['output'];
-  updatedAt: Scalars['DateTime']['output'];
+  /** The type of the event. */
+  type: EventType_Iwf;
+  /** The timestamp when the event was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  /** Indicates whether the event is verified. */
   verified: Scalars['Boolean']['output'];
 };
 
 
+/** Represents a sports event in the competition. */
 export type EventAthletesArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<AthleteOptions>;
@@ -3983,12 +4281,14 @@ export type EventAthletesArgs = {
 };
 
 
+/** Represents a sports event in the competition. */
 export type EventAthletesAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<AthleteWhere>;
 };
 
 
+/** Represents a sports event in the competition. */
 export type EventAthletesConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3998,6 +4298,7 @@ export type EventAthletesConnectionArgs = {
 };
 
 
+/** Represents a sports event in the competition. */
 export type EventAttemptsArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<AttemptOptions>;
@@ -4005,12 +4306,14 @@ export type EventAttemptsArgs = {
 };
 
 
+/** Represents a sports event in the competition. */
 export type EventAttemptsAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<AttemptWhere>;
 };
 
 
+/** Represents a sports event in the competition. */
 export type EventAttemptsConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -4020,6 +4323,7 @@ export type EventAttemptsConnectionArgs = {
 };
 
 
+/** Represents a sports event in the competition. */
 export type EventCompetitionArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<CompetitionOptions>;
@@ -4027,12 +4331,14 @@ export type EventCompetitionArgs = {
 };
 
 
+/** Represents a sports event in the competition. */
 export type EventCompetitionAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<CompetitionWhere>;
 };
 
 
+/** Represents a sports event in the competition. */
 export type EventCompetitionConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -4046,7 +4352,7 @@ export type EventAggregateSelection = {
   count: Scalars['Int']['output'];
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type EventAthleteAthletesAggregationSelection = {
@@ -4058,10 +4364,9 @@ export type EventAthleteAthletesAggregationSelection = {
 export type EventAthleteAthletesNodeAggregateSelection = {
   __typename?: 'EventAthleteAthletesNodeAggregateSelection';
   createdAt: DateTimeAggregateSelectionNonNullable;
-  familyName: StringAggregateSelectionNonNullable;
-  givenName: StringAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  name: StringAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type EventAthletesAggregateInput = {
@@ -4144,36 +4449,21 @@ export type EventAthletesNodeAggregationWhereInput = {
   createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  familyName_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  familyName_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  givenName_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
   updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
@@ -4215,8 +4505,10 @@ export type EventAttemptAttemptsAggregationSelection = {
 export type EventAttemptAttemptsNodeAggregateSelection = {
   __typename?: 'EventAttemptAttemptsNodeAggregateSelection';
   createdAt: DateTimeAggregateSelectionNonNullable;
+  dateTime: DateTimeAggregateSelectionNullable;
   id: IdAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  number: IntAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
   weight: FloatAggregateSelectionNonNullable;
 };
 
@@ -4300,6 +4592,36 @@ export type EventAttemptsNodeAggregationWhereInput = {
   createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  dateTime_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  number_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  number_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
+  number_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
+  number_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
+  number_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
+  number_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  number_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
+  number_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
+  number_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
+  number_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
+  number_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  number_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
+  number_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
+  number_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
+  number_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
+  number_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  number_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
+  number_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
+  number_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
+  number_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
   updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
@@ -4352,6 +4674,30 @@ export type EventAttemptsUpdateFieldInput = {
   where?: InputMaybe<EventAttemptsConnectionWhere>;
 };
 
+/** Enumeration of classes for men and women in a iwf competition. */
+export enum EventClass_Iwf {
+  M55 = 'M55',
+  M61 = 'M61',
+  M67 = 'M67',
+  M73 = 'M73',
+  M81 = 'M81',
+  M89 = 'M89',
+  M96 = 'M96',
+  M102 = 'M102',
+  M109 = 'M109',
+  Mp109 = 'MP109',
+  W45 = 'W45',
+  W49 = 'W49',
+  W55 = 'W55',
+  W59 = 'W59',
+  W64 = 'W64',
+  W71 = 'W71',
+  W76 = 'W76',
+  W81 = 'W81',
+  W87 = 'W87',
+  Wp87 = 'WP87'
+}
+
 export type EventCompetitionAggregateInput = {
   AND?: InputMaybe<Array<EventCompetitionAggregateInput>>;
   NOT?: InputMaybe<EventCompetitionAggregateInput>;
@@ -4375,7 +4721,7 @@ export type EventCompetitionCompetitionNodeAggregateSelection = {
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type EventCompetitionConnectFieldInput = {
@@ -4516,8 +4862,10 @@ export type EventConnectWhere = {
 export type EventCreateInput = {
   athletes?: InputMaybe<EventAthletesFieldInput>;
   attempts?: InputMaybe<EventAttemptsFieldInput>;
-  class: Class;
+  class: EventClass_Iwf;
   competition?: InputMaybe<EventCompetitionFieldInput>;
+  date?: InputMaybe<Scalars['Date']['input']>;
+  type: EventType_Iwf;
   verified?: Scalars['Boolean']['input'];
 };
 
@@ -4540,7 +4888,9 @@ export type EventEdge = {
 };
 
 export type EventOnCreateInput = {
-  class: Class;
+  class: EventClass_Iwf;
+  date?: InputMaybe<Scalars['Date']['input']>;
+  type: EventType_Iwf;
   verified?: Scalars['Boolean']['input'];
 };
 
@@ -4561,10 +4911,18 @@ export type EventRelationInput = {
 export type EventSort = {
   class?: InputMaybe<SortDirection>;
   createdAt?: InputMaybe<SortDirection>;
+  date?: InputMaybe<SortDirection>;
   id?: InputMaybe<SortDirection>;
+  type?: InputMaybe<SortDirection>;
   updatedAt?: InputMaybe<SortDirection>;
   verified?: InputMaybe<SortDirection>;
 };
+
+/** Enumeration of event types for a weightlifting competition */
+export enum EventType_Iwf {
+  CleanJerk = 'CleanJerk',
+  Snatch = 'Snatch'
+}
 
 export type EventUniqueWhere = {
   id?: InputMaybe<Scalars['ID']['input']>;
@@ -4573,8 +4931,10 @@ export type EventUniqueWhere = {
 export type EventUpdateInput = {
   athletes?: InputMaybe<Array<EventAthletesUpdateFieldInput>>;
   attempts?: InputMaybe<Array<EventAttemptsUpdateFieldInput>>;
-  class?: InputMaybe<Class>;
+  class?: InputMaybe<EventClass_Iwf>;
   competition?: InputMaybe<EventCompetitionUpdateFieldInput>;
+  date?: InputMaybe<Scalars['Date']['input']>;
+  type?: InputMaybe<EventType_Iwf>;
   verified?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
@@ -4616,8 +4976,8 @@ export type EventWhere = {
   attempts_SINGLE?: InputMaybe<AttemptWhere>;
   /** Return Events where some of the related Attempts match this filter */
   attempts_SOME?: InputMaybe<AttemptWhere>;
-  class?: InputMaybe<Class>;
-  class_IN?: InputMaybe<Array<Class>>;
+  class?: InputMaybe<EventClass_Iwf>;
+  class_IN?: InputMaybe<Array<EventClass_Iwf>>;
   competition?: InputMaybe<CompetitionWhere>;
   competitionAggregate?: InputMaybe<EventCompetitionAggregateInput>;
   competitionConnection?: InputMaybe<EventCompetitionConnectionWhere>;
@@ -4629,15 +4989,23 @@ export type EventWhere = {
   createdAt_IN?: InputMaybe<Array<Scalars['DateTime']['input']>>;
   createdAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  date?: InputMaybe<Scalars['Date']['input']>;
+  date_GT?: InputMaybe<Scalars['Date']['input']>;
+  date_GTE?: InputMaybe<Scalars['Date']['input']>;
+  date_IN?: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  date_LT?: InputMaybe<Scalars['Date']['input']>;
+  date_LTE?: InputMaybe<Scalars['Date']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
   id_CONTAINS?: InputMaybe<Scalars['ID']['input']>;
   id_ENDS_WITH?: InputMaybe<Scalars['ID']['input']>;
   id_IN?: InputMaybe<Array<Scalars['ID']['input']>>;
   id_STARTS_WITH?: InputMaybe<Scalars['ID']['input']>;
+  type?: InputMaybe<EventType_Iwf>;
+  type_IN?: InputMaybe<Array<EventType_Iwf>>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_IN?: InputMaybe<Array<Scalars['DateTime']['input']>>;
+  updatedAt_IN?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   updatedAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
   verified?: InputMaybe<Scalars['Boolean']['input']>;
@@ -4664,11 +5032,26 @@ export type IdAggregateSelectionNonNullable = {
   shortest: Scalars['ID']['output'];
 };
 
+export type IntAggregateSelectionNonNullable = {
+  __typename?: 'IntAggregateSelectionNonNullable';
+  average: Scalars['Float']['output'];
+  max: Scalars['Int']['output'];
+  min: Scalars['Int']['output'];
+  sum: Scalars['Int']['output'];
+};
+
+export type IntAggregateSelectionNullable = {
+  __typename?: 'IntAggregateSelectionNullable';
+  average?: Maybe<Scalars['Float']['output']>;
+  max?: Maybe<Scalars['Int']['output']>;
+  min?: Maybe<Scalars['Int']['output']>;
+  sum?: Maybe<Scalars['Int']['output']>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createAthletes: CreateAthletesMutationResponse;
   createAttempts: CreateAttemptsMutationResponse;
-  createCities: CreateCitiesMutationResponse;
   createCompetitions: CreateCompetitionsMutationResponse;
   createDataSources: CreateDataSourcesMutationResponse;
   createEvents: CreateEventsMutationResponse;
@@ -4676,7 +5059,6 @@ export type Mutation = {
   createSports: CreateSportsMutationResponse;
   deleteAthletes: DeleteInfo;
   deleteAttempts: DeleteInfo;
-  deleteCities: DeleteInfo;
   deleteCompetitions: DeleteInfo;
   deleteDataSources: DeleteInfo;
   deleteEvents: DeleteInfo;
@@ -4684,7 +5066,6 @@ export type Mutation = {
   deleteSports: DeleteInfo;
   updateAthletes: UpdateAthletesMutationResponse;
   updateAttempts: UpdateAttemptsMutationResponse;
-  updateCities: UpdateCitiesMutationResponse;
   updateCompetitions: UpdateCompetitionsMutationResponse;
   updateDataSources: UpdateDataSourcesMutationResponse;
   updateEvents: UpdateEventsMutationResponse;
@@ -4700,11 +5081,6 @@ export type MutationCreateAthletesArgs = {
 
 export type MutationCreateAttemptsArgs = {
   input: Array<AttemptCreateInput>;
-};
-
-
-export type MutationCreateCitiesArgs = {
-  input: Array<CityCreateInput>;
 };
 
 
@@ -4742,12 +5118,6 @@ export type MutationDeleteAthletesArgs = {
 export type MutationDeleteAttemptsArgs = {
   delete?: InputMaybe<AttemptDeleteInput>;
   where?: InputMaybe<AttemptWhere>;
-};
-
-
-export type MutationDeleteCitiesArgs = {
-  delete?: InputMaybe<CityDeleteInput>;
-  where?: InputMaybe<CityWhere>;
 };
 
 
@@ -4800,17 +5170,6 @@ export type MutationUpdateAttemptsArgs = {
   disconnect?: InputMaybe<AttemptDisconnectInput>;
   update?: InputMaybe<AttemptUpdateInput>;
   where?: InputMaybe<AttemptWhere>;
-};
-
-
-export type MutationUpdateCitiesArgs = {
-  connect?: InputMaybe<CityConnectInput>;
-  connectOrCreate?: InputMaybe<CityConnectOrCreateInput>;
-  create?: InputMaybe<CityRelationInput>;
-  delete?: InputMaybe<CityDeleteInput>;
-  disconnect?: InputMaybe<CityDisconnectInput>;
-  update?: InputMaybe<CityUpdateInput>;
-  where?: InputMaybe<CityWhere>;
 };
 
 
@@ -4868,23 +5227,33 @@ export type MutationUpdateSportsArgs = {
   where?: InputMaybe<SportWhere>;
 };
 
+/** Represents a nation or country. */
 export type Nation = {
   __typename?: 'Nation';
+  /** The list of athletes representing this nation. */
   athletes: Array<Athlete>;
   athletesAggregate?: Maybe<NationAthleteAthletesAggregationSelection>;
   athletesConnection: NationAthletesConnection;
-  cities: Array<City>;
-  citiesAggregate?: Maybe<NationCityCitiesAggregationSelection>;
-  citiesConnection: NationCitiesConnection;
+  /** The code representing the nation (e.g., ISO code). */
   code: Scalars['String']['output'];
+  /** The list of competitions associated with this nation. */
+  competitions: Array<Competition>;
+  competitionsAggregate?: Maybe<NationCompetitionCompetitionsAggregationSelection>;
+  competitionsConnection: NationCompetitionsConnection;
+  /** The timestamp when the nation's profile was created. */
   createdAt: Scalars['DateTime']['output'];
+  /** The unique identifier of the nation. */
   id: Scalars['ID']['output'];
+  /** The name of the nation. */
   name?: Maybe<Scalars['String']['output']>;
-  updatedAt: Scalars['DateTime']['output'];
+  /** The timestamp when the nation's profile was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  /** Indicates whether the nation's profile is verified. */
   verified: Scalars['Boolean']['output'];
 };
 
 
+/** Represents a nation or country. */
 export type NationAthletesArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<AthleteOptions>;
@@ -4892,12 +5261,14 @@ export type NationAthletesArgs = {
 };
 
 
+/** Represents a nation or country. */
 export type NationAthletesAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<AthleteWhere>;
 };
 
 
+/** Represents a nation or country. */
 export type NationAthletesConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -4907,25 +5278,28 @@ export type NationAthletesConnectionArgs = {
 };
 
 
-export type NationCitiesArgs = {
+/** Represents a nation or country. */
+export type NationCompetitionsArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
-  options?: InputMaybe<CityOptions>;
-  where?: InputMaybe<CityWhere>;
+  options?: InputMaybe<CompetitionOptions>;
+  where?: InputMaybe<CompetitionWhere>;
 };
 
 
-export type NationCitiesAggregateArgs = {
+/** Represents a nation or country. */
+export type NationCompetitionsAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
-  where?: InputMaybe<CityWhere>;
+  where?: InputMaybe<CompetitionWhere>;
 };
 
 
-export type NationCitiesConnectionArgs = {
+/** Represents a nation or country. */
+export type NationCompetitionsConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
-  sort?: InputMaybe<Array<NationCitiesConnectionSort>>;
-  where?: InputMaybe<NationCitiesConnectionWhere>;
+  sort?: InputMaybe<Array<NationCompetitionsConnectionSort>>;
+  where?: InputMaybe<NationCompetitionsConnectionWhere>;
 };
 
 export type NationAggregateSelection = {
@@ -4935,7 +5309,7 @@ export type NationAggregateSelection = {
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type NationAthleteAthletesAggregationSelection = {
@@ -4947,10 +5321,9 @@ export type NationAthleteAthletesAggregationSelection = {
 export type NationAthleteAthletesNodeAggregateSelection = {
   __typename?: 'NationAthleteAthletesNodeAggregateSelection';
   createdAt: DateTimeAggregateSelectionNonNullable;
-  familyName: StringAggregateSelectionNonNullable;
-  givenName: StringAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  name: StringAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type NationAthletesAggregateInput = {
@@ -5033,36 +5406,21 @@ export type NationAthletesNodeAggregationWhereInput = {
   createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  familyName_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  familyName_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  givenName_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
   updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
@@ -5095,76 +5453,145 @@ export type NationAthletesUpdateFieldInput = {
   where?: InputMaybe<NationAthletesConnectionWhere>;
 };
 
-export type NationCitiesAggregateInput = {
-  AND?: InputMaybe<Array<NationCitiesAggregateInput>>;
-  NOT?: InputMaybe<NationCitiesAggregateInput>;
-  OR?: InputMaybe<Array<NationCitiesAggregateInput>>;
+export type NationCompetitionCompetitionsAggregationSelection = {
+  __typename?: 'NationCompetitionCompetitionsAggregationSelection';
+  count: Scalars['Int']['output'];
+  edge?: Maybe<NationCompetitionCompetitionsEdgeAggregateSelection>;
+  node?: Maybe<NationCompetitionCompetitionsNodeAggregateSelection>;
+};
+
+export type NationCompetitionCompetitionsEdgeAggregateSelection = {
+  __typename?: 'NationCompetitionCompetitionsEdgeAggregateSelection';
+  city: StringAggregateSelectionNullable;
+  createdAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
+};
+
+export type NationCompetitionCompetitionsNodeAggregateSelection = {
+  __typename?: 'NationCompetitionCompetitionsNodeAggregateSelection';
+  createdAt: DateTimeAggregateSelectionNonNullable;
+  id: IdAggregateSelectionNonNullable;
+  name: StringAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
+};
+
+export type NationCompetitionsAggregateInput = {
+  AND?: InputMaybe<Array<NationCompetitionsAggregateInput>>;
+  NOT?: InputMaybe<NationCompetitionsAggregateInput>;
+  OR?: InputMaybe<Array<NationCompetitionsAggregateInput>>;
   count?: InputMaybe<Scalars['Int']['input']>;
   count_GT?: InputMaybe<Scalars['Int']['input']>;
   count_GTE?: InputMaybe<Scalars['Int']['input']>;
   count_LT?: InputMaybe<Scalars['Int']['input']>;
   count_LTE?: InputMaybe<Scalars['Int']['input']>;
-  node?: InputMaybe<NationCitiesNodeAggregationWhereInput>;
+  edge?: InputMaybe<NationCompetitionsEdgeAggregationWhereInput>;
+  node?: InputMaybe<NationCompetitionsNodeAggregationWhereInput>;
 };
 
-export type NationCitiesConnectFieldInput = {
-  connect?: InputMaybe<Array<CityConnectInput>>;
+export type NationCompetitionsConnectFieldInput = {
+  connect?: InputMaybe<Array<CompetitionConnectInput>>;
+  edge?: InputMaybe<CompetitionInNationCreateInput>;
   /** Whether or not to overwrite any matching relationship with the new properties. Will default to `false` in 4.0.0. */
   overwrite?: Scalars['Boolean']['input'];
-  where?: InputMaybe<CityConnectWhere>;
+  where?: InputMaybe<CompetitionConnectWhere>;
 };
 
-export type NationCitiesConnectOrCreateFieldInput = {
-  onCreate: NationCitiesConnectOrCreateFieldInputOnCreate;
-  where: CityConnectOrCreateWhere;
+export type NationCompetitionsConnectOrCreateFieldInput = {
+  onCreate: NationCompetitionsConnectOrCreateFieldInputOnCreate;
+  where: CompetitionConnectOrCreateWhere;
 };
 
-export type NationCitiesConnectOrCreateFieldInputOnCreate = {
-  node: CityOnCreateInput;
+export type NationCompetitionsConnectOrCreateFieldInputOnCreate = {
+  edge?: InputMaybe<CompetitionInNationCreateInput>;
+  node: CompetitionOnCreateInput;
 };
 
-export type NationCitiesConnection = {
-  __typename?: 'NationCitiesConnection';
-  edges: Array<NationCitiesRelationship>;
+export type NationCompetitionsConnection = {
+  __typename?: 'NationCompetitionsConnection';
+  edges: Array<NationCompetitionsRelationship>;
   pageInfo: PageInfo;
   totalCount: Scalars['Int']['output'];
 };
 
-export type NationCitiesConnectionSort = {
-  node?: InputMaybe<CitySort>;
+export type NationCompetitionsConnectionSort = {
+  edge?: InputMaybe<CompetitionInNationSort>;
+  node?: InputMaybe<CompetitionSort>;
 };
 
-export type NationCitiesConnectionWhere = {
-  AND?: InputMaybe<Array<NationCitiesConnectionWhere>>;
-  NOT?: InputMaybe<NationCitiesConnectionWhere>;
-  OR?: InputMaybe<Array<NationCitiesConnectionWhere>>;
-  node?: InputMaybe<CityWhere>;
+export type NationCompetitionsConnectionWhere = {
+  AND?: InputMaybe<Array<NationCompetitionsConnectionWhere>>;
+  NOT?: InputMaybe<NationCompetitionsConnectionWhere>;
+  OR?: InputMaybe<Array<NationCompetitionsConnectionWhere>>;
+  edge?: InputMaybe<CompetitionInNationWhere>;
+  node?: InputMaybe<CompetitionWhere>;
 };
 
-export type NationCitiesCreateFieldInput = {
-  node: CityCreateInput;
+export type NationCompetitionsCreateFieldInput = {
+  edge?: InputMaybe<CompetitionInNationCreateInput>;
+  node: CompetitionCreateInput;
 };
 
-export type NationCitiesDeleteFieldInput = {
-  delete?: InputMaybe<CityDeleteInput>;
-  where?: InputMaybe<NationCitiesConnectionWhere>;
+export type NationCompetitionsDeleteFieldInput = {
+  delete?: InputMaybe<CompetitionDeleteInput>;
+  where?: InputMaybe<NationCompetitionsConnectionWhere>;
 };
 
-export type NationCitiesDisconnectFieldInput = {
-  disconnect?: InputMaybe<CityDisconnectInput>;
-  where?: InputMaybe<NationCitiesConnectionWhere>;
+export type NationCompetitionsDisconnectFieldInput = {
+  disconnect?: InputMaybe<CompetitionDisconnectInput>;
+  where?: InputMaybe<NationCompetitionsConnectionWhere>;
 };
 
-export type NationCitiesFieldInput = {
-  connect?: InputMaybe<Array<NationCitiesConnectFieldInput>>;
-  connectOrCreate?: InputMaybe<Array<NationCitiesConnectOrCreateFieldInput>>;
-  create?: InputMaybe<Array<NationCitiesCreateFieldInput>>;
+export type NationCompetitionsEdgeAggregationWhereInput = {
+  AND?: InputMaybe<Array<NationCompetitionsEdgeAggregationWhereInput>>;
+  NOT?: InputMaybe<NationCompetitionsEdgeAggregationWhereInput>;
+  OR?: InputMaybe<Array<NationCompetitionsEdgeAggregationWhereInput>>;
+  city_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  city_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  city_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  city_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  city_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  city_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  city_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  city_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  city_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  city_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  city_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  city_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  city_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  city_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  city_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  createdAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
-export type NationCitiesNodeAggregationWhereInput = {
-  AND?: InputMaybe<Array<NationCitiesNodeAggregationWhereInput>>;
-  NOT?: InputMaybe<NationCitiesNodeAggregationWhereInput>;
-  OR?: InputMaybe<Array<NationCitiesNodeAggregationWhereInput>>;
+export type NationCompetitionsFieldInput = {
+  connect?: InputMaybe<Array<NationCompetitionsConnectFieldInput>>;
+  connectOrCreate?: InputMaybe<Array<NationCompetitionsConnectOrCreateFieldInput>>;
+  create?: InputMaybe<Array<NationCompetitionsCreateFieldInput>>;
+};
+
+export type NationCompetitionsNodeAggregationWhereInput = {
+  AND?: InputMaybe<Array<NationCompetitionsNodeAggregationWhereInput>>;
+  NOT?: InputMaybe<NationCompetitionsNodeAggregationWhereInput>;
+  OR?: InputMaybe<Array<NationCompetitionsNodeAggregationWhereInput>>;
   createdAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
@@ -5202,48 +5629,41 @@ export type NationCitiesNodeAggregationWhereInput = {
   updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
-export type NationCitiesRelationship = {
-  __typename?: 'NationCitiesRelationship';
+export type NationCompetitionsRelationship = CompetitionInNation & {
+  __typename?: 'NationCompetitionsRelationship';
+  /** The city where the competition took place. */
+  city?: Maybe<Scalars['String']['output']>;
+  /** The timestamp when this relationship was created. */
+  createdAt: Scalars['DateTime']['output'];
   cursor: Scalars['String']['output'];
-  node: City;
+  node: Competition;
+  /** The timestamp when this relationship was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
-export type NationCitiesUpdateConnectionInput = {
-  node?: InputMaybe<CityUpdateInput>;
+export type NationCompetitionsUpdateConnectionInput = {
+  edge?: InputMaybe<CompetitionInNationUpdateInput>;
+  node?: InputMaybe<CompetitionUpdateInput>;
 };
 
-export type NationCitiesUpdateFieldInput = {
-  connect?: InputMaybe<Array<NationCitiesConnectFieldInput>>;
-  connectOrCreate?: InputMaybe<Array<NationCitiesConnectOrCreateFieldInput>>;
-  create?: InputMaybe<Array<NationCitiesCreateFieldInput>>;
-  delete?: InputMaybe<Array<NationCitiesDeleteFieldInput>>;
-  disconnect?: InputMaybe<Array<NationCitiesDisconnectFieldInput>>;
-  update?: InputMaybe<NationCitiesUpdateConnectionInput>;
-  where?: InputMaybe<NationCitiesConnectionWhere>;
-};
-
-export type NationCityCitiesAggregationSelection = {
-  __typename?: 'NationCityCitiesAggregationSelection';
-  count: Scalars['Int']['output'];
-  node?: Maybe<NationCityCitiesNodeAggregateSelection>;
-};
-
-export type NationCityCitiesNodeAggregateSelection = {
-  __typename?: 'NationCityCitiesNodeAggregateSelection';
-  createdAt: DateTimeAggregateSelectionNonNullable;
-  id: IdAggregateSelectionNonNullable;
-  name: StringAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+export type NationCompetitionsUpdateFieldInput = {
+  connect?: InputMaybe<Array<NationCompetitionsConnectFieldInput>>;
+  connectOrCreate?: InputMaybe<Array<NationCompetitionsConnectOrCreateFieldInput>>;
+  create?: InputMaybe<Array<NationCompetitionsCreateFieldInput>>;
+  delete?: InputMaybe<Array<NationCompetitionsDeleteFieldInput>>;
+  disconnect?: InputMaybe<Array<NationCompetitionsDisconnectFieldInput>>;
+  update?: InputMaybe<NationCompetitionsUpdateConnectionInput>;
+  where?: InputMaybe<NationCompetitionsConnectionWhere>;
 };
 
 export type NationConnectInput = {
   athletes?: InputMaybe<Array<NationAthletesConnectFieldInput>>;
-  cities?: InputMaybe<Array<NationCitiesConnectFieldInput>>;
+  competitions?: InputMaybe<Array<NationCompetitionsConnectFieldInput>>;
 };
 
 export type NationConnectOrCreateInput = {
   athletes?: InputMaybe<Array<NationAthletesConnectOrCreateFieldInput>>;
-  cities?: InputMaybe<Array<NationCitiesConnectOrCreateFieldInput>>;
+  competitions?: InputMaybe<Array<NationCompetitionsConnectOrCreateFieldInput>>;
 };
 
 export type NationConnectOrCreateWhere = {
@@ -5256,20 +5676,20 @@ export type NationConnectWhere = {
 
 export type NationCreateInput = {
   athletes?: InputMaybe<NationAthletesFieldInput>;
-  cities?: InputMaybe<NationCitiesFieldInput>;
   code: Scalars['String']['input'];
+  competitions?: InputMaybe<NationCompetitionsFieldInput>;
   name?: InputMaybe<Scalars['String']['input']>;
   verified?: Scalars['Boolean']['input'];
 };
 
 export type NationDeleteInput = {
   athletes?: InputMaybe<Array<NationAthletesDeleteFieldInput>>;
-  cities?: InputMaybe<Array<NationCitiesDeleteFieldInput>>;
+  competitions?: InputMaybe<Array<NationCompetitionsDeleteFieldInput>>;
 };
 
 export type NationDisconnectInput = {
   athletes?: InputMaybe<Array<NationAthletesDisconnectFieldInput>>;
-  cities?: InputMaybe<Array<NationCitiesDisconnectFieldInput>>;
+  competitions?: InputMaybe<Array<NationCompetitionsDisconnectFieldInput>>;
 };
 
 export type NationEdge = {
@@ -5293,7 +5713,7 @@ export type NationOptions = {
 
 export type NationRelationInput = {
   athletes?: InputMaybe<Array<NationAthletesCreateFieldInput>>;
-  cities?: InputMaybe<Array<NationCitiesCreateFieldInput>>;
+  competitions?: InputMaybe<Array<NationCompetitionsCreateFieldInput>>;
 };
 
 /** Fields to sort Nations by. The order in which sorts are applied is not guaranteed when specifying many fields in one NationSort object. */
@@ -5313,8 +5733,8 @@ export type NationUniqueWhere = {
 
 export type NationUpdateInput = {
   athletes?: InputMaybe<Array<NationAthletesUpdateFieldInput>>;
-  cities?: InputMaybe<Array<NationCitiesUpdateFieldInput>>;
   code?: InputMaybe<Scalars['String']['input']>;
+  competitions?: InputMaybe<Array<NationCompetitionsUpdateFieldInput>>;
   name?: InputMaybe<Scalars['String']['input']>;
   verified?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -5340,28 +5760,28 @@ export type NationWhere = {
   athletes_SINGLE?: InputMaybe<AthleteWhere>;
   /** Return Nations where some of the related Athletes match this filter */
   athletes_SOME?: InputMaybe<AthleteWhere>;
-  citiesAggregate?: InputMaybe<NationCitiesAggregateInput>;
-  /** Return Nations where all of the related NationCitiesConnections match this filter */
-  citiesConnection_ALL?: InputMaybe<NationCitiesConnectionWhere>;
-  /** Return Nations where none of the related NationCitiesConnections match this filter */
-  citiesConnection_NONE?: InputMaybe<NationCitiesConnectionWhere>;
-  /** Return Nations where one of the related NationCitiesConnections match this filter */
-  citiesConnection_SINGLE?: InputMaybe<NationCitiesConnectionWhere>;
-  /** Return Nations where some of the related NationCitiesConnections match this filter */
-  citiesConnection_SOME?: InputMaybe<NationCitiesConnectionWhere>;
-  /** Return Nations where all of the related Cities match this filter */
-  cities_ALL?: InputMaybe<CityWhere>;
-  /** Return Nations where none of the related Cities match this filter */
-  cities_NONE?: InputMaybe<CityWhere>;
-  /** Return Nations where one of the related Cities match this filter */
-  cities_SINGLE?: InputMaybe<CityWhere>;
-  /** Return Nations where some of the related Cities match this filter */
-  cities_SOME?: InputMaybe<CityWhere>;
   code?: InputMaybe<Scalars['String']['input']>;
   code_CONTAINS?: InputMaybe<Scalars['String']['input']>;
   code_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
   code_IN?: InputMaybe<Array<Scalars['String']['input']>>;
   code_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  competitionsAggregate?: InputMaybe<NationCompetitionsAggregateInput>;
+  /** Return Nations where all of the related NationCompetitionsConnections match this filter */
+  competitionsConnection_ALL?: InputMaybe<NationCompetitionsConnectionWhere>;
+  /** Return Nations where none of the related NationCompetitionsConnections match this filter */
+  competitionsConnection_NONE?: InputMaybe<NationCompetitionsConnectionWhere>;
+  /** Return Nations where one of the related NationCompetitionsConnections match this filter */
+  competitionsConnection_SINGLE?: InputMaybe<NationCompetitionsConnectionWhere>;
+  /** Return Nations where some of the related NationCompetitionsConnections match this filter */
+  competitionsConnection_SOME?: InputMaybe<NationCompetitionsConnectionWhere>;
+  /** Return Nations where all of the related Competitions match this filter */
+  competitions_ALL?: InputMaybe<CompetitionWhere>;
+  /** Return Nations where none of the related Competitions match this filter */
+  competitions_NONE?: InputMaybe<CompetitionWhere>;
+  /** Return Nations where one of the related Competitions match this filter */
+  competitions_SINGLE?: InputMaybe<CompetitionWhere>;
+  /** Return Nations where some of the related Competitions match this filter */
+  competitions_SOME?: InputMaybe<CompetitionWhere>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
@@ -5381,7 +5801,7 @@ export type NationWhere = {
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_IN?: InputMaybe<Array<Scalars['DateTime']['input']>>;
+  updatedAt_IN?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   updatedAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
   verified?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5411,9 +5831,6 @@ export type Query = {
   attempts: Array<Attempt>;
   attemptsAggregate: AttemptAggregateSelection;
   attemptsConnection: AttemptsConnection;
-  cities: Array<City>;
-  citiesAggregate: CityAggregateSelection;
-  citiesConnection: CitiesConnection;
   competitions: Array<Competition>;
   competitionsAggregate: CompetitionAggregateSelection;
   competitionsConnection: CompetitionsConnection;
@@ -5467,25 +5884,6 @@ export type QueryAttemptsConnectionArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   sort?: InputMaybe<Array<InputMaybe<AttemptSort>>>;
   where?: InputMaybe<AttemptWhere>;
-};
-
-
-export type QueryCitiesArgs = {
-  options?: InputMaybe<CityOptions>;
-  where?: InputMaybe<CityWhere>;
-};
-
-
-export type QueryCitiesAggregateArgs = {
-  where?: InputMaybe<CityWhere>;
-};
-
-
-export type QueryCitiesConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  sort?: InputMaybe<Array<InputMaybe<CitySort>>>;
-  where?: InputMaybe<CityWhere>;
 };
 
 
@@ -5590,22 +5988,31 @@ export enum SortDirection {
   Desc = 'DESC'
 }
 
+/** Represents a sports discipline or category. */
 export type Sport = {
   __typename?: 'Sport';
+  /** The list of athletes who participated in this sport. */
   athletes: Array<Athlete>;
   athletesAggregate?: Maybe<SportAthleteAthletesAggregationSelection>;
   athletesConnection: SportAthletesConnection;
+  /** The list of competitions associated with this sport. */
   competitions: Array<Competition>;
   competitionsAggregate?: Maybe<SportCompetitionCompetitionsAggregationSelection>;
   competitionsConnection: SportCompetitionsConnection;
+  /** The timestamp when the sport's profile was created. */
   createdAt: Scalars['DateTime']['output'];
+  /** The unique identifier of the sport. */
   id: Scalars['ID']['output'];
+  /** The name of the sport. */
   name: Scalars['String']['output'];
-  updatedAt: Scalars['DateTime']['output'];
+  /** The timestamp when the sport's profile was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  /** Indicates whether the sport's profile is verified. */
   verified: Scalars['Boolean']['output'];
 };
 
 
+/** Represents a sports discipline or category. */
 export type SportAthletesArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<AthleteOptions>;
@@ -5613,12 +6020,14 @@ export type SportAthletesArgs = {
 };
 
 
+/** Represents a sports discipline or category. */
 export type SportAthletesAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<AthleteWhere>;
 };
 
 
+/** Represents a sports discipline or category. */
 export type SportAthletesConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5628,6 +6037,7 @@ export type SportAthletesConnectionArgs = {
 };
 
 
+/** Represents a sports discipline or category. */
 export type SportCompetitionsArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<CompetitionOptions>;
@@ -5635,12 +6045,14 @@ export type SportCompetitionsArgs = {
 };
 
 
+/** Represents a sports discipline or category. */
 export type SportCompetitionsAggregateArgs = {
   directed?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<CompetitionWhere>;
 };
 
 
+/** Represents a sports discipline or category. */
 export type SportCompetitionsConnectionArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   directed?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5655,7 +6067,7 @@ export type SportAggregateSelection = {
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type SportAthleteAthletesAggregationSelection = {
@@ -5667,10 +6079,9 @@ export type SportAthleteAthletesAggregationSelection = {
 export type SportAthleteAthletesNodeAggregateSelection = {
   __typename?: 'SportAthleteAthletesNodeAggregateSelection';
   createdAt: DateTimeAggregateSelectionNonNullable;
-  familyName: StringAggregateSelectionNonNullable;
-  givenName: StringAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  name: StringAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type SportAthletesAggregateInput = {
@@ -5753,36 +6164,21 @@ export type SportAthletesNodeAggregationWhereInput = {
   createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
-  familyName_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  familyName_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  familyName_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  familyName_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  givenName_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  givenName_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  givenName_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
   updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
@@ -5826,7 +6222,7 @@ export type SportCompetitionCompetitionsNodeAggregateSelection = {
   createdAt: DateTimeAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   name: StringAggregateSelectionNonNullable;
-  updatedAt: DateTimeAggregateSelectionNonNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type SportCompetitionsAggregateInput = {
@@ -6092,7 +6488,7 @@ export type SportWhere = {
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_GTE?: InputMaybe<Scalars['DateTime']['input']>;
-  updatedAt_IN?: InputMaybe<Array<Scalars['DateTime']['input']>>;
+  updatedAt_IN?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   updatedAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
   verified?: InputMaybe<Scalars['Boolean']['input']>;
@@ -6126,12 +6522,6 @@ export type UpdateAthletesMutationResponse = {
 export type UpdateAttemptsMutationResponse = {
   __typename?: 'UpdateAttemptsMutationResponse';
   attempts: Array<Attempt>;
-  info: UpdateInfo;
-};
-
-export type UpdateCitiesMutationResponse = {
-  __typename?: 'UpdateCitiesMutationResponse';
-  cities: Array<City>;
   info: UpdateInfo;
 };
 
@@ -6174,12 +6564,78 @@ export type UpdateSportsMutationResponse = {
   sports: Array<Sport>;
 };
 
-export type CreateAthleteMutationVariables = Exact<{
+export type CreateAthletesMutationVariables = Exact<{
   input: Array<AthleteCreateInput> | AthleteCreateInput;
 }>;
 
 
-export type CreateAthleteMutation = { __typename?: 'Mutation', createAthletes: { __typename?: 'CreateAthletesMutationResponse', athletes: Array<{ __typename?: 'Athlete', birthday: any, id: string, givenName: string, familyName: string, verified: boolean, updatedAt: any, createdAt: any }> } };
+export type CreateAthletesMutation = { __typename?: 'Mutation', createAthletes: { __typename?: 'CreateAthletesMutationResponse', athletes: Array<{ __typename?: 'Athlete', birthday: any, id: string, name: string, verified: boolean, updatedAt?: any | null, createdAt: any }> } };
+
+export type AthletesQueryVariables = Exact<{
+  where?: InputMaybe<AthleteWhere>;
+}>;
 
 
-export const CreateAthleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAthlete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"AthleteCreateInput"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAthletes"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"athletes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"birthday"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"givenName"}},{"kind":"Field","name":{"kind":"Name","value":"familyName"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]}}]} as unknown as DocumentNode<CreateAthleteMutation, CreateAthleteMutationVariables>;
+export type AthletesQuery = { __typename?: 'Query', athletes: Array<{ __typename?: 'Athlete', id: string }> };
+
+export type CompetitionDefaultFieldsFragment = { __typename?: 'Competition', id: string, verified: boolean, createdAt: any, updatedAt?: any | null } & { ' $fragmentName'?: 'CompetitionDefaultFieldsFragment' };
+
+export type CompetitionDetailsFragment = { __typename?: 'Competition', name: string, date: any, scraped: boolean } & { ' $fragmentName'?: 'CompetitionDetailsFragment' };
+
+export type CreateCompetitionMutationVariables = Exact<{
+  input: Array<CompetitionCreateInput> | CompetitionCreateInput;
+}>;
+
+
+export type CreateCompetitionMutation = { __typename?: 'Mutation', createCompetitions: { __typename?: 'CreateCompetitionsMutationResponse', competitions: Array<(
+      { __typename?: 'Competition', nation: (
+        { __typename?: 'Nation' }
+        & { ' $fragmentRefs'?: { 'NationDetailsFragment': NationDetailsFragment;'NationDefaultFieldsFragment': NationDefaultFieldsFragment } }
+      ), dataSourcesConnection: { __typename?: 'CompetitionDataSourcesConnection', edges: Array<{ __typename?: 'CompetitionDataSourcesRelationship', entityId: string, createdAt: any, updatedAt?: any | null, node: (
+            { __typename?: 'DataSource', name: string }
+            & { ' $fragmentRefs'?: { 'DataSourceDefaultFieldsFragment': DataSourceDefaultFieldsFragment } }
+          ) }> } }
+      & { ' $fragmentRefs'?: { 'CompetitionDetailsFragment': CompetitionDetailsFragment;'CompetitionDefaultFieldsFragment': CompetitionDefaultFieldsFragment } }
+    )> } };
+
+export type CompetitionsQueryVariables = Exact<{
+  where?: InputMaybe<CompetitionWhere>;
+}>;
+
+
+export type CompetitionsQuery = { __typename?: 'Query', competitions: Array<(
+    { __typename?: 'Competition', dataSourcesConnection: { __typename?: 'CompetitionDataSourcesConnection', edges: Array<{ __typename?: 'CompetitionDataSourcesRelationship', entityId: string, node: { __typename?: 'DataSource', id: string, name: string } }> } }
+    & { ' $fragmentRefs'?: { 'CompetitionDetailsFragment': CompetitionDetailsFragment;'CompetitionDefaultFieldsFragment': CompetitionDefaultFieldsFragment } }
+  )> };
+
+export type CompetitionsAggregateQueryVariables = Exact<{
+  where?: InputMaybe<CompetitionWhere>;
+}>;
+
+
+export type CompetitionsAggregateQuery = { __typename?: 'Query', competitionsAggregate: { __typename?: 'CompetitionAggregateSelection', count: number } };
+
+export type DataSourceDefaultFieldsFragment = { __typename?: 'DataSource', id: string, verified: boolean, createdAt: any, updatedAt?: any | null } & { ' $fragmentName'?: 'DataSourceDefaultFieldsFragment' };
+
+export type CreateEventsMutationVariables = Exact<{
+  input: Array<EventCreateInput> | EventCreateInput;
+}>;
+
+
+export type CreateEventsMutation = { __typename?: 'Mutation', createEvents: { __typename?: 'CreateEventsMutationResponse', events: Array<{ __typename?: 'Event', id: string, verified: boolean, updatedAt?: any | null, createdAt: any, class: EventClass_Iwf, type: EventType_Iwf }> } };
+
+export type NationDefaultFieldsFragment = { __typename?: 'Nation', id: string, verified: boolean, createdAt: any, updatedAt?: any | null } & { ' $fragmentName'?: 'NationDefaultFieldsFragment' };
+
+export type NationDetailsFragment = { __typename?: 'Nation', name?: string | null, code: string } & { ' $fragmentName'?: 'NationDetailsFragment' };
+
+export const CompetitionDefaultFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompetitionDefaultFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Competition"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]} as unknown as DocumentNode<CompetitionDefaultFieldsFragment, unknown>;
+export const CompetitionDetailsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompetitionDetails"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Competition"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"scraped"}}]}}]} as unknown as DocumentNode<CompetitionDetailsFragment, unknown>;
+export const DataSourceDefaultFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"DataSourceDefaultFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DataSource"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]} as unknown as DocumentNode<DataSourceDefaultFieldsFragment, unknown>;
+export const NationDefaultFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"NationDefaultFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Nation"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]} as unknown as DocumentNode<NationDefaultFieldsFragment, unknown>;
+export const NationDetailsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"NationDetails"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Nation"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"code"}}]}}]} as unknown as DocumentNode<NationDetailsFragment, unknown>;
+export const CreateAthletesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAthletes"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"AthleteCreateInput"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAthletes"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"athletes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"birthday"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]}}]} as unknown as DocumentNode<CreateAthletesMutation, CreateAthletesMutationVariables>;
+export const AthletesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Athletes"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"where"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"AthleteWhere"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"athletes"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<AthletesQuery, AthletesQueryVariables>;
+export const CreateCompetitionDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateCompetition"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CompetitionCreateInput"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createCompetitions"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"competitions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompetitionDetails"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompetitionDefaultFields"}},{"kind":"Field","name":{"kind":"Name","value":"nation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"NationDetails"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"NationDefaultFields"}}]}},{"kind":"Field","name":{"kind":"Name","value":"dataSourcesConnection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entityId"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"DataSourceDefaultFields"}}]}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompetitionDetails"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Competition"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"scraped"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompetitionDefaultFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Competition"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"NationDetails"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Nation"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"code"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"NationDefaultFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Nation"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"DataSourceDefaultFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DataSource"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]} as unknown as DocumentNode<CreateCompetitionMutation, CreateCompetitionMutationVariables>;
+export const CompetitionsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Competitions"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"where"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"CompetitionWhere"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"competitions"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompetitionDetails"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompetitionDefaultFields"}},{"kind":"Field","name":{"kind":"Name","value":"dataSourcesConnection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entityId"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompetitionDetails"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Competition"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"scraped"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompetitionDefaultFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Competition"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]} as unknown as DocumentNode<CompetitionsQuery, CompetitionsQueryVariables>;
+export const CompetitionsAggregateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"CompetitionsAggregate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"where"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"CompetitionWhere"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"competitionsAggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]} as unknown as DocumentNode<CompetitionsAggregateQuery, CompetitionsAggregateQueryVariables>;
+export const CreateEventsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateEvents"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"EventCreateInput"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createEvents"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"events"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"class"}},{"kind":"Field","name":{"kind":"Name","value":"type"}}]}}]}}]}}]} as unknown as DocumentNode<CreateEventsMutation, CreateEventsMutationVariables>;

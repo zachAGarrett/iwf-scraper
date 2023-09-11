@@ -2,10 +2,12 @@ import puppeteer from "puppeteer";
 import parseResults from "./parseResults";
 import { EventGender } from "../../types";
 
-export interface getEventResultsProps {
-  event_id: number;
+export interface getCompetitionResultsProps {
+  event_id: number | string;
 }
-const getEventResults = async ({ event_id }: getEventResultsProps) => {
+const getCompetitionResults = async ({
+  event_id,
+}: getCompetitionResultsProps) => {
   const compositeUri = `https://iwf.sport/results/results-by-events/?event_id=${event_id}`;
 
   // Launch the browser and open a new blank page
@@ -13,20 +15,20 @@ const getEventResults = async ({ event_id }: getEventResultsProps) => {
   const browser = await puppeteer.launch({ headless: "new" });
   const page = await browser.newPage();
 
-  // Navigate the page to the event we're interested in
-  console.log(`Navigating to event page ${compositeUri}`);
+  // Navigate the page to the competition we're interested in
+  console.log(`Navigating to competition page ${compositeUri}`);
   await page.goto(compositeUri);
 
   //// Get the data from known selectors
-  console.log(`Getting data for event ${event_id}`);
+  console.log(`Getting data for competition ${event_id}`);
   /** Set up the known selectors from the results page.
-   * The event results page uses a tab structure to show and hide content,
+   * The competition results page uses a tab structure to show and hide content,
    * but all data is present on the page at load time.
    * A future optimization would store and validate these selectors
    * and this scraper would ingest them.
    *
    * Note:
-   * If there is some event results page that doesn't adhere to this structure, this scraper will throw an error */
+   * If there is some competition results page that doesn't adhere to this structure, this scraper will throw an error */
   const eventGenderSelectors = [
     { eventGender: EventGender.MEN, selector: "#men_snatchjerk" },
     { eventGender: EventGender.WOMEN, selector: "#women_snatchjerk" },
@@ -47,7 +49,6 @@ const getEventResults = async ({ event_id }: getEventResultsProps) => {
         );
       }
       const eventGenderResults = await parseResults({
-        eventGender,
         element: resultSection,
       });
       return eventGenderResults;
@@ -58,4 +59,4 @@ const getEventResults = async ({ event_id }: getEventResultsProps) => {
   return results.flat();
 };
 
-export default getEventResults;
+export default getCompetitionResults;

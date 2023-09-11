@@ -1,7 +1,7 @@
 import { ElementHandle } from "puppeteer";
 import parseLegend from "./parseLegend";
 import parseDataRow from "./parseRowData";
-import { EventGender } from "../../../types";
+import parseWeightUnitGender from "./parseRowData/parseWeightUnitGender";
 
 /**
  * Each event gender results section is a group of non-homogenous DIVs.
@@ -14,10 +14,9 @@ import { EventGender } from "../../../types";
  * so this function will throw an error if asked to parse that screen.
  */
 export interface ParseResultsProps {
-  eventGender: EventGender;
   element: ElementHandle<Element> | null;
 }
-const ParseResults = async ({ eventGender, element }: ParseResultsProps) => {
+const ParseResults = async ({ element }: ParseResultsProps) => {
   const classNames = await element?.$$eval(".results__title h3", (elements) =>
     elements.map((element) => element.textContent?.replace(/\n/g, ""))
   );
@@ -62,22 +61,29 @@ const ParseResults = async ({ eventGender, element }: ParseResultsProps) => {
       }
 
       /**
+       * On the event detail pages, there are three results sections for each class name.
+       * Every results section has its own event name.
+       * So the rate of change of class name to event name is 1/3.
+       */
+      const category = parseWeightUnitGender(classNames[Math.floor(i / 3)]!);
+
+      /**
        * Parse the results from every data row and await the completion of all.
        */
       const eventResults = await Promise.all(
-        dataRows.map((dataRow) => parseDataRow(dataRow, legendCells))
+        dataRows.map((dataRow) =>
+          parseDataRow({
+            dataRow,
+            keys: legendCells,
+          })
+        )
       );
-      const category = parseWeightUnitGender(classNames[Math.floor(i / 3)]!);
+
       return {
-        EventGender: category?.gender,
-        /**
-         * On the event detail pages, there are three results sections for each class name.
-         * Every results section has its own event name.
-         * So the rate of change of class name to event name is 1/3.
-         */
-        EventNameShort: `${category?.weight}${category?.unit}`,
-        LiftName: listNames[i],
-        results: eventResults,
+        category,
+        liftName: listNames[i],
+        rows: eventResults,
+        keys: legendCells,
       };
     })
   );
@@ -85,23 +91,3 @@ const ParseResults = async ({ eventGender, element }: ParseResultsProps) => {
 };
 
 export default ParseResults;
-
-const parseWeightUnitGender = (inputString: string) => {
-  // Split the input string by spaces
-  const parts = inputString.split(" ");
-
-  if (parts.length >= 3) {
-    const weight = parseFloat(parts[0]); // Parse the numeric part as a float
-    const unit = parts[1]; // Unit is the second part
-    const gender = parts.slice(2).join(" "); // Gender is the rest of the parts
-
-    return {
-      weight,
-      unit,
-      gender,
-    };
-  } else {
-    // Handle invalid input
-    return null;
-  }
-};

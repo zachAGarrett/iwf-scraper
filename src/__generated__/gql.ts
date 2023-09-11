@@ -13,7 +13,17 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\nmutation CreateAthlete($input: [AthleteCreateInput!]!) {\n    createAthletes(input: $input) {\n      athletes {\n        birthday\n        id\n        givenName\n        familyName\n        verified\n        updatedAt\n        createdAt\n      }\n    }\n  }\n": types.CreateAthleteDocument,
+    "\nmutation CreateAthletes($input: [AthleteCreateInput!]!) {\n    createAthletes(input: $input) {\n      athletes {\n        birthday\n        id\n        name\n        verified\n        updatedAt\n        createdAt\n      }\n    }\n  }\n": types.CreateAthletesDocument,
+    "\nquery Athletes($where: AthleteWhere) {\n    athletes(where: $where) {\n      id\n    }\n  }\n": types.AthletesDocument,
+    "\nfragment CompetitionDefaultFields on Competition {\n    id\n    verified\n    createdAt\n    updatedAt\n}\n": types.CompetitionDefaultFieldsFragmentDoc,
+    "\nfragment CompetitionDetails on Competition {\n    name\n    date\n    scraped\n}\n": types.CompetitionDetailsFragmentDoc,
+    "\nmutation CreateCompetition($input: [CompetitionCreateInput!]!) {\n    createCompetitions(input: $input) {\n      competitions {\n        ...CompetitionDetails\n        ...CompetitionDefaultFields\n        nation {\n          ...NationDetails\n          ...NationDefaultFields\n        }\n        dataSourcesConnection {\n          edges {\n            entityId\n            createdAt\n            updatedAt\n            node {\n                name\n                ...DataSourceDefaultFields\n            }\n          }\n        }\n      }\n    }\n  }\n": types.CreateCompetitionDocument,
+    "\nquery Competitions($where: CompetitionWhere) {\n    competitions(where: $where) {\n      ...CompetitionDetails\n      ...CompetitionDefaultFields\n      dataSourcesConnection {\n        edges {\n          entityId\n          node {\n            id\n            name\n          }\n        }\n      }\n    }\n  }\n": types.CompetitionsDocument,
+    "\nquery CompetitionsAggregate($where: CompetitionWhere) {\n    competitionsAggregate(where: $where) {\n      count\n    }\n  }\n": types.CompetitionsAggregateDocument,
+    "\nfragment DataSourceDefaultFields on DataSource {\n    id\n    verified\n    createdAt\n    updatedAt\n}\n": types.DataSourceDefaultFieldsFragmentDoc,
+    "\nmutation CreateEvents($input: [EventCreateInput!]!) {\n    createEvents(input: $input) {\n      events {\n        id\n        verified\n        updatedAt\n        createdAt\n        class\n        type\n      }\n    }\n  }\n": types.CreateEventsDocument,
+    "\nfragment NationDefaultFields on Nation {\n    id\n    verified\n    createdAt\n    updatedAt\n}\n": types.NationDefaultFieldsFragmentDoc,
+    "\nfragment NationDetails on Nation {\n    name\n    code\n}\n": types.NationDetailsFragmentDoc,
 };
 
 /**
@@ -33,7 +43,47 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\nmutation CreateAthlete($input: [AthleteCreateInput!]!) {\n    createAthletes(input: $input) {\n      athletes {\n        birthday\n        id\n        givenName\n        familyName\n        verified\n        updatedAt\n        createdAt\n      }\n    }\n  }\n"): (typeof documents)["\nmutation CreateAthlete($input: [AthleteCreateInput!]!) {\n    createAthletes(input: $input) {\n      athletes {\n        birthday\n        id\n        givenName\n        familyName\n        verified\n        updatedAt\n        createdAt\n      }\n    }\n  }\n"];
+export function gql(source: "\nmutation CreateAthletes($input: [AthleteCreateInput!]!) {\n    createAthletes(input: $input) {\n      athletes {\n        birthday\n        id\n        name\n        verified\n        updatedAt\n        createdAt\n      }\n    }\n  }\n"): (typeof documents)["\nmutation CreateAthletes($input: [AthleteCreateInput!]!) {\n    createAthletes(input: $input) {\n      athletes {\n        birthday\n        id\n        name\n        verified\n        updatedAt\n        createdAt\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\nquery Athletes($where: AthleteWhere) {\n    athletes(where: $where) {\n      id\n    }\n  }\n"): (typeof documents)["\nquery Athletes($where: AthleteWhere) {\n    athletes(where: $where) {\n      id\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\nfragment CompetitionDefaultFields on Competition {\n    id\n    verified\n    createdAt\n    updatedAt\n}\n"): (typeof documents)["\nfragment CompetitionDefaultFields on Competition {\n    id\n    verified\n    createdAt\n    updatedAt\n}\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\nfragment CompetitionDetails on Competition {\n    name\n    date\n    scraped\n}\n"): (typeof documents)["\nfragment CompetitionDetails on Competition {\n    name\n    date\n    scraped\n}\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\nmutation CreateCompetition($input: [CompetitionCreateInput!]!) {\n    createCompetitions(input: $input) {\n      competitions {\n        ...CompetitionDetails\n        ...CompetitionDefaultFields\n        nation {\n          ...NationDetails\n          ...NationDefaultFields\n        }\n        dataSourcesConnection {\n          edges {\n            entityId\n            createdAt\n            updatedAt\n            node {\n                name\n                ...DataSourceDefaultFields\n            }\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\nmutation CreateCompetition($input: [CompetitionCreateInput!]!) {\n    createCompetitions(input: $input) {\n      competitions {\n        ...CompetitionDetails\n        ...CompetitionDefaultFields\n        nation {\n          ...NationDetails\n          ...NationDefaultFields\n        }\n        dataSourcesConnection {\n          edges {\n            entityId\n            createdAt\n            updatedAt\n            node {\n                name\n                ...DataSourceDefaultFields\n            }\n          }\n        }\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\nquery Competitions($where: CompetitionWhere) {\n    competitions(where: $where) {\n      ...CompetitionDetails\n      ...CompetitionDefaultFields\n      dataSourcesConnection {\n        edges {\n          entityId\n          node {\n            id\n            name\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\nquery Competitions($where: CompetitionWhere) {\n    competitions(where: $where) {\n      ...CompetitionDetails\n      ...CompetitionDefaultFields\n      dataSourcesConnection {\n        edges {\n          entityId\n          node {\n            id\n            name\n          }\n        }\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\nquery CompetitionsAggregate($where: CompetitionWhere) {\n    competitionsAggregate(where: $where) {\n      count\n    }\n  }\n"): (typeof documents)["\nquery CompetitionsAggregate($where: CompetitionWhere) {\n    competitionsAggregate(where: $where) {\n      count\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\nfragment DataSourceDefaultFields on DataSource {\n    id\n    verified\n    createdAt\n    updatedAt\n}\n"): (typeof documents)["\nfragment DataSourceDefaultFields on DataSource {\n    id\n    verified\n    createdAt\n    updatedAt\n}\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\nmutation CreateEvents($input: [EventCreateInput!]!) {\n    createEvents(input: $input) {\n      events {\n        id\n        verified\n        updatedAt\n        createdAt\n        class\n        type\n      }\n    }\n  }\n"): (typeof documents)["\nmutation CreateEvents($input: [EventCreateInput!]!) {\n    createEvents(input: $input) {\n      events {\n        id\n        verified\n        updatedAt\n        createdAt\n        class\n        type\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\nfragment NationDefaultFields on Nation {\n    id\n    verified\n    createdAt\n    updatedAt\n}\n"): (typeof documents)["\nfragment NationDefaultFields on Nation {\n    id\n    verified\n    createdAt\n    updatedAt\n}\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\nfragment NationDetails on Nation {\n    name\n    code\n}\n"): (typeof documents)["\nfragment NationDetails on Nation {\n    name\n    code\n}\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

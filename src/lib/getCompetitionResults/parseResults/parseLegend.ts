@@ -9,6 +9,13 @@ const parseLegend = (legendRow: ElementHandle<Element> | null) =>
   legendRow?.$$eval("p", (cells) =>
     /** Strip all newlines and spaces from the key.
      * It might be better to snake_case the keys and trim leading and trailing spaces rather than stripping all spaces. */
-    cells.map((cell) => cell.textContent?.replace(/[:\s\n]/g, ""))
+    cells
+      .map((cell) => {
+        /**
+         * todo: parse the legend to expected literals
+         */
+        return cell.textContent?.replace(/[:\s\n]/g, "");
+      })
+      .filter((value): value is string => value !== undefined)
   );
 export default parseLegend;
