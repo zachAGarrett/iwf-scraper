@@ -2,6 +2,13 @@ export enum EventGender {
   "MEN" = "Men",
   "WOMEN" = "Women",
 }
+export enum LegendKey {
+  Rank = "rank",
+  Name = "name",
+  Nation = "nation",
+  Bweight = "bodyweight",
+  Group = "group",
+}
 
 export type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
 export type XOR<T, U> = T | U extends object

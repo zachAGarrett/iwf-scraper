@@ -1,61 +1,93 @@
-import puppeteer from "puppeteer";
-import parseResults from "./parseResults";
-import { EventGender } from "../../types";
+import { ElementHandle } from "puppeteer";
+import { MaybeCreateAthletesReturnType } from "../maybeCreateAthletes";
+import { MaybeCreateCompetitionReturnType } from "../maybeCreateCompetition";
+import unpackPromiseSettledResults from "../unpackPromiseSettledRestults";
+import parseResultsSection from "./parseResultsSection";
+import { EventCreateInput } from "../../__generated__/graphql";
+import { GraphQLClient } from "graphql-request";
 
-export interface getEventResultsProps {
-  event_id: number;
+/**
+ * Each results section is a group of non-homogenous DIVs.
+ * The titles for class and event both exist at the same level in the DOM tree.
+ * This creates some challenges for determining which results belong to which class / event pair.
+ * Fortunately, the pattern of results sections to class and event titles is predictable.
+ * The pattern is [Class, Event, Results, Event, Results, Event, Results].
+ * But this pattern only holds for the detailed results sections of the event screens.
+ * The event totals screen does not have an event title after the class title,
+ * so this function will throw an error if asked to parse that screen.
+ */
+export interface ParseResultsSectionProps {
+  resultsSection: ElementHandle<Element>;
+  athleteIds: MaybeCreateAthletesReturnType[];
+  competitionId: MaybeCreateCompetitionReturnType;
+  client: GraphQLClient;
 }
-const getEventResults = async ({ event_id }: getEventResultsProps) => {
-  const compositeUri = `https://iwf.sport/results/results-by-events/?event_id=${event_id}`;
-
-  // Launch the browser and open a new blank page
-  console.log("Launching puppeteer");
-  const browser = await puppeteer.launch({ headless: "new" });
-  const page = await browser.newPage();
-
-  // Navigate the page to the event we're interested in
-  console.log(`Navigating to event page ${compositeUri}`);
-  await page.goto(compositeUri);
-
-  //// Get the data from known selectors
-  console.log(`Getting data for event ${event_id}`);
-  /** Set up the known selectors from the results page.
-   * The event results page uses a tab structure to show and hide content,
-   * but all data is present on the page at load time.
-   * A future optimization would store and validate these selectors
-   * and this scraper would ingest them.
-   *
-   * Note:
-   * If there is some event results page that doesn't adhere to this structure, this scraper will throw an error */
-  const eventGenderSelectors = [
-    { eventGender: EventGender.MEN, selector: "#men_snatchjerk" },
-    { eventGender: EventGender.WOMEN, selector: "#women_snatchjerk" },
-  ];
-
-  /** Await the results from parsing all selectors.
-   * This process is a little slow, since parseResultSection() contains several nested awaits.
-   * Additionally, if any operation fails, they all fail.
-   * Therefore, a more robust solution would use await Promise.allSettled()
-   * and handle resolved and rejected responses. */
-  const results = await Promise.all(
-    eventGenderSelectors.map(async ({ eventGender, selector }) => {
-      const resultSection = await page.$(selector);
-
-      if (resultSection === null) {
-        throw new Error(
-          `Could not find the targeted section: ${selector} at url: ${compositeUri}`
-        );
-      }
-      const eventGenderResults = await parseResults({
-        eventGender,
-        element: resultSection,
-      });
-      return eventGenderResults;
-    })
+const getEventResults = async ({
+  resultsSection,
+  athleteIds,
+  competitionId,
+  client,
+}: ParseResultsSectionProps) => {
+  const classNames = await resultsSection.$$eval(
+    ".results__title h3",
+    (elements) =>
+      elements.map((element) => element.textContent?.replace(/\n/g, ""))
   );
 
-  await browser.close();
-  return results.flat();
+  const eventTitles = await resultsSection.$$eval(
+    ".results__title p",
+    (elements) =>
+      elements.map((element) => element.textContent?.replace(/\n/g, ""))
+  );
+
+  const resultsSections = await resultsSection.$$(".cards");
+  const eventSections: ElementHandle<Element>[] = [];
+  // every third section is a totals card, which we don't need (we got the competition totals before running the section parser)
+  for (let i = 0; i < resultsSections.length; i++) {
+    if ((i + 1) % 3 !== 0) {
+      eventSections.push(resultsSections[i]);
+    }
+  }
+
+  /**
+   * Handle errors for possibly missing elements.
+   */
+  if (resultsSections === undefined) {
+    throw new Error("Could not find any Results.");
+  } else if (classNames === undefined) {
+    throw new Error("Could not identify classes in the results.");
+  }
+  if (eventTitles === undefined) {
+    throw new Error("Could not find any events.");
+  }
+
+  /**
+   * Map over all the results sections and get the row data for each.
+   * Preserve the Competition > EventGender > Class  > Event > Results structure
+   */
+  const createEventInputsSettledResults = await Promise.allSettled(
+    eventSections.map(async (resultsSection, i) =>
+      parseResultsSection({
+        resultsSection,
+        athleteIds,
+        competitionId,
+        eventTitles,
+        classNames,
+        iterator: i,
+        client,
+      })
+    )
+  );
+
+  let resolvedCreateEventInputs: Array<
+    Awaited<ReturnType<typeof parseResultsSection>>
+  > = [];
+  unpackPromiseSettledResults(
+    createEventInputsSettledResults,
+    (createEventInput) => resolvedCreateEventInputs.push(createEventInput),
+    (message) => console.debug(message)
+  );
+  return resolvedCreateEventInputs;
 };
 
 export default getEventResults;
