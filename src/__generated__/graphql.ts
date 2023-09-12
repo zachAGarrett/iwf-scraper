@@ -971,8 +971,10 @@ export type AthleteEventEventsEdgeAggregateSelection = {
 export type AthleteEventEventsNodeAggregateSelection = {
   __typename?: 'AthleteEventEventsNodeAggregateSelection';
   createdAt: DateTimeAggregateSelectionNonNullable;
+  genderClass: StringAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   updatedAt: DateTimeAggregateSelectionNullable;
+  weightClass: StringAggregateSelectionNonNullable;
 };
 
 export type AthleteEventsAggregateInput = {
@@ -1142,6 +1144,21 @@ export type AthleteEventsNodeAggregationWhereInput = {
   createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  genderClass_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  genderClass_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  genderClass_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  genderClass_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  genderClass_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  genderClass_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
   updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1152,6 +1169,21 @@ export type AthleteEventsNodeAggregationWhereInput = {
   updatedAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  weightClass_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  weightClass_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  weightClass_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  weightClass_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  weightClass_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  weightClass_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type AthleteEventsRelationship = AthleteDid & {
@@ -1893,8 +1925,10 @@ export type AttemptEventEventAggregationSelection = {
 export type AttemptEventEventNodeAggregateSelection = {
   __typename?: 'AttemptEventEventNodeAggregateSelection';
   createdAt: DateTimeAggregateSelectionNonNullable;
+  genderClass: StringAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   updatedAt: DateTimeAggregateSelectionNullable;
+  weightClass: StringAggregateSelectionNonNullable;
 };
 
 export type AttemptEventFieldInput = {
@@ -1917,6 +1951,21 @@ export type AttemptEventNodeAggregationWhereInput = {
   createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  genderClass_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  genderClass_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  genderClass_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  genderClass_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  genderClass_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  genderClass_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
   updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1927,6 +1976,21 @@ export type AttemptEventNodeAggregationWhereInput = {
   updatedAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  weightClass_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  weightClass_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  weightClass_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  weightClass_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  weightClass_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  weightClass_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type AttemptEventRelationship = {
@@ -2809,8 +2873,10 @@ export type CompetitionEventEventsAggregationSelection = {
 export type CompetitionEventEventsNodeAggregateSelection = {
   __typename?: 'CompetitionEventEventsNodeAggregateSelection';
   createdAt: DateTimeAggregateSelectionNonNullable;
+  genderClass: StringAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   updatedAt: DateTimeAggregateSelectionNullable;
+  weightClass: StringAggregateSelectionNonNullable;
 };
 
 export type CompetitionEventsAggregateInput = {
@@ -2893,6 +2959,21 @@ export type CompetitionEventsNodeAggregationWhereInput = {
   createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
   createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  genderClass_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  genderClass_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  genderClass_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  genderClass_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  genderClass_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  genderClass_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  genderClass_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
   updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
@@ -2903,6 +2984,21 @@ export type CompetitionEventsNodeAggregationWhereInput = {
   updatedAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  weightClass_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  weightClass_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  weightClass_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  weightClass_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  weightClass_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  weightClass_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  weightClass_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type CompetitionEventsRelationship = {
@@ -4253,7 +4349,7 @@ export type Event = {
   attemptsAggregate?: Maybe<EventAttemptAttemptsAggregationSelection>;
   attemptsConnection: EventAttemptsConnection;
   /** The class of the event. */
-  class: EventClass_Iwf;
+  class?: Maybe<EventClass_Iwf>;
   /** The competition to which this event belongs. */
   competition: Competition;
   competitionAggregate?: Maybe<EventCompetitionCompetitionAggregationSelection>;
@@ -4262,6 +4358,8 @@ export type Event = {
   createdAt: Scalars['DateTime']['output'];
   /** The date of the event. */
   date?: Maybe<Scalars['Date']['output']>;
+  /** The gender class of the event */
+  genderClass: Scalars['String']['output'];
   /** The unique identifier of the event. */
   id: Scalars['ID']['output'];
   /** The type of the event. */
@@ -4270,6 +4368,8 @@ export type Event = {
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
   /** Indicates whether the event is verified. */
   verified: Scalars['Boolean']['output'];
+  /** The weight class of the event */
+  weightClass: Scalars['String']['output'];
 };
 
 
@@ -4351,14 +4451,26 @@ export type EventAggregateSelection = {
   __typename?: 'EventAggregateSelection';
   count: Scalars['Int']['output'];
   createdAt: DateTimeAggregateSelectionNonNullable;
+  genderClass: StringAggregateSelectionNonNullable;
   id: IdAggregateSelectionNonNullable;
   updatedAt: DateTimeAggregateSelectionNullable;
+  weightClass: StringAggregateSelectionNonNullable;
 };
 
 export type EventAthleteAthletesAggregationSelection = {
   __typename?: 'EventAthleteAthletesAggregationSelection';
   count: Scalars['Int']['output'];
+  edge?: Maybe<EventAthleteAthletesEdgeAggregateSelection>;
   node?: Maybe<EventAthleteAthletesNodeAggregateSelection>;
+};
+
+export type EventAthleteAthletesEdgeAggregateSelection = {
+  __typename?: 'EventAthleteAthletesEdgeAggregateSelection';
+  bodyweight: FloatAggregateSelectionNonNullable;
+  createdAt: DateTimeAggregateSelectionNonNullable;
+  group: StringAggregateSelectionNonNullable;
+  rank: IntAggregateSelectionNullable;
+  updatedAt: DateTimeAggregateSelectionNullable;
 };
 
 export type EventAthleteAthletesNodeAggregateSelection = {
@@ -4378,11 +4490,13 @@ export type EventAthletesAggregateInput = {
   count_GTE?: InputMaybe<Scalars['Int']['input']>;
   count_LT?: InputMaybe<Scalars['Int']['input']>;
   count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  edge?: InputMaybe<EventAthletesEdgeAggregationWhereInput>;
   node?: InputMaybe<EventAthletesNodeAggregationWhereInput>;
 };
 
 export type EventAthletesConnectFieldInput = {
   connect?: InputMaybe<Array<AthleteConnectInput>>;
+  edge: AthleteDidCreateInput;
   /** Whether or not to overwrite any matching relationship with the new properties. Will default to `false` in 4.0.0. */
   overwrite?: Scalars['Boolean']['input'];
   where?: InputMaybe<AthleteConnectWhere>;
@@ -4394,6 +4508,7 @@ export type EventAthletesConnectOrCreateFieldInput = {
 };
 
 export type EventAthletesConnectOrCreateFieldInputOnCreate = {
+  edge: AthleteDidCreateInput;
   node: AthleteOnCreateInput;
 };
 
@@ -4405,6 +4520,7 @@ export type EventAthletesConnection = {
 };
 
 export type EventAthletesConnectionSort = {
+  edge?: InputMaybe<AthleteDidSort>;
   node?: InputMaybe<AthleteSort>;
 };
 
@@ -4412,10 +4528,12 @@ export type EventAthletesConnectionWhere = {
   AND?: InputMaybe<Array<EventAthletesConnectionWhere>>;
   NOT?: InputMaybe<EventAthletesConnectionWhere>;
   OR?: InputMaybe<Array<EventAthletesConnectionWhere>>;
+  edge?: InputMaybe<AthleteDidWhere>;
   node?: InputMaybe<AthleteWhere>;
 };
 
 export type EventAthletesCreateFieldInput = {
+  edge: AthleteDidCreateInput;
   node: AthleteCreateInput;
 };
 
@@ -4427,6 +4545,87 @@ export type EventAthletesDeleteFieldInput = {
 export type EventAthletesDisconnectFieldInput = {
   disconnect?: InputMaybe<AthleteDisconnectInput>;
   where?: InputMaybe<EventAthletesConnectionWhere>;
+};
+
+export type EventAthletesEdgeAggregationWhereInput = {
+  AND?: InputMaybe<Array<EventAthletesEdgeAggregationWhereInput>>;
+  NOT?: InputMaybe<EventAthletesEdgeAggregationWhereInput>;
+  OR?: InputMaybe<Array<EventAthletesEdgeAggregationWhereInput>>;
+  bodyweight_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
+  bodyweight_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
+  createdAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  group_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  group_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
+  group_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
+  group_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
+  group_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
+  group_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  group_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  group_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  group_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  group_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  group_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  group_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
+  group_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
+  group_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
+  group_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
+  rank_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
+  rank_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
+  rank_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
+  rank_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
+  rank_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  rank_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
+  rank_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
+  rank_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  rank_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
+  rank_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
+  rank_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
+  rank_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
+  rank_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
+  rank_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
+  rank_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  updatedAt_MAX_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MAX_LTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_EQUAL?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_GTE?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LT?: InputMaybe<Scalars['DateTime']['input']>;
+  updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type EventAthletesFieldInput = {
@@ -4476,13 +4675,24 @@ export type EventAthletesNodeAggregationWhereInput = {
   updatedAt_MIN_LTE?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
-export type EventAthletesRelationship = {
+export type EventAthletesRelationship = AthleteDid & {
   __typename?: 'EventAthletesRelationship';
+  /** The bodyweight of the athlete when participating in the event. */
+  bodyweight: Scalars['Float']['output'];
+  /** The timestamp when this relationship was created. */
+  createdAt: Scalars['DateTime']['output'];
   cursor: Scalars['String']['output'];
+  /** The group the athlete was placed in for the event. */
+  group: Scalars['String']['output'];
   node: Athlete;
+  /** The ranking of the athlete at the conclusion of the event. */
+  rank?: Maybe<Scalars['Int']['output']>;
+  /** The timestamp when this relationship was last updated. */
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
 export type EventAthletesUpdateConnectionInput = {
+  edge?: InputMaybe<AthleteDidUpdateInput>;
   node?: InputMaybe<AthleteUpdateInput>;
 };
 
@@ -4676,26 +4886,26 @@ export type EventAttemptsUpdateFieldInput = {
 
 /** Enumeration of classes for men and women in a iwf competition. */
 export enum EventClass_Iwf {
-  M55 = 'M55',
-  M61 = 'M61',
-  M67 = 'M67',
-  M73 = 'M73',
-  M81 = 'M81',
-  M89 = 'M89',
-  M96 = 'M96',
-  M102 = 'M102',
-  M109 = 'M109',
-  Mp109 = 'MP109',
-  W45 = 'W45',
-  W49 = 'W49',
-  W55 = 'W55',
-  W59 = 'W59',
-  W64 = 'W64',
-  W71 = 'W71',
-  W76 = 'W76',
-  W81 = 'W81',
-  W87 = 'W87',
-  Wp87 = 'WP87'
+  M_55 = 'M_55',
+  M_61 = 'M_61',
+  M_67 = 'M_67',
+  M_73 = 'M_73',
+  M_81 = 'M_81',
+  M_89 = 'M_89',
+  M_96 = 'M_96',
+  M_102 = 'M_102',
+  M_109 = 'M_109',
+  MP109 = 'M_P109',
+  W_45 = 'W_45',
+  W_49 = 'W_49',
+  W_55 = 'W_55',
+  W_59 = 'W_59',
+  W_64 = 'W_64',
+  W_71 = 'W_71',
+  W_76 = 'W_76',
+  W_81 = 'W_81',
+  W_87 = 'W_87',
+  WP87 = 'W_P87'
 }
 
 export type EventCompetitionAggregateInput = {
@@ -4862,11 +5072,13 @@ export type EventConnectWhere = {
 export type EventCreateInput = {
   athletes?: InputMaybe<EventAthletesFieldInput>;
   attempts?: InputMaybe<EventAttemptsFieldInput>;
-  class: EventClass_Iwf;
+  class?: InputMaybe<EventClass_Iwf>;
   competition?: InputMaybe<EventCompetitionFieldInput>;
   date?: InputMaybe<Scalars['Date']['input']>;
+  genderClass: Scalars['String']['input'];
   type: EventType_Iwf;
   verified?: Scalars['Boolean']['input'];
+  weightClass: Scalars['String']['input'];
 };
 
 export type EventDeleteInput = {
@@ -4888,10 +5100,12 @@ export type EventEdge = {
 };
 
 export type EventOnCreateInput = {
-  class: EventClass_Iwf;
+  class?: InputMaybe<EventClass_Iwf>;
   date?: InputMaybe<Scalars['Date']['input']>;
+  genderClass: Scalars['String']['input'];
   type: EventType_Iwf;
   verified?: Scalars['Boolean']['input'];
+  weightClass: Scalars['String']['input'];
 };
 
 export type EventOptions = {
@@ -4912,10 +5126,12 @@ export type EventSort = {
   class?: InputMaybe<SortDirection>;
   createdAt?: InputMaybe<SortDirection>;
   date?: InputMaybe<SortDirection>;
+  genderClass?: InputMaybe<SortDirection>;
   id?: InputMaybe<SortDirection>;
   type?: InputMaybe<SortDirection>;
   updatedAt?: InputMaybe<SortDirection>;
   verified?: InputMaybe<SortDirection>;
+  weightClass?: InputMaybe<SortDirection>;
 };
 
 /** Enumeration of event types for a weightlifting competition */
@@ -4934,8 +5150,10 @@ export type EventUpdateInput = {
   class?: InputMaybe<EventClass_Iwf>;
   competition?: InputMaybe<EventCompetitionUpdateFieldInput>;
   date?: InputMaybe<Scalars['Date']['input']>;
+  genderClass?: InputMaybe<Scalars['String']['input']>;
   type?: InputMaybe<EventType_Iwf>;
   verified?: InputMaybe<Scalars['Boolean']['input']>;
+  weightClass?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type EventWhere = {
@@ -4977,7 +5195,7 @@ export type EventWhere = {
   /** Return Events where some of the related Attempts match this filter */
   attempts_SOME?: InputMaybe<AttemptWhere>;
   class?: InputMaybe<EventClass_Iwf>;
-  class_IN?: InputMaybe<Array<EventClass_Iwf>>;
+  class_IN?: InputMaybe<Array<InputMaybe<EventClass_Iwf>>>;
   competition?: InputMaybe<CompetitionWhere>;
   competitionAggregate?: InputMaybe<EventCompetitionAggregateInput>;
   competitionConnection?: InputMaybe<EventCompetitionConnectionWhere>;
@@ -4995,6 +5213,11 @@ export type EventWhere = {
   date_IN?: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
   date_LT?: InputMaybe<Scalars['Date']['input']>;
   date_LTE?: InputMaybe<Scalars['Date']['input']>;
+  genderClass?: InputMaybe<Scalars['String']['input']>;
+  genderClass_CONTAINS?: InputMaybe<Scalars['String']['input']>;
+  genderClass_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
+  genderClass_IN?: InputMaybe<Array<Scalars['String']['input']>>;
+  genderClass_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
   id_CONTAINS?: InputMaybe<Scalars['ID']['input']>;
   id_ENDS_WITH?: InputMaybe<Scalars['ID']['input']>;
@@ -5009,6 +5232,11 @@ export type EventWhere = {
   updatedAt_LT?: InputMaybe<Scalars['DateTime']['input']>;
   updatedAt_LTE?: InputMaybe<Scalars['DateTime']['input']>;
   verified?: InputMaybe<Scalars['Boolean']['input']>;
+  weightClass?: InputMaybe<Scalars['String']['input']>;
+  weightClass_CONTAINS?: InputMaybe<Scalars['String']['input']>;
+  weightClass_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
+  weightClass_IN?: InputMaybe<Array<Scalars['String']['input']>>;
+  weightClass_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type EventsConnection = {
@@ -6569,14 +6797,31 @@ export type CreateAthletesMutationVariables = Exact<{
 }>;
 
 
-export type CreateAthletesMutation = { __typename?: 'Mutation', createAthletes: { __typename?: 'CreateAthletesMutationResponse', athletes: Array<{ __typename?: 'Athlete', birthday: any, id: string, name: string, verified: boolean, updatedAt?: any | null, createdAt: any }> } };
+export type CreateAthletesMutation = { __typename?: 'Mutation', createAthletes: { __typename?: 'CreateAthletesMutationResponse', athletes: Array<{ __typename?: 'Athlete', birthday: any, id: string, name: string, verified: boolean, updatedAt?: any | null, createdAt: any, dataSourcesConnection: { __typename?: 'AthleteDataSourcesConnection', edges: Array<{ __typename?: 'AthleteDataSourcesRelationship', entityId: string, node: { __typename?: 'DataSource', id: string, name: string } }> } }> } };
 
-export type AthletesQueryVariables = Exact<{
+export type UpdateAthletesMutationVariables = Exact<{
   where?: InputMaybe<AthleteWhere>;
+  connect?: InputMaybe<AthleteConnectInput>;
 }>;
 
 
-export type AthletesQuery = { __typename?: 'Query', athletes: Array<{ __typename?: 'Athlete', id: string }> };
+export type UpdateAthletesMutation = { __typename?: 'Mutation', updateAthletes: { __typename?: 'UpdateAthletesMutationResponse', athletes: Array<{ __typename?: 'Athlete', id: string, dataSourcesConnection: { __typename?: 'AthleteDataSourcesConnection', edges: Array<{ __typename?: 'AthleteDataSourcesRelationship', entityId: string }> } }> } };
+
+export type AthletesQueryVariables = Exact<{
+  where?: InputMaybe<AthleteWhere>;
+  competitionsAggregateWhere?: InputMaybe<CompetitionWhere>;
+  dataSourcesAggregateWhere?: InputMaybe<DataSourceWhere>;
+}>;
+
+
+export type AthletesQuery = { __typename?: 'Query', athletes: Array<{ __typename?: 'Athlete', birthday: any, id: string, name: string, verified: boolean, updatedAt?: any | null, createdAt: any, dataSourcesConnection: { __typename?: 'AthleteDataSourcesConnection', edges: Array<{ __typename?: 'AthleteDataSourcesRelationship', entityId: string, node: { __typename?: 'DataSource', id: string, name: string } }> }, dataSourcesAggregate?: { __typename?: 'AthleteDataSourceDataSourcesAggregationSelection', count: number } | null, competitionsAggregate?: { __typename?: 'AthleteCompetitionCompetitionsAggregationSelection', count: number } | null }> };
+
+export type CreateAttemptsMutationVariables = Exact<{
+  input: Array<AttemptCreateInput> | AttemptCreateInput;
+}>;
+
+
+export type CreateAttemptsMutation = { __typename?: 'Mutation', createAttempts: { __typename?: 'CreateAttemptsMutationResponse', attempts: Array<{ __typename?: 'Attempt', id: string, number: number, weight: number, successful: boolean }> } };
 
 export type CompetitionDefaultFieldsFragment = { __typename?: 'Competition', id: string, verified: boolean, createdAt: any, updatedAt?: any | null } & { ' $fragmentName'?: 'CompetitionDefaultFieldsFragment' };
 
@@ -6622,7 +6867,7 @@ export type CreateEventsMutationVariables = Exact<{
 }>;
 
 
-export type CreateEventsMutation = { __typename?: 'Mutation', createEvents: { __typename?: 'CreateEventsMutationResponse', events: Array<{ __typename?: 'Event', id: string, verified: boolean, updatedAt?: any | null, createdAt: any, class: EventClass_Iwf, type: EventType_Iwf }> } };
+export type CreateEventsMutation = { __typename?: 'Mutation', createEvents: { __typename?: 'CreateEventsMutationResponse', events: Array<{ __typename?: 'Event', type: EventType_Iwf, class?: EventClass_Iwf | null, id: string, competition: { __typename?: 'Competition', id: string }, attempts: Array<{ __typename?: 'Attempt', id: string, athlete: { __typename?: 'Athlete', id: string } }>, athletes: Array<{ __typename?: 'Athlete', id: string }> }> } };
 
 export type NationDefaultFieldsFragment = { __typename?: 'Nation', id: string, verified: boolean, createdAt: any, updatedAt?: any | null } & { ' $fragmentName'?: 'NationDefaultFieldsFragment' };
 
@@ -6633,9 +6878,11 @@ export const CompetitionDetailsFragmentDoc = {"kind":"Document","definitions":[{
 export const DataSourceDefaultFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"DataSourceDefaultFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DataSource"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]} as unknown as DocumentNode<DataSourceDefaultFieldsFragment, unknown>;
 export const NationDefaultFieldsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"NationDefaultFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Nation"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]} as unknown as DocumentNode<NationDefaultFieldsFragment, unknown>;
 export const NationDetailsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"NationDetails"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Nation"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"code"}}]}}]} as unknown as DocumentNode<NationDetailsFragment, unknown>;
-export const CreateAthletesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAthletes"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"AthleteCreateInput"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAthletes"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"athletes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"birthday"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]}}]} as unknown as DocumentNode<CreateAthletesMutation, CreateAthletesMutationVariables>;
-export const AthletesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Athletes"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"where"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"AthleteWhere"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"athletes"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<AthletesQuery, AthletesQueryVariables>;
+export const CreateAthletesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAthletes"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"AthleteCreateInput"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAthletes"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"athletes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"birthday"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"dataSourcesConnection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entityId"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<CreateAthletesMutation, CreateAthletesMutationVariables>;
+export const UpdateAthletesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateAthletes"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"where"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"AthleteWhere"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"connect"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"AthleteConnectInput"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateAthletes"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}},{"kind":"Argument","name":{"kind":"Name","value":"connect"},"value":{"kind":"Variable","name":{"kind":"Name","value":"connect"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"athletes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"dataSourcesConnection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entityId"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<UpdateAthletesMutation, UpdateAthletesMutationVariables>;
+export const AthletesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Athletes"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"where"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"AthleteWhere"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"competitionsAggregateWhere"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"CompetitionWhere"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"dataSourcesAggregateWhere"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"DataSourceWhere"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"athletes"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"birthday"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"dataSourcesConnection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entityId"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"dataSourcesAggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"dataSourcesAggregateWhere"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}},{"kind":"Field","name":{"kind":"Name","value":"competitionsAggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"competitionsAggregateWhere"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]} as unknown as DocumentNode<AthletesQuery, AthletesQueryVariables>;
+export const CreateAttemptsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAttempts"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"AttemptCreateInput"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAttempts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attempts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"number"}},{"kind":"Field","name":{"kind":"Name","value":"weight"}},{"kind":"Field","name":{"kind":"Name","value":"successful"}}]}}]}}]}}]} as unknown as DocumentNode<CreateAttemptsMutation, CreateAttemptsMutationVariables>;
 export const CreateCompetitionDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateCompetition"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CompetitionCreateInput"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createCompetitions"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"competitions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompetitionDetails"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompetitionDefaultFields"}},{"kind":"Field","name":{"kind":"Name","value":"nation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"NationDetails"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"NationDefaultFields"}}]}},{"kind":"Field","name":{"kind":"Name","value":"dataSourcesConnection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entityId"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"DataSourceDefaultFields"}}]}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompetitionDetails"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Competition"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"scraped"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompetitionDefaultFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Competition"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"NationDetails"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Nation"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"code"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"NationDefaultFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Nation"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"DataSourceDefaultFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"DataSource"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]} as unknown as DocumentNode<CreateCompetitionMutation, CreateCompetitionMutationVariables>;
 export const CompetitionsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Competitions"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"where"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"CompetitionWhere"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"competitions"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompetitionDetails"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"CompetitionDefaultFields"}},{"kind":"Field","name":{"kind":"Name","value":"dataSourcesConnection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"entityId"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompetitionDetails"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Competition"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"scraped"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CompetitionDefaultFields"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Competition"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]} as unknown as DocumentNode<CompetitionsQuery, CompetitionsQueryVariables>;
 export const CompetitionsAggregateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"CompetitionsAggregate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"where"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"CompetitionWhere"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"competitionsAggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]} as unknown as DocumentNode<CompetitionsAggregateQuery, CompetitionsAggregateQueryVariables>;
-export const CreateEventsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateEvents"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"EventCreateInput"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createEvents"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"events"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"verified"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"class"}},{"kind":"Field","name":{"kind":"Name","value":"type"}}]}}]}}]}}]} as unknown as DocumentNode<CreateEventsMutation, CreateEventsMutationVariables>;
+export const CreateEventsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateEvents"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"EventCreateInput"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createEvents"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"events"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"class"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"competition"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}},{"kind":"Field","name":{"kind":"Name","value":"attempts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"athlete"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"athletes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]}}]} as unknown as DocumentNode<CreateEventsMutation, CreateEventsMutationVariables>;

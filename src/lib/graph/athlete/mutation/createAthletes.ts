@@ -1,6 +1,6 @@
 import { gql } from "../../../../__generated__";
 
-const createAthlete = gql(`
+const createAthletes = gql(`
 mutation CreateAthletes($input: [AthleteCreateInput!]!) {
     createAthletes(input: $input) {
       athletes {
@@ -10,11 +10,20 @@ mutation CreateAthletes($input: [AthleteCreateInput!]!) {
         verified
         updatedAt
         createdAt
+        dataSourcesConnection {
+          edges {
+            entityId
+            node {
+              id
+              name
+            }
+          }
+        }
       }
     }
   }
 `);
-export default createAthlete;
+export default createAthletes;
 
 // {
 //   "input": [

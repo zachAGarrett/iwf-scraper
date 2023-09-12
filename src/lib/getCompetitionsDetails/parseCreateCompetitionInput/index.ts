@@ -1,12 +1,15 @@
 import { ElementHandle } from "puppeteer";
 import { MutationCreateCompetitionsArgs } from "../../../__generated__/graphql";
-import parseDataSources from "./parseDataSource";
+import parseDataSourceInput from "../../parseDataSourceInput";
 
 export default async function parseCreateCompetitionInput(
   node: ElementHandle<HTMLAnchorElement>
 ) {
   let completeInput: MutationCreateCompetitionsArgs["input"][0];
-  const competitionDataSourcesPart = await parseDataSources(node);
+  const competitionDataSourcesPart = await parseDataSourceInput(
+    node,
+    "event_id"
+  );
 
   const competitionDetailsAndNationParts = await node.$$eval("p", (cells) => {
     /**
@@ -73,11 +76,15 @@ export default async function parseCreateCompetitionInput(
       return formattedDate;
     }
 
-    let createCompetitionInputPart: MutationCreateCompetitionsArgs["input"][0] =
-      {
-        date: "",
-        name: "",
-      };
+    let createCompetitionInputPart: {
+      date: string;
+      name: string;
+      nation: MutationCreateCompetitionsArgs["input"][0]["nation"];
+    } = {
+      date: "",
+      name: "",
+      nation: undefined,
+    };
     cells.forEach((cell, i) => {
       switch (i) {
         /**

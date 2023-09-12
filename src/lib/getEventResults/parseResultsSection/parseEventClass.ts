@@ -1,4 +1,4 @@
-export default function parseWeightUnitGender(inputString: string) {
+export default function parseEventClass(inputString: string) {
   // Split the input string by spaces
   const parts = inputString.split(" ");
 

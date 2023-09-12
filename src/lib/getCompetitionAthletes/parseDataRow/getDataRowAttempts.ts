@@ -4,14 +4,20 @@ import cleanCellValue from "./cleanCellValue";
  *
  * @param dataRow This is the element containing the the event results for an athlete in some event gender at some competition. (Competition > EventGender > Class > Event > Results)
  * @param legend This is the map of column keys for the Event. This setup allows for flexibility if not all events have the same number of columns.
+ * @param targetColumns These are the columns of data we actually care about
  * @returns
  */
 
-interface ParseDataRowProps {
+interface GetDataRowAttemptsProps {
   dataRow: ElementHandle<Element>;
   keys: string[];
+  targetColumns: string[];
 }
-const parseDataRow = async ({ dataRow, keys }: ParseDataRowProps) => {
+const getDataRowAttempts = async ({
+  dataRow,
+  keys,
+  targetColumns,
+}: GetDataRowAttemptsProps) => {
   /**
    * Evaluate all P elements in this dataRow.
    * The P elements contain all necessary data except the athlete ID,
@@ -44,8 +50,8 @@ const parseDataRow = async ({ dataRow, keys }: ParseDataRowProps) => {
 
     return cells.map((cell) => {
       return {
+        successful: !containsFailedAttempt(cell),
         value: cell.textContent,
-        isFailedAttempt: containsFailedAttempt(cell),
       };
     });
   });
@@ -60,11 +66,16 @@ const parseDataRow = async ({ dataRow, keys }: ParseDataRowProps) => {
   if (keys.length !== rawData.length) {
     throw new Error("Not every cell has a matching key.");
   }
-  const formattedData = rawData.map(({ isFailedAttempt, value }, i) => ({
-    key: keys[i],
-    value: cleanCellValue(value, keys[i]),
-    isFailedAttempt,
+  const formattedData = rawData.map(({ successful, value }, i) => ({
+    verifiedKey: keys[i],
+    liftNumber: Number(keys[i]),
+    successful: successful,
+    weight: cleanCellValue(value, keys[i]),
   }));
-  return formattedData;
+  const importantData = formattedData.filter(({ verifiedKey }) =>
+    targetColumns.includes(verifiedKey)
+  );
+
+  return importantData;
 };
-export default parseDataRow;
+export default getDataRowAttempts;

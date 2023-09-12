@@ -1,13 +1,17 @@
-import puppeteer from "puppeteer";
+import puppeteer, { Browser } from "puppeteer";
 import { QueryStringOptions } from "../../types";
 import serializeObject from "./serializeObject";
 import { MutationCreateCompetitionsArgs } from "../../__generated__/graphql";
-import parseCompetitionDetails from "./parseCompetitionDetails";
-import parseDataSources from "./parseCompetitionDetails/parseDataSource";
+import parseCreateCompetitionInput from "./parseCreateCompetitionInput";
 
-const getCompetitionsDetails = async (
-  queryStringOptions?: QueryStringOptions
-) => {
+export interface GetCompetitionsDetailsProps {
+  browser: Browser;
+  queryStringOptions?: QueryStringOptions;
+}
+const getCompetitionsDetails = async ({
+  queryStringOptions,
+  browser,
+}: GetCompetitionsDetailsProps) => {
   let compositeUri: string;
   if (queryStringOptions !== undefined) {
     const queryString = `/?${serializeObject(queryStringOptions)}`;
@@ -16,9 +20,6 @@ const getCompetitionsDetails = async (
     compositeUri = `https://iwf.sport/results/results-by-events/`;
   }
 
-  // Launch the browser and open a new blank page
-  console.log("Launching puppeteer");
-  const browser = await puppeteer.launch({ headless: "new" });
   const page = await browser.newPage();
 
   // Navigate the page to the event we're interested in
@@ -34,20 +35,13 @@ const getCompetitionsDetails = async (
   const allCompetitionDetails = await Promise.all(
     competitions.map(
       async (node): Promise<MutationCreateCompetitionsArgs["input"][0]> => {
-        const [dataSources, competitionDetails] = await Promise.all([
-          parseDataSources(node),
-          parseCompetitionDetails(node),
-        ]);
-
-        const createCompetitionInput: MutationCreateCompetitionsArgs["input"][0] =
-          { dataSources, ...competitionDetails };
+        const createCompetitionInput = await parseCreateCompetitionInput(node);
 
         return createCompetitionInput;
       }
     )
   );
 
-  await browser.close();
   return allCompetitionDetails;
 };
 export default getCompetitionsDetails;

@@ -2,16 +2,32 @@ import { GraphQLClient } from "graphql-request";
 import * as dotenv from "dotenv";
 import createCompetition from "./lib/graph/competition/mutation/createCompetition";
 import getCompetitionsDetails from "./lib/getCompetitionsDetails";
-import {
-  CompetitionDefaultFieldsFragmentDoc,
-  CompetitionDetailsFragmentDoc,
-  MutationCreateAthletesArgs,
-} from "./__generated__/graphql";
-import getCompetitionResults from "./lib/getCompetitionResults";
 import competitions from "./lib/graph/competition/query/competitions";
+import maybeCreateCompetition from "./lib/maybeCreateCompetition";
+import getCompetitionAthletes from "./lib/getCompetitionAthletes";
+import { EventGender } from "./types";
+import evaluateResultsSections, {
+  EvaluateResultsSectionsProps,
+  TargetType,
+} from "./lib/evaluateResultsSections";
+import puppeteer from "puppeteer";
+import maybeCreateAthletes, {
+  MaybeCreateAthletesReturnType,
+} from "./lib/maybeCreateAthletes";
 import { useFragment } from "./__generated__";
-import createAthleteInputFromDataRow from "./lib/getCompetitionResults/ORM/createAthleteInputFromDataRow";
-import athletes from "./lib/graph/athlete/query/getAthletes";
+import { CompetitionDefaultFieldsFragmentDoc } from "./__generated__/graphql";
+import createNewAthlete from "./lib/createNewAthlete";
+import connectAthleteToCompetition from "./lib/connectAthleteToCompetition";
+import checkForMatchingKnownAthletes from "./lib/checkForMatchingKnownAthletes";
+import unpackPromiseSettledResults from "./lib/unpackPromiseSettledRestults";
+import getEventResults from "./lib/getEventResults";
+
+/**
+ *  For the sake of testing and completing the project, I'm limiting the scraping to the competition from the requirements.
+ *  That being said, this library will scrape all data from iwf.sport if not filtered below.
+ *  Competition 574 results in the creation of around 1500 nodes.
+ */
+const interestingCompetitionId = "574";
 
 //// env stuff
 dotenv.config();
@@ -23,81 +39,57 @@ if (GRAPH_URI === undefined) {
 
 (async () => {
   const client = new GraphQLClient(GRAPH_URI);
+  // Launch the browser
+  console.log("Launching puppeteer");
+  const browser = await puppeteer.launch({ headless: "new" });
+
   try {
-    const competitionsDetails = await getCompetitionsDetails();
+    /**
+     * 1. Get all the competitions from iwf
+     * Data source: https://iwf.sport/results/results-by-events/
+     * Various filters may be applied here, but for now, this scraper just gets all the competitions
+     */
+    // const competitionsDetails = await getCompetitionsDetails({ browser });
+    const competitionsDetails = (
+      await getCompetitionsDetails({ browser })
+    ).filter(
+      (comp) =>
+        comp.dataSources?.connectOrCreate![0].onCreate.edge.entityId ===
+        interestingCompetitionId
+    );
+    console.log(competitionsDetails);
 
+    /**
+     * TODO: RACE CONDITIONS ARE CAUSING NODE REDUNDANCY ON ATHLETES
+     * CREATE A WORK AROUND TO ENSURE COMPETITIONS ARE PROCESSED SYNCRONOUSLY
+     */
     const results = await Promise.allSettled(
-      competitionsDetails.map(async (competition, i) => {
-        const iterableLogDecorator = `${i} / ${competitionsDetails.length}`;
-        const createCompetitionMutation = await client
-          .request(competitions, {
-            where: {
-              name: competition.name,
-              date: competition.date,
-              nation: {
-                /**
-                 * It's safe to assert this is true because we set the values in getCompetitionDetails()
-                 * In the future, it would be good to create a type for getCompetitionDetails response
-                 * that doesn't rely on the generated graphql types.
-                 *
-                 * Perhaps returning a simple flat object would be good, and then develop an ORM layer.
-                 */
-                code: competition.nation!.connectOrCreate!.where.node.code,
-              },
-            },
-          })
-          .then(async (query) => {
-            /** This assumes there will only be one competition at the union of name, nation, date */
-            const competitionDetails = useFragment(
-              CompetitionDetailsFragmentDoc,
-              query.competitions[0]
-            );
+      /**
+       * For each of the competitions in the iwf data:
+       *
+       * Check if the competition if already in our data and scraped.
+       * Create the competition if it is new.
+       * Scrape the athlete list from the competition totals page.
+       * Connect all athletes to the competition, inserting any unknown athletes into the database
+       * Scrape the competition results from the detailed results page.
+       * Create all the events of the competition and connect them to the athletes.
+       * Set Competition.scraped to true
+       */
+      competitionsDetails.map(async (competitionInput, i) => {
+        /**
+         * This is just for more detailed logging.
+         * It can be used to indicate which operation number the log is from.
+         */
+        const operationNumberLogDecorator = `${i} / ${competitionsDetails.length}`;
 
-            /**
-             * Branch the logic here to account for the three conditions we care about:
-             * 1. The competition does not exist
-             * 2. The competition exists but has not been scraped
-             * 3. The competition exists and has been scraped
-             */
-            if (query.competitions.length === 0) {
-              /**
-               * If the competition does not exist, create and scrape it.
-               */
-              console.log(
-                `[${new Date().toISOString()}] Ok to create and analyze competition ${iterableLogDecorator}`
-              );
-
-              /**
-               * Create a promise that resolves to the competitionId after creating the new competition in the database
-               */
-              const competitionId = client
-                .request(createCompetition, { input: [competition] })
-                .then((mutation) => {
-                  console.log(
-                    `[${new Date().toISOString()}] Successfully created ${iterableLogDecorator}`
-                  );
-                  const createdCompetition =
-                    mutation.createCompetitions.competitions[0];
-                  const competitionDefaultFields = useFragment(
-                    CompetitionDefaultFieldsFragmentDoc,
-                    createdCompetition
-                  );
-                  return {
-                    dataSourceEntityId:
-                      createdCompetition.dataSourcesConnection.edges[0]
-                        .entityId,
-                    internalId: competitionDefaultFields.id,
-                  };
-                });
-
-              return competitionId;
-            } else if (competitionDetails.scraped === false) {
-              /**
-               * The competition exists but has not yet been analyzed
-               */
-              console.log(
-                `[${new Date().toISOString()}] The competition exists but it needs to be analyzed ${iterableLogDecorator}`
-              );
+        /**
+         * Check if the competition if already in our data and scraped.
+         */
+        const knownCompetitionsQuery = await client.request(competitions, {
+          where: {
+            name: competitionInput.name,
+            date: competitionInput.date,
+            nation: {
               /**
                * It's safe to assert this is true because we set the values in getCompetitionDetails()
                * In the future, it would be good to create a type for getCompetitionDetails response
@@ -105,111 +97,256 @@ if (GRAPH_URI === undefined) {
                *
                * Perhaps returning a simple flat object would be good, and then develop an ORM layer.
                */
-              const createdCompetition = query.competitions[0];
-              const competitionDefaultFields = useFragment(
-                CompetitionDefaultFieldsFragmentDoc,
-                createdCompetition
-              );
-              const competitionId =
-                createdCompetition.dataSourcesConnection.edges[0].entityId;
-              return {
-                dataSourceEntityId: competitionId,
-                internalId: competitionDefaultFields.id,
-              };
-            } else {
-              /**
-               * The competition exists and has been scraped.
-               * Reject this promise and do not insert the Competition.
-               */
-              throw new Error(
-                `[${new Date().toISOString()}] ${competition.name} on ${
-                  competition.date
-                } already exists in the database`
-              );
-            }
-          })
-          /**
-           * Join the (non-error) logic branches since both resolve to a competitionId
-           */
-          .then((competition) =>
-            // get the competition results
-            getCompetitionResults({
-              event_id: competition.dataSourceEntityId,
-            })
-          )
-          .then((competitionData) => {
-            /**
-             * Create the athletes:
-             *
-             * 1. Map createAthleteInputs from the scraped data
-             */
-            const res = competitionData.flatMap(async (resultsSections) => {
-              const createAthleteInputs = resultsSections.rows.map(
-                async (dataRow) => {
-                  const createAthleteInput = createAthleteInputFromDataRow(
-                    dataRow,
-                    resultsSections.keys
-                  );
+              code: competitionInput.nation!.connectOrCreate!.where.node.code,
+            },
+          },
+        });
 
-                  /**
-                   * Check if the athelete exists in the database.
-                   */
-                  const athletesQuery = await client
-                    .request(athletes, {
-                      /**
-                       * [BUG]
-                       * This where clause will create a new athlete each time they compete for a different country.
-                       */
-                      where: {
-                        birthday: createAthleteInput.birthday,
-                        name: createAthleteInput.name,
-                        nations_SOME: {
-                          name: null,
-                        },
-                      },
-                    })
-                    .then((query) => {
-                      if (query.athletes.length > 0) {
-                        /**
-                         * The athlete already exists. Return the internal ID but no not create.
-                         */
-                      } else {
-                        /**
-                         * The athlete does not exist yet. create them and return the internal ID.
-                         */
-                      }
-                    });
-                }
-              );
-            });
-          });
         /**
-         * Update competition scraped to true
+         * Create the competition if it is new.
+         *
+         * Account for the three conditions we care about:
+         * 1. The competition does not exist
+         * 2. The competition exists but has not been scraped
+         * 3. The competition exists and has been scraped
+         *
+         * Unless the promise rejects, dataSourceEntityId and internalId will be set
          */
 
-        return createCompetitionMutation;
+        const competitionIds = await maybeCreateCompetition({
+          knownCompetitionsQuery,
+          logDecorator: operationNumberLogDecorator,
+          onCompetitionIsUnknown: async () => {
+            const createCompetitionsMutation = await client.request(
+              createCompetition,
+              { input: [competitionInput] }
+            );
+            const createdCompetition =
+              createCompetitionsMutation.createCompetitions.competitions[0];
+            const competitionDefaultFields = useFragment(
+              CompetitionDefaultFieldsFragmentDoc,
+              createdCompetition
+            );
+            return {
+              dataSourceEntityId:
+                createdCompetition.dataSourcesConnection.edges[0].entityId,
+              internalId: competitionDefaultFields.id,
+            };
+          },
+        });
+
+        /**
+         * Match and evaluate the competition totals sections.
+         * These sections contain the most simple to use list of athletes who participated, and their final results.
+         * Connect all athletes to the competition (if they aren't already), inserting any unknown athletes into the database.
+         */
+
+        // Set up the targets for puppeteer to evaluate
+        const totalsTargets: EvaluateResultsSectionsProps["targets"] = [
+          {
+            eventGender: EventGender.MEN,
+            type: TargetType.TOTALS,
+            id: "#men_total",
+          },
+          {
+            eventGender: EventGender.WOMEN,
+            type: TargetType.TOTALS,
+            id: "#women_total",
+          },
+        ];
+
+        // Match and evaluate the targets
+        const totalsSectionEvaluationResults = await evaluateResultsSections({
+          browser,
+          logDecorator: operationNumberLogDecorator,
+          event_id: competitionIds.dataSourceEntityId,
+          targets: totalsTargets,
+          callback: async (section, target) => {
+            /**
+             * Step 4:
+             * Scrape the athlete list from the competition totals section.
+             */
+            const athleteData = await getCompetitionAthletes({
+              competitionInternalId: competitionIds.internalId,
+              competitionTotalsTab: section,
+              logDecorator: operationNumberLogDecorator,
+            });
+
+            /**
+             * Step 5:
+             * Connect all athletes to the competition, inserting any unknown athletes into the database
+             */
+
+            const newOrExistingAthletesResults = await Promise.allSettled(
+              athleteData.map(async (athleteInput) => {
+                // Check the database for any matching athletes with the same characteristics
+                const knownAthletesQuery = await checkForMatchingKnownAthletes({
+                  client,
+                  logDecorator: operationNumberLogDecorator,
+                  athleteInput,
+                  competitionInternalId: competitionIds.internalId,
+                });
+
+                // Create or update the athletes based on the knownAthletesQuery
+                const athleteIds = await maybeCreateAthletes({
+                  knownAthletesQuery,
+                  // Create the new athlete and link them to the competition if they are not known
+                  onAthleteIsUnknown: () =>
+                    createNewAthlete({
+                      logDecorator: operationNumberLogDecorator,
+                      athleteInput,
+                      client,
+                    }),
+                  // Link the athlete to the competition if they are known but not already connected
+                  onAthleteNotConnectedToCompetition: async ({
+                    id: athleteInternalId,
+                  }) =>
+                    connectAthleteToCompetition({
+                      logDecorator: operationNumberLogDecorator,
+                      client,
+                      dataSourceEntityId:
+                        athleteInput.dataSources!.connectOrCreate[0].onCreate
+                          .edge.entityId,
+                      updateAthletesInput: {
+                        where: {
+                          id: athleteInternalId,
+                        },
+                        connect: {
+                          competitions: [
+                            {
+                              edge: athleteInput.competitions.connect[0].edge,
+                            },
+                          ],
+                        },
+                      },
+                    }),
+                });
+
+                return athleteIds;
+              })
+            );
+
+            let fulfilledNewOrExistingAthletes: Array<MaybeCreateAthletesReturnType> =
+              [];
+            let rejectedNewOrExistingAthletes: Array<{
+              key: number;
+              message: any;
+            }> = [];
+            unpackPromiseSettledResults(
+              newOrExistingAthletesResults,
+              (value) => fulfilledNewOrExistingAthletes.push(value),
+              (message, i) =>
+                rejectedNewOrExistingAthletes.push({ key: i, message })
+            );
+            console.debug(
+              `[${new Date().toISOString()}][${operationNumberLogDecorator}][${
+                competitionIds.dataSourceEntityId
+              }][${target.eventGender}][${
+                target.type
+              }]: Fulfilled athlete process count: ${
+                fulfilledNewOrExistingAthletes.length
+              } / ${newOrExistingAthletesResults.length} total`
+            );
+            console.debug(
+              `[${new Date().toISOString()}][${operationNumberLogDecorator}][${
+                competitionIds.dataSourceEntityId
+              }][${target.eventGender}][${
+                target.type
+              }]: Rejected athlete process count: ${
+                rejectedNewOrExistingAthletes.length
+              } / ${newOrExistingAthletesResults.length} total`
+              // Add flag for detailed logs
+              // rejectedNewOrExistingAthletes
+            );
+
+            return fulfilledNewOrExistingAthletes;
+          },
+        });
+
+        // Temp debug only delete for production
+        console.debug(totalsSectionEvaluationResults);
+        const allAthletesRejected =
+          totalsSectionEvaluationResults
+            .map(
+              (res) =>
+                res.callbackResults as Array<MaybeCreateAthletesReturnType>
+            )
+            .flat().length === 0;
+        console.debug(allAthletesRejected);
+
+        if (allAthletesRejected) {
+          throw new Error(
+            `[${new Date().toISOString()}][${operationNumberLogDecorator}][${
+              competitionIds.dataSourceEntityId
+            }]: All athletes were rejected. There is no data to scrape.`
+          );
+        }
+
+        /**
+         * 5. Scrape the competition results from the detailed results section.
+         */
+
+        const detailedResultsTargets: EvaluateResultsSectionsProps["targets"] =
+          [
+            {
+              eventGender: EventGender.MEN,
+              type: TargetType.DETAILED_RESULTS,
+              id: "#men_snatchjerk",
+            },
+            {
+              eventGender: EventGender.WOMEN,
+              type: TargetType.DETAILED_RESULTS,
+              id: "#women_snatchjerk",
+            },
+          ];
+        const competitionDetailedResults = await evaluateResultsSections({
+          event_id: competitionIds.dataSourceEntityId,
+          browser,
+          targets: detailedResultsTargets,
+          callback: async (resultsSection, target) => {
+            await getEventResults({
+              client,
+              resultsSection,
+              athleteIds: totalsSectionEvaluationResults
+                .map(
+                  (res) =>
+                    res.callbackResults as Array<MaybeCreateAthletesReturnType>
+                )
+                .flat(),
+              competitionId: competitionIds,
+            });
+          },
+        });
+        // temp debug log remove for prod
+        console.log(competitionDetailedResults);
+        /**
+         * 6. Create all the events of the competition and connect them to the athlete
+         */
+        /**
+         * 7. Set Competition.scraped to true
+         */
+        return operationNumberLogDecorator;
       })
     );
-    let fulfilledMutations: Array<
-      Awaited<ReturnType<typeof getCompetitionResults>>
-    > = [];
+    let fulfilledMutations: Array<string> = [];
     let rejectedMutationReasons: Array<{ key: number; message: any }> = [];
+    unpackPromiseSettledResults(
+      results,
+      (value) => fulfilledMutations.push(value),
+      (message, i) => rejectedMutationReasons.push({ key: i, message })
+    );
 
-    results.forEach((result, i) => {
-      if (result.status === "fulfilled") {
-        const { value } = result;
-        if (!value) return;
-        fulfilledMutations.push(value);
-      } else if (result.status === "rejected") {
-        const { reason: message } = result;
-        rejectedMutationReasons.push({ key: i, message });
-      }
-    });
-
-    console.log(fulfilledMutations.length, fulfilledMutations);
-    console.log(rejectedMutationReasons.length, rejectedMutationReasons);
+    console.debug(
+      `Fulfilled competition process count: ${fulfilledMutations.length} / ${results.length} total`
+    );
+    console.debug(
+      `Rejected competition process count: ${rejectedMutationReasons.length} / ${results.length} total`,
+      // Add flag for detailed logs
+      rejectedMutationReasons
+    );
   } catch (error) {
     console.error(error);
   }
+  await browser.close();
   return;
 })();
