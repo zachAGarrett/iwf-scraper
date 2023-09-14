@@ -263,8 +263,6 @@ if (GRAPH_URI === undefined) {
           },
         });
 
-        // Temp debug only delete for production
-        console.debug(totalsSectionEvaluationResults);
         const allAthletesRejected =
           totalsSectionEvaluationResults
             .map(
@@ -317,8 +315,6 @@ if (GRAPH_URI === undefined) {
             });
           },
         });
-        // temp debug log remove for prod
-        console.log(competitionDetailedResults);
         /**
          * 6. Create all the events of the competition and connect them to the athlete
          */
