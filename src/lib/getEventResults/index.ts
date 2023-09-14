@@ -3,7 +3,6 @@ import { MaybeCreateAthletesReturnType } from "../maybeCreateAthletes";
 import { MaybeCreateCompetitionReturnType } from "../maybeCreateCompetition";
 import unpackPromiseSettledResults from "../unpackPromiseSettledRestults";
 import parseResultsSection from "./parseResultsSection";
-import { EventCreateInput } from "../../__generated__/graphql";
 import { GraphQLClient } from "graphql-request";
 
 /**

@@ -101,6 +101,30 @@ const parseResultsSection = async ({
     TargetColumns.TWO,
     TargetColumns.THREE,
   ];
+
+  const eventCreateInput: MutationCreateEventsArgs["input"][0] = {
+    type:
+      eventTitles[iterator] === "CLEAN&JERK"
+        ? EventType_Iwf["CleanJerk"]
+        : EventType_Iwf["Snatch"],
+    weightClass: `${category?.weight}_${category?.unit.toLocaleUpperCase()}`,
+    genderClass: category!.gender.toLocaleUpperCase(),
+    competition: {
+      connect: {
+        where: {
+          node: {
+            id: competitionId.internalId,
+          },
+        },
+      },
+    },
+  };
+
+  console.log("Creating event");
+  const createEventsMutation = await client.request(createEvents, {
+    input: eventCreateInput,
+  });
+
   /**
    * Parse the results from every data row and await the completion of all.
    */
@@ -145,35 +169,6 @@ const parseResultsSection = async ({
           rank: Number(rowData[TargetColumns.RANK]),
         },
       };
-
-      const eventCreateInput: MutationCreateEventsArgs["input"][0] = {
-        type:
-          eventTitles[iterator] === "CLEAN&JERK"
-            ? EventType_Iwf["CleanJerk"]
-            : EventType_Iwf["Snatch"],
-        weightClass: `${
-          category?.weight
-        }_${category?.unit.toLocaleUpperCase()}`,
-        genderClass: category!.gender.toLocaleUpperCase(),
-        competition: {
-          connect: {
-            where: {
-              node: {
-                id: competitionId.internalId,
-              },
-            },
-          },
-        },
-        athletes: {
-          connect: [athleteEventConnection],
-        },
-      };
-
-      console.log("Creating event");
-      const createEventsMutation = await client.request(createEvents, {
-        input: eventCreateInput,
-      });
-
       const createAttemptsMutationsResults = await Promise.allSettled(
         attempts.map(({ successful, weight, liftNumber }) => {
           const input: AttemptCreateInput = {
@@ -182,6 +177,7 @@ const parseResultsSection = async ({
             weight: Number(weight),
             event: {
               connect: {
+                connect: { athletes: [athleteEventConnection] },
                 where: {
                   node: {
                     id: createEventsMutation["createEvents"]["events"][0].id,

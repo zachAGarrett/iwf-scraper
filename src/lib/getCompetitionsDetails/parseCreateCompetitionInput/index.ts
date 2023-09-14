@@ -140,6 +140,22 @@ export default async function parseCreateCompetitionInput(
   completeInput = {
     dataSources: competitionDataSourcesPart,
     ...competitionDetailsAndNationParts,
+    sports: {
+      connectOrCreate: [
+        {
+          where: {
+            node: {
+              name: "WEIGHTLIFTING",
+            },
+          },
+          onCreate: {
+            node: {
+              name: "WEIGHTLIFTING",
+            },
+          },
+        },
+      ],
+    },
   };
 
   return completeInput;
